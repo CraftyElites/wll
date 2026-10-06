@@ -1,0 +1,1741 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="color-scheme" content="light dark">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="Webever Labs. Build hybrid software, research faster and run it on Auxa Cloud.">
+  <title>Webever Labs | Build hybrid software</title>
+  <link rel="stylesheet" href="designs.css">
+
+  <style id="wl-overrides">
+    /* Buttons: greenish blue, less electric blue */
+    :root { --sky: #1A62D4; --blue: #1A62D4; --blue-deep: #1249A8; --ink-2: #1249A8; }
+    :root[data-theme="dark"] { --blue: #3D78E8; --sky: #3D78E8; --ink-2: #8AAEFF; }
+    .blob.b1, .blob.b6, .cta .blob.o3 { --c: #0A44FF; }
+    .pblob { background: radial-gradient(circle, rgba(10,68,255,.85) 0%, rgba(10,68,255,.38) 46%, transparent 70%); }
+    .pblob.p3 { background: radial-gradient(circle, rgba(92,130,255,.75) 0%, transparent 68%); }
+    .prompt {
+      border-color: color-mix(in srgb, #1A62D4 34%, var(--line));
+      background: color-mix(in srgb, var(--bg) 94%, #1A62D4);
+      box-shadow: 0 12px 40px rgba(26,98,212,.16);
+    }
+    .prompt:focus-within { border-color: #1A62D4; box-shadow: 0 0 0 4px rgba(26,98,212,.22), 0 16px 44px rgba(26,98,212,.2); }
+    .aud-ent { background: linear-gradient(165deg, #e5f4f7, #ffffff 62%); }
+    :root[data-theme="dark"] .aud-ent { background: linear-gradient(165deg, #0a1c28, #0a0f15 62%); }
+    .aud-ent::before { background: radial-gradient(circle, rgba(26,98,212,.75), transparent 68%); }
+    .aud-ent .aud-tag { background: rgba(26,98,212,.09); }
+    .aud-ent .li-ic { background: rgba(26,98,212,.22); color: #1249A8; }
+    .c-sky { background: rgba(26,98,212,.18); color: #1249A8; }
+    :root[data-theme="dark"] .aud-ent .li-ic, :root[data-theme="dark"] .c-sky { color: #8AAEFF; }
+    .ind-avatar { border-color: color-mix(in srgb, #1A62D4 35%, var(--line)); background: #1A62D4; box-shadow: 0 6px 20px rgba(26,98,212,.2); }
+    .ind-item:hover .ind-avatar { border-color: #1A62D4; box-shadow: 0 10px 28px rgba(26,98,212,.25); }
+    .search-field:focus-within { box-shadow: 0 0 0 3px rgba(26,98,212,.2); }
+    .search-hits mark { background: rgba(26,98,212,.26); }
+    .wll-plain .wll-badge { color: #1A62D4; }
+    .btn-build { background: linear-gradient(165deg, #06202a 0%, #1249A8 42%, #5AADC4 100%); }
+    .chat-fab { background: linear-gradient(165deg, #06202a 0%, #1A62D4 100%); box-shadow: 0 10px 28px rgba(26,98,212,.38); }
+    .bubble.me, .chat-form button { background: #1A62D4; }
+    .start-card { background: linear-gradient(160deg, #06202a 0%, #1A62D4 58%, #5AADC4 100%); box-shadow: 0 18px 40px rgba(26,98,212,.25); }
+    .lost-mark { background: linear-gradient(165deg, #06202a, #1A62D4); }
+    .orb.a { background: rgba(26,98,212,.42); }
+    .orb.c { background: rgba(90,130,255,.28); }
+
+    /* Hero: smaller description + prompt suggestions */
+    .hero-content .lead { font-size: clamp(.74rem, 1.8vw, .84rem); }
+    .suggest button { font-size: .68rem; }
+
+    /* Hero headline: totally black (light) / totally white (dark) */
+    :root[data-theme="light"] h1.maintext, :root[data-theme="light"] .maintext span, :root[data-theme="light"] .maintext .hl { color: #000 !important; }
+    :root[data-theme="dark"] h1.maintext, :root[data-theme="dark"] .maintext span, :root[data-theme="dark"] .maintext .hl { color: #fff !important; }
+    /* keep the flower badges blue (the span rule above would otherwise recolour them) */
+    :root[data-theme] .maintext .fl-pair .fl-badge { display: grid; place-items: center; }
+    :root[data-theme] .maintext .fl-pair .fl-badge.fl-dot { color: var(--blue) !important; }
+    :root[data-theme] .maintext .fl-pair .fl-badge.fl-solid { color: #fff !important; }
+
+    /* Hero flower badges: larger */
+    :root[data-theme] .maintext .fl-pair { vertical-align: -.17em; gap: .06em; }
+    :root[data-theme] .maintext .fl-pair .fl-badge { width: .92em; height: .92em; }
+
+    /* Who it's for: faded software preview above each card name */
+    .aud .mock { position: relative; margin: .2em -.2em -.4em; padding: .7em .7em 0; height: 168px; overflow: hidden; border-radius: 20px 20px 0 0;
+      border: 1px solid color-mix(in srgb, currentColor 16%, transparent); border-bottom: 0; background: color-mix(in srgb, currentColor 5%, transparent);
+      font-size: .74rem; -webkit-mask-image: linear-gradient(to bottom, #000 30%, transparent 96%); mask-image: linear-gradient(to bottom, #000 30%, transparent 96%); pointer-events: none; }
+    .aud .mk-tabs { display: flex; gap: .3em; padding-bottom: .55em; border-bottom: 1px solid color-mix(in srgb, currentColor 14%, transparent); margin-bottom: .35em; }
+    .aud .mk-tabs span { padding: .38em .8em; border-radius: 9px; font-weight: 600; opacity: .5; }
+    .aud .mk-tabs span.on { opacity: 1; background: color-mix(in srgb, currentColor 11%, transparent); }
+    .aud .mk-row { display: flex; align-items: center; gap: .55em; padding: .42em .55em; border-radius: 9px; opacity: .62; font-weight: 500; }
+    .aud .mk-row.sub { padding-left: 2.15em; }
+    .aud .mk-row.sel { opacity: 1; background: color-mix(in srgb, currentColor 10%, transparent); }
+    .aud .mk-row span { flex: 1; }
+    .aud .mk-row em { font-style: normal; font-family: ui-monospace, Menlo, monospace; font-size: .9em; opacity: .55; }
+    .aud .mk-ch { width: 11px; height: 11px; flex: none; fill: none; stroke: currentColor; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+    .aud .mk-ic { width: 15px; height: 15px; flex: none; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+
+    /* Dolphins: first tool card carries no text */
+    .dolphin-card.big .dolphin-body { display: none !important; }
+
+    /* Flower badges: frosty dot version + typewriter write-in */
+    .fl-dot { background: transparent; border: 1.5px solid var(--blue); }
+    .fl-dot svg.dots { fill: currentColor; stroke: none; }
+    .fl-dot svg.dots circle { transform-box: fill-box; transform-origin: center; }
+    .fl-pair.writing .fl-dot svg.dots { animation: none; }
+    .fl-pair.writing .fl-dot svg.dots circle { animation: flDotIn .16s var(--ease) both; animation-delay: var(--dl, 0s); }
+    @keyframes flDotIn { from { opacity: 0; transform: scale(.15); } to { opacity: var(--o, 1); transform: scale(1); } }
+    .fl-pair.writing .fl-solid svg { animation: flType .7s steps(8, end) .3s both; }
+    @keyframes flType { from { clip-path: inset(0 100% 0 0); } to { clip-path: inset(0 0 0 0); } }
+    .fl-pair.writing .fl-badge { animation: flSpin 1.05s var(--ease) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fl-pair.writing .fl-badge, .fl-pair.writing .fl-solid svg, .fl-pair.writing .fl-dot svg.dots circle { animation: none; }
+    }
+  </style>
+  <script>
+  (function () {
+    var p = 'system';
+    try { p = localStorage.getItem('webever-theme') || 'system'; } catch (e) {}
+    var dark = p === 'dark' || (p === 'system' && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches);
+    document.documentElement.setAttribute('data-theme', dark ? 'dark' : 'light');
+  })();
+  </script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="mk-folder" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></symbol></svg>
+
+<svg id="iconSprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+  <defs>
+    <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
+    <symbol id="i-android" viewBox="0 0 24 24"><path d="M17.6 9.5l1.2-2.1a.4.4 0 0 0-.7-.4l-1.2 2.1a6.4 6.4 0 0 0-9.8 0L5.9 7a.4.4 0 0 0-.7.4L6.4 9.5A5.8 5.8 0 0 0 4 14v5.2a1 1 0 0 0 1 1h1.4a1 1 0 0 0 1-1V16h9.2v3.2a1 1 0 0 0 1 1H19a1 1 0 0 0 1-1V14a5.8 5.8 0 0 0-2.4-4.5zM8.2 13.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm7.6 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
+    <symbol id="i-arrow-up-right" viewBox="0 0 24 24"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></symbol>
+    <symbol id="i-chevron-right" viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></symbol>
+    <symbol id="i-chevron-down" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></symbol>
+    <symbol id="i-terminal" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></symbol>
+    <symbol id="i-infinity" viewBox="0 0 24 24"><path d="M18.178 8c5.096 0 5.096 8 0 8-5.095 0-7.133-8-12.739-8-4.585 0-4.585 8 0 8 5.606 0 7.644-8 12.74-8z"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+    <symbol id="i-building" viewBox="0 0 24 24"><path d="M6 22V4a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v18Z"/><path d="M6 12H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2"/><path d="M18 9h2a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2h-2"/><path d="M10 6h4"/><path d="M10 10h4"/><path d="M10 14h4"/><path d="M10 18h4"/></symbol>
+    <symbol id="i-code" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></symbol>
+    <symbol id="i-palette" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".6"/><circle cx="17.5" cy="10.5" r=".6"/><circle cx="8.5" cy="7.5" r=".6"/><circle cx="6.5" cy="12.5" r=".6"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></symbol>
+    <symbol id="i-server" viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/><line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/></symbol>
+    <symbol id="i-cloud" viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></symbol>
+    <symbol id="i-zap" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></symbol>
+    <symbol id="i-lock" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></symbol>
+    <symbol id="i-git-branch" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
+    <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
+    <symbol id="i-bar-chart" viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+    <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
+    <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
+    <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
+    <symbol id="i-smartphone" viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22 6 12 13 2 6"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></symbol>
+    <symbol id="i-twitter" viewBox="0 0 24 24"><path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"/><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"/></symbol>
+    <symbol id="i-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></symbol>
+    <symbol id="i-trending" viewBox="0 0 24 24"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></symbol>
+    <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></symbol>
+    <symbol id="i-plane" viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></symbol>
+    <symbol id="i-package" viewBox="0 0 24 24"><path d="m7.5 4.27 9 5.15"/><path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z"/><path d="m3.3 7 8.7 5 8.7-5"/><path d="M12 22V12"/></symbol>
+    <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></symbol>
+    <symbol id="i-chat-pro" viewBox="0 0 24 24">
+      <path d="M4.2 15.2c-1.1 0-2-.9-2-2V6.8c0-1.8 1.5-3.3 3.3-3.3h7.2c1.1 0 2 .9 2 2"/>
+      <path d="M7.8 8.2h10.4c1.6 0 2.8 1.3 2.8 2.8v6.2c0 1.6-1.3 2.8-2.8 2.8h-1.6l-2.6 2.2-2.6-2.2H9.2c-1.6 0-2.8-1.3-2.8-2.8v-4.2c0-1.5 1.2-2.8 2.8-2.8z"/>
+      <circle cx="11.2" cy="14" r="1"/>
+      <circle cx="14.2" cy="14" r="1"/>
+      <circle cx="17.2" cy="14" r="1"/>
+    </symbol>
+    <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+    <symbol id="i-life-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
+    <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="4.2"/><circle cx="16.95" cy="10.4" r="4.2"/><circle cx="15.06" cy="16.2" r="4.2"/><circle cx="8.94" cy="16.2" r="4.2"/><circle cx="7.05" cy="10.4" r="4.2"/><circle cx="12" cy="12" r="4.4"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></symbol>
+    <symbol id="i-cpu" viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><line x1="9" y1="1" x2="9" y2="4"/><line x1="15" y1="1" x2="15" y2="4"/><line x1="9" y1="20" x2="9" y2="23"/><line x1="15" y1="20" x2="15" y2="23"/><line x1="20" y1="9" x2="23" y2="9"/><line x1="20" y1="14" x2="23" y2="14"/><line x1="1" y1="9" x2="4" y2="9"/><line x1="1" y1="14" x2="4" y2="14"/></symbol>
+    <symbol id="i-reply" viewBox="0 0 24 24">
+      <polyline points="9 17 4 12 9 7"/>
+      <path d="M20 18v-2a4 4 0 0 0-4-4H4"/>
+    </symbol>
+  </defs>
+</svg>
+<header class="site-header" id="top">
+    <div class="bar">
+      <a class="brand" href="#home" aria-label="Webever Labs home">
+        <span class="brand-mark" id="logoMark">
+          <img id="logoImg" alt="" width="42" height="42"
+            src="assets/logo-mark.png"
+            onerror="this.parentElement.classList.add('img-fail')">
+          <svg class="logo-fallback" viewBox="0 0 42 42" aria-hidden="true">
+            <circle cx="21" cy="21" r="20" fill="none" stroke="currentColor" stroke-width="1.5"/>
+            <path d="M12 24c2-6 6-10 9-10s7 4 9 10c-3 2-6 3-9 3s-6-1-9-3z" fill="currentColor" opacity=".9"/>
+            <circle cx="16" cy="18" r="1.8" fill="var(--bg)"/>
+            <circle cx="26" cy="18" r="1.8" fill="var(--bg)"/>
+            <path d="M18 26c1.5 1.5 4.5 1.5 6 0" fill="none" stroke="var(--bg)" stroke-width="1.4" stroke-linecap="round"/>
+          </svg>
+        </span>
+        <span class="brand-name"><b>Webever</b><span>Labs</span><sup class="country" id="countryTag">NG</sup></span>
+      </a>
+      <nav class="nav" aria-label="Primary">
+        <a href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-terminal"/></svg>Build</a>
+        <a href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-infinity"/></svg>Research</a>
+        <div class="nav-drop">
+          <button class="nav-drop-btn" type="button" aria-expanded="false">Platform <svg class="ic"><use href="#i-chevron-down"/></svg></button>
+          <div class="nav-menu" role="menu">
+            <a href="#dolphins" role="menuitem"><svg class="ic"><use href="#i-cpu"/></svg>Dolphins</a>
+            <a href="#cloud" role="menuitem"><svg class="ic"><use href="#i-cloud"/></svg>Auxa Cloud</a>
+            <a href="#software" role="menuitem"><svg class="ic"><use href="#i-monitor"/></svg>Workspace</a>
+          </div>
+        </div>
+        <div class="nav-drop">
+          <button class="nav-drop-btn" type="button" aria-expanded="false">Ecosystem <svg class="ic"><use href="#i-chevron-down"/></svg></button>
+          <div class="nav-menu" role="menu">
+            <a href="#wll360" role="menuitem"><svg class="ic"><use href="#i-compass"/></svg>WLL 360</a>
+            <a href="#audience" role="menuitem"><svg class="ic"><use href="#i-users"/></svg>Who it's for</a>
+            <a href="#industries" role="menuitem"><svg class="ic"><use href="#i-building"/></svg>Industries</a>
+          </div>
+        </div>
+        <a href="#pricing"><svg class="ic"><use href="#i-package"/></svg>Pricing</a>
+      </nav>
+      <div class="bar-actions">
+        <button class="icon-btn" id="searchBtn" type="button" aria-label="Search site" aria-expanded="false" aria-controls="searchOverlay"><svg class="ic"><use href="#i-search"/></svg></button>
+        <button class="icon-btn menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sheet"><svg class="ic"><use href="#i-menu"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+
+  <div class="sheet" id="sheet" aria-hidden="true">
+    <div class="sheet-top">
+      <span class="brand-name"><b>Webever</b><span>Labs</span><sup class="country">NG</sup></span>
+      <button class="icon-btn" id="sheetClose" type="button" aria-label="Close menu"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <nav class="sheet-links" aria-label="Menu">
+      <p class="sheet-label">Product</p>
+      <a href="#ask" data-set-mode="build"><span class="tile"><svg class="ic"><use href="#i-terminal"/></svg></span><span><b>Build</b><small>Describe it, ship it</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <a href="#ask" data-set-mode="research"><span class="tile"><svg class="ic"><use href="#i-infinity"/></svg></span><span><b>Research</b><small>Ask anything, get sources</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <p class="sheet-label">Platform</p>
+      <a href="#dolphins"><span class="tile"><svg class="ic"><use href="#i-cpu"/></svg></span><span><b>Dolphins</b><small>Generic tools suite</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <a href="#cloud"><span class="tile"><svg class="ic"><use href="#i-cloud"/></svg></span><span><b>Auxa Cloud</b><small>Get 1GB of compute free</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <a href="#software"><span class="tile"><svg class="ic"><use href="#i-monitor"/></svg></span><span><b>Workspace</b><small>Software that looks finished</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <p class="sheet-label">Ecosystem</p>
+      <a href="#wll360"><span class="tile"><svg class="ic"><use href="#i-compass"/></svg></span><span><b>WLL 360</b><small>Zero to CEO, with the app</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <a href="#audience"><span class="tile"><svg class="ic"><use href="#i-users"/></svg></span><span><b>Who it's for</b><small>Enterprises, developers, creators</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <a href="#industries"><span class="tile"><svg class="ic"><use href="#i-building"/></svg></span><span><b>Industries</b><small>Where Webever ships</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <p class="sheet-label">More</p>
+      <a href="#pricing"><span class="tile"><svg class="ic"><use href="#i-package"/></svg></span><span><b>Pricing</b><small>Plans that scale</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
+      <button type="button" id="sheetContact" class="sheet-search-link"><span class="tile"><svg class="ic"><use href="#i-chat-pro"/></svg></span><span><b>Contact</b><small>Live chat with the team</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></button>
+      <button type="button" id="sheetSearch" class="sheet-search-link"><span class="tile"><svg class="ic"><use href="#i-search"/></svg></span><span><b>Search</b><small>Find pages on this site</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></button>
+    </nav>
+  </div>
+
+  
+  
+<main id="view">
+  <div id="landing" class="is-on">
+<section class="hero">
+      <div class="hero-grid">
+        <div class="hero-visual rel">
+          <div class="blobs" aria-hidden="true">
+            <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
+            <i class="blob b4"></i><i class="blob b5"></i><i class="blob b6"></i>
+          </div>
+          <div class="ubs">
+            <button class="cardub" type="button" data-mode="build" aria-pressed="false" aria-label="Build. Start a build prompt">
+              <div class="ub-inner ub-build">
+                <div class="ub-media" data-canvas="code" data-video="daise.mp4">
+                  <canvas></canvas>
+                  <video muted loop playsinline preload="auto"></video>
+                </div>
+                <span class="ub-scrim"></span>
+                <svg class="ic ub-ic"><use href="#i-terminal"/></svg>
+                <span class="ub-label">Build</span>
+              </div>
+              <span class="ub-dot"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </button>
+            <button class="cardub" type="button" data-mode="research" aria-pressed="false" aria-label="Research. Start a research prompt">
+              <div class="ub-inner ub-research">
+                <div class="ub-media" data-canvas="smoke" data-video="research.mp4">
+                  <canvas></canvas>
+                  <video muted loop playsinline preload="auto"></video>
+                </div>
+                <span class="ub-scrim"></span>
+                <svg class="ic ub-ic"><use href="#i-infinity"/></svg>
+                <span class="ub-label">Research</span>
+              </div>
+              <span class="ub-dot"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </button>
+          </div>
+        </div>
+
+        <div class="hero-copy">
+          <a class="chip-cloud" href="#cloud">
+            <span class="chip-logo"><svg class="ic"><use href="#i-cloud"/></svg></span>
+            <span class="chip-name">Auxa Cloud <i></i> Compute</span>
+            <span class="chip-cta">Get 1GB free</span>
+          </a>
+          <div class="hero-content">
+            <h1 class="maintext">
+              <span>Build hybrid software.</span>
+              <span class="hl">Keep 40% of your week. <span class="fl-pair writing" id="flPair" data-step="0" aria-hidden="true">
+                <span class="fl-badge fl-dot">
+                  <svg class="s0" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="3.4"/><circle cx="16.7" cy="10.4" r="3.4"/><circle cx="15" cy="16" r="3.4"/><circle cx="9" cy="16" r="3.4"/><circle cx="7.3" cy="10.4" r="3.4"/></svg>
+                  <svg class="s1" viewBox="0 0 24 24"><circle cx="12.0" cy="6.7" r="4.3"/><circle cx="17.3" cy="12.0" r="4.3"/><circle cx="12.0" cy="17.3" r="4.3"/><circle cx="6.7" cy="12.0" r="4.3"/><circle cx="12" cy="12" r="3.2"/></svg>
+                  <svg class="s2" viewBox="0 0 24 24"><circle cx="12.0" cy="6.3" r="3.4"/><circle cx="16.94" cy="9.15" r="3.4"/><circle cx="16.94" cy="14.85" r="3.4"/><circle cx="12.0" cy="17.7" r="3.4"/><circle cx="7.06" cy="14.85" r="3.4"/><circle cx="7.06" cy="9.15" r="3.4"/><circle cx="12" cy="12" r="3.3"/></svg>
+                </span>
+                <span class="fl-badge fl-solid">
+                  <svg class="s0" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="3.6"/><circle cx="16.7" cy="10.4" r="3.6"/><circle cx="15" cy="16" r="3.6"/><circle cx="9" cy="16" r="3.6"/><circle cx="7.3" cy="10.4" r="3.6"/><circle cx="12" cy="12" r="3.2"/></svg>
+                  <svg class="s1" viewBox="0 0 24 24"><circle cx="12.0" cy="6.7" r="4.3"/><circle cx="17.3" cy="12.0" r="4.3"/><circle cx="12.0" cy="17.3" r="4.3"/><circle cx="6.7" cy="12.0" r="4.3"/><circle cx="12" cy="12" r="3.2"/></svg>
+                  <svg class="s2" viewBox="0 0 24 24"><circle cx="12.0" cy="6.3" r="3.4"/><circle cx="16.94" cy="9.15" r="3.4"/><circle cx="16.94" cy="14.85" r="3.4"/><circle cx="12.0" cy="17.7" r="3.4"/><circle cx="7.06" cy="14.85" r="3.4"/><circle cx="7.06" cy="9.15" r="3.4"/><circle cx="12" cy="12" r="3.3"/></svg>
+                </span>
+              </span></span>
+            </h1>
+            <p class="lead">Type the product once. Webever writes, previews and ships it: builds, research and store files included.</p>
+          </div>
+          <div class="ask-wrap flex-col g-6" id="ask">
+            <div class="logo-sprinkle" aria-hidden="true" title="Works with your stack">
+              <span class="logo-chip ps r1 pad" title="Photoshop"><img src="https://cdn.simpleicons.org/adobephotoshop/31A8FF" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip dv r2 pad" title="DaVinci Resolve"><img src="https://cdn.simpleicons.org/davinciresolve/FFFFFF" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip claude r3 pad" title="Claude"><img src="https://cdn.simpleicons.org/claude/FFFFFF" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip fig r4 pad" title="Figma"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip vscode r5 pad" title="VS Code"><img src="https://cdn.simpleicons.org/visualstudiocode/007ACC" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip firebase r6 pad" title="Firebase"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="" width="16" height="16" loading="lazy"></span>
+              <span class="logo-chip gh r7 pad" title="GitHub"><img src="https://cdn.simpleicons.org/github/FFFFFF" alt="" width="16" height="16" loading="lazy"></span>
+            </div>
+            <div class="prompt-stage">
+            <div class="prompt-blobs" aria-hidden="true">
+              <i class="pblob p1"></i>
+              <i class="pblob p2"></i>
+              <i class="pblob p3"></i>
+            </div>
+            <form class="flex-col jc-bt prompt p-13 g-3" id="askForm" autocomplete="off">
+              <div class="flex-row g-6 flex field">
+                <svg class="ic"><use href="#i-search"/></svg>
+                <textarea id="askInput" rows="2" placeholder="How does SEO help improve..." aria-label="Ask Webever"></textarea>
+              </div>
+              <div class="flex-row jc-bt al-c">
+                <label class="mode">
+                  <svg class="ic" id="modeIcon"><use href="#i-compass"/></svg>
+                  <select id="askMode" aria-label="Mode">
+                    <option value="discover">Discover</option>
+                    <option value="build">Build</option>
+                    <option value="research">Research</option>
+                  </select>
+                  <svg class="ic"><use href="#i-chevron-down"/></svg>
+                </label>
+                <div class="flex-row al-c g-3">
+                  <button class="tool" id="micBtn" type="button" aria-label="Speak your question"><svg class="ic"><use href="#i-mic"/></svg></button>
+                  <button class="send flex-col al-c" type="submit" aria-label="Send"><svg class="ic"><use href="#i-arrow-right"/></svg></button>
+                </div>
+              </div>
+            </form>
+            </div>
+            <div class="suggest" id="suggest">
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How much could the real estate earn me</span></button>
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How to reduce web cost when building aviations site</span></button>
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>Which stack fits a hybrid mobile app</span></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Dolphins: large left + squared side cards + CTA -->
+    <section class="section" id="dolphins">
+      <div class="wrap">
+        <div class="logo-sprinkle sec" aria-hidden="true">
+          <span class="logo-chip claude r2 pad" title="Claude"><img src="https://cdn.simpleicons.org/claude/FFFFFF" alt="" width="18" height="18" loading="lazy"></span>
+          <span class="logo-chip fig r5 pad" title="Figma"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="" width="18" height="18" loading="lazy"></span>
+          <span class="logo-chip openai r3 pad" title="OpenAI"><img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="" width="18" height="18" loading="lazy"></span>
+        </div>
+        <div class="sec-head">
+          <h2>Dolphins: Webever generic tools</h2>
+          <p>A shared toolkit for enterprises, developers and creators. Three focused tools that cover the work you actually do.</p>
+        </div>
+        <div class="dolphins-stack">
+          <article class="dolphin-card big">
+            <div class="dolphin-media" data-canvas="pdf" data-img="assets/photos/1586281380349-632531db7ed4.jpg">
+              <canvas></canvas>
+              <img alt="" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
+            </div>
+            <span class="dolphin-scrim"></span>
+            <div class="dolphin-body" hidden></div>
+          </article>
+          <div class="dolphins-side">
+            <article class="dolphin-card side">
+              <div class="dolphin-media" data-canvas="smoke">
+                <canvas></canvas>
+              </div>
+              <span class="dolphin-scrim"></span>
+              <div class="dolphin-body">
+                <span class="dolphin-side-ic"><svg class="ic"><use href="#i-package"/></svg></span>
+                <h3>HTML app bundler</h3>
+                <p>Apps from pages, any OS</p>
+              </div>
+            </article>
+            <article class="dolphin-card side">
+              <div class="dolphin-media" data-canvas="agent">
+                <canvas></canvas>
+              </div>
+              <span class="dolphin-scrim"></span>
+              <div class="dolphin-body">
+                <span class="dolphin-side-ic"><svg class="ic"><use href="#i-sparkles"/></svg></span>
+                <h3>Fine-tuning agent</h3>
+                <p>On-brand copy &amp; SEO</p>
+              </div>
+            </article>
+          </div>
+        </div>
+        <div class="dolphins-cta">
+          <a class="btn" href="#ask"><svg class="ic"><use href="#i-rocket"/></svg>Explore Dolphins tools</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Software UI showcase -->
+    <section class="section" id="software">
+      <div class="wrap">
+        <div class="logo-sprinkle sec" aria-hidden="true">
+          <span class="logo-chip vscode r1 pad" title="VS Code"><img src="https://cdn.simpleicons.org/visualstudiocode/007ACC" alt="" width="18" height="18" loading="lazy"></span>
+          <span class="logo-chip gh r4 pad" title="GitHub"><img src="https://cdn.simpleicons.org/github/FFFFFF" alt="" width="18" height="18" loading="lazy"></span>
+          <span class="logo-chip firebase r6 pad" title="Firebase"><img src="https://cdn.simpleicons.org/firebase/FFCA28" alt="" width="18" height="18" loading="lazy"></span>
+        </div>
+        <div class="sec-head">
+          <h2>Software that looks finished</h2>
+          <p>Real workspaces, moving past you. Fade to the next screen when you’re ready to ship.</p>
+        </div>
+      </div>
+      <div class="soft-track-wrap" aria-label="Product screens scrolling">
+        <div class="soft-track">
+              <figure class="soft-slide">
+                <img src="assets/photos/1551288049-bebda4e38f71.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1460925895917-afdab827c52f.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1551650975-87deedd944c3.jpg" alt="Mobile app preview" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1519389950473-47ba0277781c.jpg" alt="Team workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1522071820081-009f0129c71c.jpg" alt="Founders at work" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1498050108023-c5249f4df085.jpg" alt="Laptop build view" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1559028012-481c04fa702d.jpg" alt="Product design board" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1551288049-bebda4e38f71.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1460925895917-afdab827c52f.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1551650975-87deedd944c3.jpg" alt="Mobile app preview" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1519389950473-47ba0277781c.jpg" alt="Team workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1522071820081-009f0129c71c.jpg" alt="Founders at work" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1498050108023-c5249f4df085.jpg" alt="Laptop build view" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+              <figure class="soft-slide">
+                <img src="assets/photos/1559028012-481c04fa702d.jpg" alt="Product design board" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+              </figure>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="audience">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Made for the people who ship</h2>
+          <p>Pick your lane. Webever shapes the workspace, the support and the billing around how you work.</p>
+        </div>
+        <div class="aud-grid">
+          <article class="aud aud-ent">
+            <div class="aud-top">
+              <span class="aud-icon"><svg class="ic"><use href="#i-building"/></svg></span>
+              <span class="aud-tag">Teams and companies</span>
+            </div>
+            <div class="mock" aria-hidden="true"><div class="mk-tabs"><span class="on">Workspaces</span><span class="">Roles</span></div><div class="mk-list"><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Finance</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-down"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Operations</span></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-database"/></svg><span>Approvals</span><em>13</em></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-database"/></svg><span>Reports</span><em>18</em></div><div class="mk-row sel sub"><svg class="mk-ic"><use href="#i-database"/></svg><span>Audit trail</span><em>89</em></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Support</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Sales</span></div></div></div>
+            <h3>Enterprises</h3>
+            <p>Internal tools and portals without a big engineering team.</p>
+            <ul class="aud-list">
+              <li><span class="li-ic"><svg class="ic"><use href="#i-shield"/></svg></span>Roles, single sign-on and audit trails</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-server"/></svg></span>Dedicated Auxa Cloud compute</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-users"/></svg></span>Shared workspaces for every team</li>
+            </ul>
+            <a class="aud-cta" href="#"><svg class="ic"><use href="#i-mail"/></svg>Talk to our team<svg class="ic go"><use href="#i-arrow-right"/></svg></a>
+          </article>
+          <article class="aud aud-dev">
+            <div class="aud-top">
+              <span class="aud-icon"><svg class="ic"><use href="#i-code"/></svg></span>
+              <span class="aud-tag">Code-first</span>
+            </div>
+            <div class="mock" aria-hidden="true"><div class="mk-tabs"><span class="on">Builds</span><span class="">Deploys</span></div><div class="mk-list"><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-down"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>main</span></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-package"/></svg><span>android-release</span><em>42</em></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-cloud"/></svg><span>web-preview</span><em>31</em></div><div class="mk-row sel sub"><svg class="mk-ic"><use href="#i-package"/></svg><span>signed-aab</span><em>27</em></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>feature/login</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>hotfix</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>docs</span></div></div></div>
+            <h3>Developers</h3>
+            <p>Bring your stack. We handle builds, previews and deploys.</p>
+            <ul class="aud-list">
+              <li><span class="li-ic"><svg class="ic"><use href="#i-git-branch"/></svg></span>A build on every GitHub push</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-terminal"/></svg></span>Works from a laptop or a phone</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-database"/></svg></span>Firebase and REST ready</li>
+            </ul>
+            <div class="term" aria-hidden="true"><span>$</span><span>webever ship --android</span><i class="caret"></i></div>
+            <a class="aud-cta" href="#"><svg class="ic"><use href="#i-book"/></svg>Read the docs<svg class="ic go"><use href="#i-arrow-right"/></svg></a>
+          </article>
+          <article class="aud aud-cre">
+            <div class="aud-top">
+              <span class="aud-icon"><svg class="ic"><use href="#i-palette"/></svg></span>
+              <span class="aud-tag">Solo and studios</span>
+            </div>
+            <div class="mock" aria-hidden="true"><div class="mk-tabs"><span class="on">Pages</span><span class="">Media</span></div><div class="mk-list"><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-down"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Portfolio</span></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-video"/></svg><span>Showreel</span><em>9</em></div><div class="mk-row sub"><svg class="mk-ic"><use href="#i-image"/></svg><span>Photos</span><em>64</em></div><div class="mk-row sel sub"><svg class="mk-ic"><use href="#i-package"/></svg><span>Shop items</span><em>18</em></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Blog</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>About</span></div><div class="mk-row"><svg class="mk-ch"><use href="#i-chevron-right"/></svg><svg class="mk-ic"><use href="#mk-folder"/></svg><span>Contact</span></div></div></div>
+            <h3>Creators</h3>
+            <p>Turn a portfolio or shop into a site that feels like you.</p>
+            <ul class="aud-list">
+              <li><span class="li-ic"><svg class="ic"><use href="#i-image"/></svg></span>Templates for portfolios and shops</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-video"/></svg></span>Video and audio blocks</li>
+              <li><span class="li-ic"><svg class="ic"><use href="#i-sparkles"/></svg></span>AI help with copy and SEO</li>
+            </ul>
+            <a class="aud-cta" href="#"><svg class="ic"><use href="#i-sparkles"/></svg>Start creating<svg class="ic go"><use href="#i-arrow-right"/></svg></a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    
+    <section class="section" id="wll360">
+      <div class="wrap wll-plain">
+        <div class="wll-stage" id="wllStage">
+          <img class="wll-photo is-on" src="assets/photos/1522202176988-66273c2fd55f.jpg" alt="Young and older founders working together" data-wll="0">
+          <img class="wll-photo" src="assets/photos/1519389950473-47ba0277781c.jpg" alt="" data-wll="1">
+          <img class="wll-photo" src="assets/photos/1522071820081-009f0129c71c.jpg" alt="" data-wll="2">
+          <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="" data-wll="3">
+          <article class="wll-float" id="wllFloat" aria-live="polite">
+            <span class="wll-float-kicker">Session</span>
+            <b>Morning lesson</b>
+            <small>Ship a build before noon</small>
+          </article>
+        </div>
+        <div class="wll-kicker">
+          <span class="wll-badge">WLL 360</span>
+          <span class="wll-avatars" aria-hidden="true">
+            <img src="assets/photos/1507003211169-0a1dd722bf5d.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <img src="assets/photos/1573496359142-b8d87734a5a2.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <img src="assets/photos/1544005313-94ddf0286df2.jpg" alt="" loading="lazy" onerror="this.remove()">
+          </span>
+        </div>
+        <h2>Zero to CEO.</h2>
+        <p>Young founders sit with people who already built. Enterprise tools and the 360 app do the rest.</p>
+        <div class="wll-ctas">
+          <a class="btn-build" href="#ask">Get started <svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg></a>
+          <a class="btn-app" href="#app">Get app <svg class="ic" aria-hidden="true"><use href="#i-android"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    
+        <section class="section" id="features">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>One workspace, six jobs</h2>
+          <p>Same toolkit from the first sentence to the store listing.</p>
+        </div>
+        <div class="jobs">
+          <article class="job" style="--job-accent:#1A62D4; --job-fill:#dbe4ff;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1511707171634-5f897ff02aa9?w=240&h=240&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-smartphone"/></svg></span></span>
+            <div class="job-copy">
+              <h3>Hybrid apps</h3>
+              <p>One build. Three homes.</p>
+              <a class="job-cta" href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Ship every screen</a>
+            </div>
+          </article>
+          <article class="job" style="--job-accent:#f5720f; --job-fill:#ffe4d1;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=240&h=240&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-cloud"/></svg></span></span>
+            <div class="job-copy">
+              <h3>Auxa Cloud</h3>
+              <p>1 GB Drive for files. Connectors to the storage you already use.</p>
+              <a class="job-cta" href="#cloud"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Open Auxa Drive</a>
+            </div>
+          </article>
+          <article class="job" style="--job-accent:#8b5cf6; --job-fill:#e8defc;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=240&h=240&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-compass"/></svg></span></span>
+            <div class="job-copy">
+              <h3>Research</h3>
+              <p>Ask once. Leave with a plan.</p>
+              <a class="job-cta" href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Start a brief</a>
+            </div>
+          </article>
+          <article class="job" style="--job-accent:#c21c78; --job-fill:#f6d5e6;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&h=560&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-trending"/></svg></span></span>
+            <div class="job-copy">
+              <h3>SEO and growth</h3>
+              <p>Well done is better than well said.</p>
+              <a class="job-cta" href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Build trends now</a>
+            </div>
+          </article>
+          <article class="job" style="--job-accent:#00b4cc; --job-fill:#d4f3f6;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=240&h=240&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-lock"/></svg></span></span>
+            <div class="job-copy">
+              <h3>Secure by default</h3>
+              <p>Lock the doors before you open the shop.</p>
+              <a class="job-cta" href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Review the locks</a>
+            </div>
+          </article>
+          <article class="job" style="--job-accent:#6b7280; --job-fill:#e6e8ec;">
+            <span class="job-blob" aria-hidden="true"><img src="https://images.unsplash.com/photo-1553413077-190dd305871c?w=240&h=240&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="job-chip"><svg class="ic"><use href="#i-package"/></svg></span></span>
+            <div class="job-copy">
+              <h3>Store-ready builds</h3>
+              <p>Signed files, not loose folders.</p>
+              <a class="job-cta" href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Get the store build</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Industries -->
+<!-- Industries -->
+<section class="section" id="industries">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Built for your industry</h2>
+          <p>Webever fits how different sectors ship software, from payments to farms.</p>
+        </div>
+        <div class="industries-row">
+          <a class="ind-item" href="#industry-fintech">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1563986768609-322e19255c1f?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="fintech">Fintech</b>
+            <span>Payments &amp; wallets</span>
+          </a>
+          <a class="ind-item" href="#industry-healthcare">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="healthcare">Healthcare</b>
+            <span>Clinics &amp; records</span>
+          </a>
+          <a class="ind-item" href="#industry-education">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="education">Education</b>
+            <span>Schools &amp; LMS</span>
+          </a>
+          <a class="ind-item" href="#industry-retail">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="retail">Retail</b>
+            <span>Shops &amp; inventory</span>
+          </a>
+          <a class="ind-item" href="#industry-logistics">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="logistics">Logistics</b>
+            <span>Fleet &amp; delivery</span>
+          </a>
+          <a class="ind-item" href="#industry-media">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="media">Media</b>
+            <span>Publish &amp; stream</span>
+          </a>
+          <a class="ind-item" href="#industry-real-estate">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="real-estate">Real estate</b>
+            <span>Listings &amp; agents</span>
+          </a>
+          <a class="ind-item" href="#industry-agriculture">
+            <span class="ind-avatar">
+              <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=240&amp;h=240&amp;fit=crop" alt="" loading="lazy" onerror="this.remove()">
+              <span class="ind-chip"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </span>
+            <b data-ind="agriculture">Agriculture</b>
+            <span>Farms &amp; supply</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    
+        <section class="section" id="how">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>From a sentence to a live product</h2>
+          <p>Three steps, and you stay in control of each one.</p>
+        </div>
+        <ol class="steps">
+          <li>
+            <span class="step-ic c-sky"><svg class="ic"><use href="#i-message"/></svg></span>
+            <div><h3>Describe it</h3><p>Type what you want in the prompt: an app, a site or a fix.</p></div>
+          </li>
+          <li>
+            <span class="step-ic c-violet"><svg class="ic"><use href="#i-terminal"/></svg></span>
+            <div><h3>Watch it build</h3><p>Webever writes, tests and previews it right in your browser.</p></div>
+          </li>
+          <li>
+            <span class="step-ic c-pink"><svg class="ic"><use href="#i-rocket"/></svg></span>
+            <div><h3>Ship it</h3><p>Publish to the web or download signed Android builds.</p></div>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section" id="pricing">
+      <div class="wrap">
+        <div class="sec-head">
+          <h2>Simple pricing</h2>
+          <p>Priced in naira. Start free, then grow. First paid plan from ₦5,000.</p>
+        </div>
+        <div class="price-grid">
+          <div class="price-card">
+            <h3>Starter</h3>
+            <div class="price-amt">₦0 <small>/ mo</small></div>
+            <p>For solo builders testing the pipeline.</p>
+            <ul class="price-list">
+              <li><svg class="ic"><use href="#i-check"/></svg>1 GB Auxa Drive + connectors</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>3 projects</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Build &amp; Research modes</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Community support</li>
+            </ul>
+            <a class="price-cta" href="#ask">Get started</a>
+          </div>
+          <div class="price-card featured">
+            <span class="price-badge">Popular</span>
+            <h3>Builder</h3>
+            <div class="price-amt">₦5,000 <small>/ mo</small></div>
+            <p>First paid plan: more Drive space for real project files.</p>
+            <ul class="price-list">
+              <li><svg class="ic"><use href="#i-check"/></svg>10 GB Auxa Drive + connectors</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>15 projects</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Dolphins tools access</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Signed store builds</li>
+            </ul>
+            <a class="price-cta" href="#ask">Start Builder</a>
+          </div>
+          <div class="price-card">
+            <h3>Pro</h3>
+            <div class="price-amt">₦18,000 <small>/ mo</small></div>
+            <p>For freelancers and studios shipping often.</p>
+            <ul class="price-list">
+              <li><svg class="ic"><use href="#i-check"/></svg>40 GB Auxa Drive + connectors</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Unlimited projects</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Priority support</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Team workspaces</li>
+            </ul>
+            <a class="price-cta" href="#ask">Start Pro</a>
+          </div>
+          <div class="price-card">
+            <h3>Enterprise</h3>
+            <div class="price-amt">Custom</div>
+            <p>SSO, dedicated compute and audit trails for teams.</p>
+            <ul class="price-list">
+              <li><svg class="ic"><use href="#i-check"/></svg>Dedicated Auxa region</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>SSO &amp; roles</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>Usage reports</li>
+              <li><svg class="ic"><use href="#i-check"/></svg>SLA &amp; onboarding</li>
+            </ul>
+            <a class="price-cta" href="#">Talk to sales</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="section" id="start">
+      <div class="wrap">
+        <a class="start-card" href="#ask" data-set-mode="build">
+          <span>Ready when you are</span>
+          <strong>Start building</strong>
+        </a>
+      </div>
+    </section>
+  </div>
+  <div id="framewrap" hidden>
+    <iframe id="viewFrame" title="Webever page"></iframe>
+  </div>
+</main>
+<footer class="site-footer">
+    <div class="wrap">
+      <div class="foot-grid">
+        <div class="foot-brand">
+          <a class="brand" href="#home" aria-label="Back to top">
+            <span class="brand-mark">
+              <img alt="" width="42" height="42" src="assets/logo-mark.png">
+            </span>
+            <span class="brand-name"><b>Webever</b><span>Labs</span></span>
+          </a>
+          <p>Hybrid software, faster research, Auxa Drive and cloud compute.</p>
+        </div>
+        <div class="foot-cols">
+          <div class="foot-col">
+            <h4>Product</h4>
+            <ul>
+              <li><a href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-terminal"/></svg>Build</a></li>
+              <li><a href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-infinity"/></svg>Research</a></li>
+              <li><a href="#dolphins"><svg class="ic"><use href="#i-cpu"/></svg>Dolphins</a></li>
+              <li><a href="#wll360"><svg class="ic"><use href="#i-compass"/></svg>WLL 360</a></li>
+              <li><a href="#cloud"><svg class="ic"><use href="#i-cloud"/></svg>Auxa Cloud</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <h4>Who it's for</h4>
+            <ul>
+              <li><a href="#audience"><svg class="ic"><use href="#i-building"/></svg>Enterprises</a></li>
+              <li><a href="#audience"><svg class="ic"><use href="#i-code"/></svg>Developers</a></li>
+              <li><a href="#audience"><svg class="ic"><use href="#i-palette"/></svg>Creators</a></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="#pricing"><svg class="ic"><use href="#i-package"/></svg>Pricing</a></li>
+              <li><a href="#"><svg class="ic"><use href="#i-mail"/></svg>Contact</a></li>
+              <li><button type="button" id="footerSearch" style="display:inline-flex;align-items:center;gap:.55em;padding:.35em 0;color:var(--muted);background:none;border:none;font:inherit;cursor:pointer;font-size:.95rem"><svg class="ic"><use href="#i-search"/></svg>Search</button></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="foot-bottom">
+        <div class="socials">
+          <a href="#" aria-label="GitHub"><svg class="ic"><use href="#i-github"/></svg></a>
+          <a href="#" aria-label="Twitter or X"><svg class="ic"><use href="#i-twitter"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg class="ic"><use href="#i-linkedin"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg class="ic"><use href="#i-youtube"/></svg></a>
+          <a href="#" aria-label="Email"><svg class="ic"><use href="#i-mail"/></svg></a>
+        </div>
+        <div class="theme-toggle" id="themeToggle" role="radiogroup" aria-label="Theme">
+          <button type="button" role="radio" aria-checked="false" data-choice="light"><svg class="ic"><use href="#i-sun"/></svg>Light</button>
+          <button type="button" role="radio" aria-checked="false" data-choice="system"><svg class="ic"><use href="#i-monitor"/></svg>Auto</button>
+          <button type="button" role="radio" aria-checked="false" data-choice="dark"><svg class="ic"><use href="#i-moon"/></svg>Dark</button>
+        </div>
+        <p class="copy">&copy; 2026 Webever Labs</p>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+<!-- In-page site search (not a separate HTML page) -->
+<div class="search-overlay" id="searchOverlay" aria-hidden="true" role="dialog" aria-modal="true" aria-label="Search this site">
+  <div class="search-panel">
+    <div class="search-panel-top">
+      <label class="search-field">
+        <svg class="ic"><use href="#i-search"/></svg>
+        <input type="search" id="siteSearchInput" placeholder="Search pages on this site…" autocomplete="off">
+      </label>
+      <button type="button" class="search-close" id="searchClose" aria-label="Close search"><svg class="ic"><use href="#i-x"/></svg></button>
+    </div>
+    <p class="search-meta" id="searchMeta">Type to find sections and tools.</p>
+    <ul class="search-hits" id="searchHits"></ul>
+  </div>
+</div>
+
+
+  <button class="chat-fab" id="chatFab" type="button" aria-expanded="false" aria-controls="chatLayer" aria-label="Open live chat">
+    <span class="chat-fab-ring" aria-hidden="true"></span>
+    <svg class="ic"><use href="#i-chat-pro"/></svg>
+  </button>
+  <div class="chat-layer" id="chatLayer" aria-hidden="true">
+    <div class="chat-card" role="dialog" aria-label="Webever live chat">
+      <div class="chat-head">
+        <div><b>Webever Labs</b><small>Live chat · usually replies fast</small></div>
+        <button class="icon-btn" id="chatClose" type="button" aria-label="Close chat"><svg class="ic"><use href="#i-x"/></svg></button>
+      </div>
+      <div class="chat-log" id="chatLog">
+        <div class="bubble bot">Hey, tell us what you’re building. We’ll point you to Build, WLL 360 or Auxa Cloud.</div>
+      </div>
+      <form class="chat-form" id="chatForm">
+        <input id="chatInput" type="text" maxlength="400" placeholder="Write a message…" aria-label="Message" autocomplete="off">
+        <button type="submit" aria-label="Send"><svg class="ic"><use href="#i-arrow-right"/></svg></button>
+      </form>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+
+
+
+<template id="page-lost">
+
+  <section class="page-lost">
+    <div>
+      <div class="lost-mark" aria-hidden="true"></div>
+      <p class="wll-badge">404</p>
+      <h1>This page got lost.</h1>
+      <p>The link is broken or the file is gone. Head home and pick Build, Auxa Cloud or WLL 360.</p>
+      <a class="btn-build" href="#home">Back home</a>
+    </div>
+  </section>
+
+</template>
+<script>
+(function () {
+  var doc = document, root = doc.documentElement;
+  function $(s, c) { return (c || doc).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || doc).querySelectorAll(s)); }
+  var reduce = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+
+  /* favicon */
+  (function () {
+    var img = $('#logoImg'), link = doc.createElement('link');
+    if (img) { link.rel = 'icon'; link.href = img.src; doc.head.appendChild(link); }
+  })();
+
+  /* country tag from IP (header only) */
+  (function () {
+    var el = $('#countryTag');
+    if (!el) return;
+    var cached = null;
+    try { cached = JSON.parse(localStorage.getItem('webever-cc') || 'null'); } catch (e) {}
+    if (cached && cached.cc && cached.exp > Date.now()) {
+      el.textContent = cached.cc;
+      return;
+    }
+    fetch('https://ipapi.co/json/')
+      .then(function (r) { return r.json(); })
+      .then(function (d) {
+        var cc = (d && d.country_code) ? String(d.country_code).toUpperCase() : 'NG';
+        el.textContent = cc;
+        try { localStorage.setItem('webever-cc', JSON.stringify({ cc: cc, exp: Date.now() + 86400000 })); } catch (e) {}
+      })
+      .catch(function () { el.textContent = 'NG'; });
+  })();
+
+  var toastEl = $('#toast'), toastTimer;
+  function toast(msg) {
+    if (!toastEl) return;
+    toastEl.textContent = msg;
+    toastEl.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { toastEl.classList.remove('show'); }, 2600);
+  }
+
+  var header = $('.site-header');
+  var heroEl = doc.querySelector('.hero');
+  var chatFabEarly = $('#chatFab');
+  function passedHero() {
+    return window.scrollY > 72;
+  }
+  function onScroll() {
+    if (header) header.classList.toggle('scrolled', window.scrollY > 8);
+    if (chatFabEarly) chatFabEarly.classList.toggle('show', passedHero());
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+
+  var sheet = $('#sheet'), menuBtn = $('#menuBtn'), sheetClose = $('#sheetClose');
+  function openMenu() {
+    sheet.classList.add('open'); sheet.setAttribute('aria-hidden', 'false');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    doc.body.style.overflow = 'hidden';
+    setTimeout(function () { sheetClose.focus(); }, 60);
+  }
+  function closeMenu() {
+    sheet.classList.remove('open'); sheet.setAttribute('aria-hidden', 'true');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    doc.body.style.overflow = '';
+  }
+  menuBtn && menuBtn.addEventListener('click', openMenu);
+  sheetClose && sheetClose.addEventListener('click', function () { closeMenu(); menuBtn.focus(); });
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && sheet.classList.contains('open')) { closeMenu(); menuBtn.focus(); }
+  });
+  $$('a', sheet).forEach(function (a) { a.addEventListener('click', closeMenu); });
+
+  /* ---------- in-page site search (overlay, not a new HTML page) ---------- */
+  var searchOverlay = $('#searchOverlay');
+  var searchInput = $('#siteSearchInput');
+  var searchHits = $('#searchHits');
+  var searchMeta = $('#searchMeta');
+  var searchBtn = $('#searchBtn');
+  var SITE_INDEX = [
+    { title: 'Home: Build hybrid software', href: '#top', body: 'Build hybrid softwares technical relief Auxa Cloud prompt' },
+    { title: 'Build mode', href: '#ask', body: 'Describe the app or site hybrid mobile Android iOS web build' },
+    { title: 'Research mode', href: '#ask', body: 'Research sources competitors next steps ask question' },
+    { title: 'Dolphins: Generic tools', href: '#dolphins', body: 'Dolphins Webever generic tools enterprises developers creators' },
+    { title: 'Automated PDF designer', href: '#dolphins', body: 'PDF designer templates invoices reports proposals brand' },
+    { title: 'HTML app bundler', href: '#dolphins', body: 'HTML app bundler installable apps Android iOS desktop pages' },
+    { title: 'Fine-tuning agent', href: '#dolphins', body: 'Fine tuning agent voice product audience copy SEO support' },
+    { title: 'Software UI workspace', href: '#software', body: 'Software rectangular UI workspace previews fade ship' },
+    { title: 'Enterprises', href: '#audience', body: 'Enterprises teams companies internal tools portals SSO audit' },
+    { title: 'Developers', href: '#audience', body: 'Developers stack builds previews GitHub Firebase APK AAB' },
+    { title: 'Creators', href: '#audience', body: 'Creators portfolio shop channel templates video SEO' },
+    { title: 'WLL 360', href: '#wll360', body: 'Young founders older founders experience enterprise tools zero to CEO app' },
+    { title: 'Features', href: '#features', body: 'Hybrid apps Auxa Drive connectors research SEO secure store-ready builds' },
+    { title: 'How it works', href: '#how', body: 'Describe it watch it build ship it live product' },
+    { title: 'Pricing', href: '#pricing', body: 'Pricing starter builder pro enterprise naira Auxa compute plans' },
+    { title: 'Industries', href: '#industries', body: 'Fintech healthcare education retail logistics media real estate agriculture' },
+    { title: 'Auxa Cloud', href: '#cloud', body: 'Auxa Cloud run builds 1GB free compute' }
+  ];
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+  function highlight(text, terms) {
+    var out = escapeHtml(text);
+    terms.forEach(function (t) {
+      if (!t) return;
+      var re = new RegExp('(' + t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + ')', 'gi');
+      out = out.replace(re, '<mark>$1</mark>');
+    });
+    return out;
+  }
+  function runSiteSearch(q) {
+    q = (q || '').trim().toLowerCase();
+    searchHits.innerHTML = '';
+    if (!q) {
+      searchMeta.textContent = 'Type to find sections and tools.';
+      return;
+    }
+    var terms = q.split(/\s+/).filter(Boolean);
+    var hits = SITE_INDEX.filter(function (item) {
+      var hay = (item.title + ' ' + item.body).toLowerCase();
+      return terms.every(function (t) { return hay.indexOf(t) !== -1; });
+    });
+    searchMeta.textContent = hits.length + ' result' + (hits.length === 1 ? '' : 's') + ' for “' + q + '”';
+    if (!hits.length) {
+      searchHits.innerHTML = '<li class="search-empty">No matches. Try “dolphins”, “pricing”, or “build”.</li>';
+      return;
+    }
+    hits.forEach(function (item) {
+      var li = doc.createElement('li');
+      li.innerHTML = '<a href="' + item.href + '"><h3>' + highlight(item.title, terms) + '</h3><p>' +
+        highlight(item.body.slice(0, 110) + (item.body.length > 110 ? '…' : ''), terms) + '</p></a>';
+      searchHits.appendChild(li);
+    });
+  }
+  function openSearch() {
+    closeMenu();
+    searchOverlay.classList.add('open');
+    searchOverlay.setAttribute('aria-hidden', 'false');
+    if (searchBtn) searchBtn.setAttribute('aria-expanded', 'true');
+    doc.body.style.overflow = 'hidden';
+    setTimeout(function () { try { searchInput.focus(); } catch (e) {} }, 50);
+  }
+  function closeSearch() {
+    searchOverlay.classList.remove('open');
+    searchOverlay.setAttribute('aria-hidden', 'true');
+    if (searchBtn) searchBtn.setAttribute('aria-expanded', 'false');
+    if (!sheet.classList.contains('open')) doc.body.style.overflow = '';
+    searchInput.value = '';
+    runSiteSearch('');
+  }
+  if (searchBtn) searchBtn.addEventListener('click', openSearch);
+  var sheetSearch = $('#sheetSearch');
+  if (sheetSearch) sheetSearch.addEventListener('click', function () { openSearch(); });
+  var footerSearch = $('#footerSearch');
+  if (footerSearch) footerSearch.addEventListener('click', openSearch);
+  $('#searchClose').addEventListener('click', closeSearch);
+  searchOverlay.addEventListener('click', function (e) {
+    if (e.target === searchOverlay) closeSearch();
+  });
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && searchOverlay.classList.contains('open')) {
+      closeSearch();
+      if (searchBtn) searchBtn.focus();
+    }
+  });
+  var searchTimer;
+  searchInput.addEventListener('input', function () {
+    clearTimeout(searchTimer);
+    searchTimer = setTimeout(function () { runSiteSearch(searchInput.value); }, 100);
+  });
+  searchHits.addEventListener('click', function (e) {
+    var a = e.target.closest('a');
+    if (a) closeSearch();
+  });
+
+  var form = $('#askForm'), input = $('#askInput'), modeSel = $('#askMode'), modeIcon = $('#modeIcon use');
+  var cards = $$('.cardub');
+  var MODES = {
+    discover: { icon: '#i-compass', label: 'Discover', ph: 'How does SEO help improve...' },
+    build: { icon: '#i-terminal', label: 'Build', ph: 'Describe the app or site you want to build...' },
+    research: { icon: '#i-infinity', label: 'Research', ph: 'What do you want to research?' }
+  };
+  function setMode(m, focus) {
+    if (!MODES[m]) m = 'discover';
+    modeSel.value = m;
+    modeIcon.setAttribute('href', MODES[m].icon);
+    input.placeholder = MODES[m].ph;
+    cards.forEach(function (c) {
+      c.setAttribute('aria-pressed', c.getAttribute('data-mode') === m ? 'true' : 'false');
+    });
+    if (focus) {
+      $('#ask').scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'center' });
+      setTimeout(function () { try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); } }, 350);
+    }
+  }
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () { setMode(c.getAttribute('data-mode'), true); });
+  });
+  modeSel.addEventListener('change', function () { setMode(modeSel.value, false); });
+  $$('[data-set-mode]').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      setMode(a.getAttribute('data-set-mode'), true);
+    });
+  });
+
+  function grow() {
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 160) + 'px';
+  }
+  input.addEventListener('input', grow);
+  input.addEventListener('keydown', function (e) {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      form.requestSubmit ? form.requestSubmit() : form.dispatchEvent(new Event('submit', { cancelable: true }));
+    }
+  });
+
+  $$('#suggest button').forEach(function (b) {
+    b.addEventListener('click', function () {
+      input.value = $('span', b).textContent;
+      grow();
+      try { input.focus({ preventScroll: true }); } catch (e) { input.focus(); }
+    });
+  });
+
+  /* Prompt → localStorage (2 min) → ask.html */
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var q = input.value.trim();
+    if (!q) { toast('Type a question first'); input.focus(); return; }
+    var payload = {
+      query: q,
+      mode: modeSel.value,
+      exp: Date.now() + 2 * 60 * 1000
+    };
+    try {
+      localStorage.setItem('webever-prompt', JSON.stringify(payload));
+    } catch (err) {
+      toast('Could not save prompt');
+      return;
+    }
+    window.location.href = 'ask.html';
+  });
+
+  /* voice */
+  var micBtn = $('#micBtn');
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) {
+    micBtn.hidden = true;
+  } else {
+    var rec = new SR(), listening = false, base = '';
+    rec.lang = navigator.language || 'en-US';
+    rec.interimResults = true;
+    rec.onresult = function (ev) {
+      var txt = '';
+      for (var i = 0; i < ev.results.length; i++) txt += ev.results[i][0].transcript;
+      input.value = (base ? base + ' ' : '') + txt;
+      grow();
+    };
+    rec.onend = function () { listening = false; micBtn.classList.remove('listening'); };
+    rec.onerror = function () {
+      listening = false;
+      micBtn.classList.remove('listening');
+      toast('Voice input is not available right now');
+    };
+    micBtn.addEventListener('click', function () {
+      if (listening) { rec.stop(); return; }
+      base = input.value.trim();
+      listening = true;
+      micBtn.classList.add('listening');
+      try { rec.start(); } catch (e) {
+        listening = false;
+        micBtn.classList.remove('listening');
+      }
+    });
+  }
+
+  /* hero card canvas loops */
+  var seed = 7;
+  function rnd() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+  var TOK = ['#1A62D4', '#a78bfa', '#ff6bb5', '#19d3c5', '#7b8797'];
+  var codeLines = [];
+  (function () {
+    for (var i = 0; i < 28; i++) {
+      var toks = [], n = 2 + Math.floor(rnd() * 3);
+      for (var j = 0; j < n; j++) toks.push({ w: 0.08 + rnd() * 0.2, c: TOK[Math.floor(rnd() * TOK.length)] });
+      codeLines.push({ ind: Math.floor(rnd() * 4), toks: toks });
+    }
+  })();
+  function drawCode(ctx, w, h, t) {
+    var T = 16, N = codeLines.length, lh = h * 0.09, total = N * lh, off = (t % T) / T * total;
+    ctx.globalAlpha = 1; ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, h);
+    ctx.lineCap = 'round'; ctx.lineWidth = lh * 0.34;
+    var first = Math.floor(off / lh), frac = off - first * lh, rows = Math.ceil(h / lh) + 2;
+    for (var k = 0; k < rows; k++) {
+      var L = codeLines[(first + k) % N], y = k * lh - frac + lh * 0.5, x = w * 0.1 + L.ind * w * 0.07;
+      for (var j = 0; j < L.toks.length; j++) {
+        var tk = L.toks[j];
+        ctx.strokeStyle = tk.c; ctx.globalAlpha = 0.85;
+        ctx.beginPath(); ctx.moveTo(x, y); ctx.lineTo(x + tk.w * w, y); ctx.stroke();
+        x += tk.w * w + lh * 0.5;
+      }
+    }
+    ctx.globalAlpha = 1;
+  }
+  var puffs = [
+    { c: '150,70,235', a: 0.55, r: 0.46, kx: 1, ky: 2, px: 0.0, py: 1.2, ax: 0.30, ay: 0.26 },
+    { c: '200,50,110', a: 0.50, r: 0.40, kx: 2, ky: 1, px: 2.1, py: 0.4, ax: 0.32, ay: 0.30 },
+    { c: '235,225,255', a: 0.32, r: 0.34, kx: 1, ky: 1, px: 4.0, py: 2.6, ax: 0.28, ay: 0.24 },
+    { c: '95,45,175', a: 0.60, r: 0.50, kx: 3, ky: 1, px: 1.0, py: 3.1, ax: 0.22, ay: 0.32 },
+    { c: '255,120,180', a: 0.34, r: 0.30, kx: 2, ky: 3, px: 5.0, py: 0.9, ax: 0.34, ay: 0.20 },
+    { c: '235,225,255', a: 0.28, r: 0.28, kx: 3, ky: 2, px: 3.3, py: 4.4, ax: 0.30, ay: 0.30 },
+    { c: '120,90,255', a: 0.42, r: 0.38, kx: 1, ky: 3, px: 0.6, py: 5.2, ax: 0.26, ay: 0.28 }
+  ];
+  function drawSmoke(ctx, w, h, t) {
+    var W = Math.PI * 2 / 12;
+    ctx.globalAlpha = 1; ctx.globalCompositeOperation = 'source-over';
+    ctx.fillStyle = '#160727'; ctx.fillRect(0, 0, w, h);
+    ctx.globalCompositeOperation = 'lighter';
+    for (var i = 0; i < puffs.length; i++) {
+      var p = puffs[i];
+      var x = w * (0.5 + p.ax * Math.sin(W * p.kx * t + p.px));
+      var y = h * (0.5 + p.ay * Math.cos(W * p.ky * t + p.py));
+      var r = w * p.r * (1 + 0.12 * Math.sin(W * (p.kx + 1) * t + i));
+      var g = ctx.createRadialGradient(x, y, 0, x, y, r);
+      g.addColorStop(0, 'rgba(' + p.c + ',' + p.a + ')');
+      g.addColorStop(1, 'rgba(' + p.c + ',0)');
+      ctx.fillStyle = g; ctx.fillRect(x - r, y - r, r * 2, r * 2);
+    }
+    ctx.globalCompositeOperation = 'source-over';
+  }
+
+  /* dolphin canvas drawers */
+  function drawPdf(ctx, w, h, t) {
+    ctx.fillStyle = '#040c30'; ctx.fillRect(0, 0, w, h);
+    var pages = 3;
+    for (var i = 0; i < pages; i++) {
+      var ox = w * (0.15 + i * 0.12), oy = h * (0.12 + i * 0.08);
+      var pw = w * 0.55, ph = h * 0.7;
+      ctx.fillStyle = 'rgba(255,255,255,' + (0.12 - i * 0.03) + ')';
+      ctx.fillRect(ox, oy, pw, ph);
+      ctx.strokeStyle = 'rgba(26,98,212,' + (0.5 - i * 0.12) + ')';
+      ctx.lineWidth = 2;
+      ctx.strokeRect(ox, oy, pw, ph);
+      for (var j = 0; j < 5; j++) {
+        ctx.fillStyle = 'rgba(255,255,255,' + (0.08 + 0.02 * Math.sin(t + j)) + ')';
+        ctx.fillRect(ox + pw * 0.1, oy + ph * (0.15 + j * 0.12), pw * (0.5 + (j % 2) * 0.2), ph * 0.04);
+      }
+    }
+  }
+  function drawBundle(ctx, w, h, t) {
+    ctx.fillStyle = '#0d1117'; ctx.fillRect(0, 0, w, h);
+    var cx = w / 2, cy = h / 2;
+    for (var i = 0; i < 4; i++) {
+      var a = t * 0.4 + i * Math.PI / 2;
+      var r = Math.min(w, h) * (0.18 + i * 0.06);
+      ctx.strokeStyle = 'rgba(0,180,204,' + (0.5 - i * 0.1) + ')';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.arc(cx, cy, r, a, a + Math.PI * 1.2);
+      ctx.stroke();
+    }
+    ctx.fillStyle = 'rgba(245,114,15,0.85)';
+    ctx.beginPath();
+    ctx.moveTo(cx - 12, cy - 8); ctx.lineTo(cx + 14, cy); ctx.lineTo(cx - 12, cy + 8);
+    ctx.closePath(); ctx.fill();
+  }
+  function drawAgent(ctx, w, h, t) {
+    ctx.fillStyle = '#1a0a2e'; ctx.fillRect(0, 0, w, h);
+    var nodes = [[0.3, 0.35], [0.7, 0.3], [0.5, 0.55], [0.25, 0.7], [0.75, 0.68]];
+    ctx.strokeStyle = 'rgba(255,95,176,0.35)';
+    ctx.lineWidth = 1.5;
+    for (var i = 0; i < nodes.length; i++) {
+      for (var j = i + 1; j < nodes.length; j++) {
+        ctx.beginPath();
+        ctx.moveTo(nodes[i][0] * w, nodes[i][1] * h);
+        ctx.lineTo(nodes[j][0] * w, nodes[j][1] * h);
+        ctx.stroke();
+      }
+    }
+    nodes.forEach(function (n, i) {
+      var pulse = 1 + 0.15 * Math.sin(t * 2 + i);
+      var r = 8 * pulse;
+      ctx.fillStyle = i === 2 ? '#ff5fb0' : '#8b5cf6';
+      ctx.beginPath();
+      ctx.arc(n[0] * w, n[1] * h, r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  var DRAWERS = { code: drawCode, smoke: drawSmoke, pdf: drawPdf, bundle: drawBundle, agent: drawAgent };
+
+  var loops = [];
+  function makeLoop(canvas, draw) {
+    var ctx = canvas.getContext('2d'), w = 2, h = 2, raf = 0, on = false, last = 0, start = performance.now();
+    function size() {
+      var d = Math.min(window.devicePixelRatio || 1, 1.5);
+      w = Math.max(2, Math.round(canvas.offsetWidth * d));
+      h = Math.max(2, Math.round(canvas.offsetHeight * d));
+      canvas.width = w; canvas.height = h;
+      draw(ctx, w, h, reduce ? 4 : (performance.now() - start) / 1000);
+    }
+    function tick(now) {
+      if (!on) return;
+      raf = requestAnimationFrame(tick);
+      if (now - last < 33) return;
+      last = now;
+      draw(ctx, w, h, (now - start) / 1000);
+    }
+    return {
+      size: size,
+      play: function () { if (reduce || on) return; on = true; raf = requestAnimationFrame(tick); },
+      pause: function () { on = false; cancelAnimationFrame(raf); }
+    };
+  }
+
+  $$('.ub-media').forEach(function (media) {
+    var canvas = $('canvas', media), video = $('video', media);
+    var loop = makeLoop(canvas, DRAWERS[media.getAttribute('data-canvas')]);
+    loops.push(loop);
+    if (!reduce) {
+      video.addEventListener('playing', function () { media.classList.add('is-live'); loop.pause(); });
+      video.addEventListener('error', function () { media.classList.remove('is-live'); });
+      video.muted = true; video.loop = true;
+      video.src = media.getAttribute('data-video');
+      var pr = video.play();
+      if (pr && pr.then) pr.then(null, function () {});
+    }
+  });
+
+  $$('.dolphin-media').forEach(function (media) {
+    var canvas = $('canvas', media);
+    var name = media.getAttribute('data-canvas');
+    var imgUrl = media.getAttribute('data-img');
+    var img = $('img', media);
+    if (img && imgUrl) img.src = imgUrl;
+    if (name && DRAWERS[name]) {
+      var loop = makeLoop(canvas, DRAWERS[name]);
+      loops.push(loop);
+    }
+  });
+
+  function sizeAll() { loops.forEach(function (l) { l.size(); }); }
+  sizeAll();
+  var rz;
+  window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(sizeAll, 150); });
+
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        var media = en.target;
+        var idx = $$('.ub-media, .dolphin-media').indexOf(media);
+        var loop = loops[idx];
+        if (!loop) return;
+        var video = $('video', media);
+        if (en.isIntersecting) {
+          if (!media.classList.contains('is-live') && !media.classList.contains('has-img')) loop.play();
+          if (video && !reduce && video.src && video.paused && media.classList.contains('is-live')) {
+            var p = video.play();
+            if (p && p.then) p.then(null, function () {});
+          }
+        } else {
+          loop.pause();
+          if (video && !video.paused) video.pause();
+        }
+      });
+    }, { threshold: 0.05 });
+    $$('.ub-media, .dolphin-media').forEach(function (m) { io.observe(m); });
+  } else {
+    loops.forEach(function (l) { l.play(); });
+  }
+
+  doc.addEventListener('visibilitychange', function () {
+    if (doc.hidden) loops.forEach(function (l) { l.pause(); });
+    else {
+      $$('.ub-media, .dolphin-media').forEach(function (m, i) {
+        if (!m.classList.contains('is-live') && !m.classList.contains('has-img') && loops[i]) loops[i].play();
+      });
+    }
+  });
+
+  /* theme */
+  var KEY = 'webever-theme', mq = window.matchMedia('(prefers-color-scheme: dark)');
+  var choice = 'system';
+  try { choice = localStorage.getItem(KEY) || 'system'; } catch (e) {}
+  var themeBtns = $$('#themeToggle button'), metaTheme = $('meta[name="theme-color"]');
+  function paintTheme() {
+    var dark = choice === 'dark' || (choice === 'system' && mq.matches);
+    root.setAttribute('data-theme', dark ? 'dark' : 'light');
+    metaTheme.setAttribute('content', dark ? '#080b10' : '#ffffff');
+    themeBtns.forEach(function (b) {
+      b.setAttribute('aria-checked', b.getAttribute('data-choice') === choice ? 'true' : 'false');
+    });
+  }
+  themeBtns.forEach(function (b) {
+    b.addEventListener('click', function () {
+      choice = b.getAttribute('data-choice');
+      try { localStorage.setItem(KEY, choice); } catch (e) {}
+      paintTheme();
+    });
+  });
+
+  /* hero flower typewriter loop */
+  (function () {
+    var pair = document.getElementById('flPair');
+    if (!pair) return;
+    var NS = 'http://www.w3.org/2000/svg';
+    /* the three flower icons (5, 4 and 6 petals), same shapes as the solid badge */
+    var SHAPES = [
+      { c: [[12, 6.8, 3.6], [16.7, 10.4, 3.6], [15, 16, 3.6], [9, 16, 3.6], [7.3, 10.4, 3.6], [12, 12, 3.2]] },
+      { c: [[12.0, 6.7, 4.3], [17.3, 12.0, 4.3], [12.0, 17.3, 4.3], [6.7, 12.0, 4.3], [12, 12, 3.2]] },
+      { c: [[12.0, 6.3, 3.4], [16.94, 9.15, 3.4], [16.94, 14.85, 3.4], [12.0, 17.7, 3.4], [7.06, 14.85, 3.4], [7.06, 9.15, 3.4], [12, 12, 3.3]] }
+    ];
+    function inside(sh, x, y) {
+      if (sh.c) {
+        for (var i = 0; i < sh.c.length; i++) {
+          var k = sh.c[i], dx = x - k[0], dy = y - k[1];
+          if (dx * dx + dy * dy <= k[2] * k[2]) return true;
+        }
+        return false;
+      }
+      var a = sh.r, rad = a[4];
+      var cx = Math.min(Math.max(x, a[0] + rad), a[2] - rad);
+      var cy = Math.min(Math.max(y, a[1] + rad), a[3] - rad);
+      return (x - cx) * (x - cx) + (y - cy) * (y - cy) <= rad * rad;
+    }
+    /* first badge: each icon is a frosty field of dots, written in one dot at a time */
+    var dotSvgs = pair.querySelectorAll('.fl-dot svg');
+    var sd = 11;
+    function rn() { sd = (sd * 16807) % 2147483647; return (sd - 1) / 2147483646; }
+    Array.prototype.forEach.call(dotSvgs, function (svg, n) {
+      var sh = SHAPES[n];
+      if (!sh) return;
+      var pts = [], pitch = 1.5, row = 0;
+      for (var y = 3.6; y <= 20.4; y += pitch * 0.866, row++) {
+        for (var x = 3.6 + (row % 2 ? pitch / 2 : 0); x <= 20.4; x += pitch) {
+          if (inside(sh, x, y)) pts.push([x, y]);
+        }
+      }
+      var html = '', total = pts.length;
+      for (var i = 0; i < total; i++) {
+        var r = (0.5 + rn() * 0.26).toFixed(2), o = (0.55 + rn() * 0.45).toFixed(2);
+        var dl = (i / total * 0.85).toFixed(3);
+        html += '<circle cx="' + pts[i][0].toFixed(2) + '" cy="' + pts[i][1].toFixed(2) + '" r="' + r + '" style="--o:' + o + ';--dl:' + dl + 's"/>';
+      }
+      svg.innerHTML = html;
+      svg.setAttribute('class', svg.getAttribute('class') + ' dots');
+    });
+    /* every loop: both badges carry the same icon, then move to the next one (3 icons, then again) */
+    var step = 0;
+    function beat() {
+      pair.classList.remove('writing');
+      pair.setAttribute('data-step', String(step % 3));
+      void pair.offsetWidth;
+      pair.classList.add('writing');
+      step += 1;
+    }
+    beat();
+    setInterval(beat, 2600);
+  })();
+
+  if (mq.addEventListener) mq.addEventListener('change', paintTheme);
+  else if (mq.addListener) mq.addListener(paintTheme);
+  paintTheme();
+
+  /* header dropdowns */
+  var drops = $$('.nav-drop');
+  drops.forEach(function (drop) {
+    var btn = drop.querySelector('.nav-drop-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function (e) {
+      e.stopPropagation();
+      var open = drop.classList.contains('open');
+      drops.forEach(function (d) {
+        d.classList.remove('open');
+        var b = d.querySelector('.nav-drop-btn');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+      if (!open) {
+        drop.classList.add('open');
+        btn.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+  doc.addEventListener('click', function () {
+    drops.forEach(function (d) {
+      d.classList.remove('open');
+      var b = d.querySelector('.nav-drop-btn');
+      if (b) b.setAttribute('aria-expanded', 'false');
+    });
+  });
+
+  var chatFab = $('#chatFab'), chatLayer = $('#chatLayer'), chatClose = $('#chatClose');
+  var chatForm = $('#chatForm'), chatInput = $('#chatInput'), chatLog = $('#chatLog');
+  function openChat() {
+    chatLayer.classList.add('open');
+    chatLayer.setAttribute('aria-hidden', 'false');
+    chatFab.setAttribute('aria-expanded', 'true');
+    setTimeout(function () { if (chatInput) chatInput.focus(); }, 80);
+  }
+  function closeChat() {
+    chatLayer.classList.remove('open');
+    chatLayer.setAttribute('aria-hidden', 'true');
+    chatFab.setAttribute('aria-expanded', 'false');
+    chatFab.focus();
+  }
+  if (chatFab) chatFab.addEventListener('click', function (e) {
+    e.stopPropagation();
+    if (chatLayer.classList.contains('open')) closeChat(); else openChat();
+  });
+  var sheetContact = $('#sheetContact');
+  if (sheetContact) sheetContact.addEventListener('click', function () {
+    closeMenu();
+    openChat();
+  });
+  if (chatClose) chatClose.addEventListener('click', closeChat);
+  if (chatLayer) chatLayer.addEventListener('click', function (e) {
+    if (e.target === chatLayer) closeChat();
+  });
+  doc.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && chatLayer && chatLayer.classList.contains('open')) closeChat();
+  });
+  if (chatForm) chatForm.addEventListener('submit', function (e) {
+    e.preventDefault();
+    var text = (chatInput.value || '').trim();
+    if (!text) return;
+    var mine = doc.createElement('div');
+    mine.className = 'bubble me';
+    mine.textContent = text;
+    chatLog.appendChild(mine);
+    chatInput.value = '';
+    chatLog.scrollTop = chatLog.scrollHeight;
+    setTimeout(function () {
+      var bot = doc.createElement('div');
+      bot.className = 'bubble bot';
+      bot.textContent = 'Got it. A Webever teammate will pick this up. You can also mail hello@webever.app.';
+      chatLog.appendChild(bot);
+      chatLog.scrollTop = chatLog.scrollHeight;
+    }, 500);
+  });
+})();
+</script>
+<script>
+
+(function () {
+  var doc = document, root = doc.documentElement;
+  var landing = doc.getElementById('landing');
+  var framewrap = doc.getElementById('framewrap');
+  var frame = doc.getElementById('viewFrame');
+  var cache = {};
+
+  var ROUTES = {
+    '': 'home', '#': 'home', '#home': 'home', '#ask': 'home', '#dolphins': 'home',
+    '#software': 'home', '#audience': 'home', '#features': 'home', '#how': 'home',
+    '#pricing': 'home', '#start': 'home', '#top': 'home',
+    '#cloud': 'auxa', '#auxa': 'auxa',
+    '#wll360': 'home', '#wll': 'home',
+    '#industries': 'home',
+    '#app': 'app'
+  };
+  var FILE = {
+    auxa: 'pages/auxa.html',
+    app: 'pages/app.html',
+    industry: 'pages/industry.html'
+  };
+
+  function parseRoute() {
+    var q = new URLSearchParams(location.search).get('page');
+    if (q) {
+      q = String(q).toLowerCase();
+      if (q === 'auxa' || q === 'cloud') return { page: 'auxa', hash: '#cloud' };
+      if (q === 'wll' || q === 'wll360') return { page: 'home', hash: '#wll360' };
+      if (q === 'app') return { page: 'app', hash: '#app' };
+      if (q.indexOf('industry') === 0) return { page: 'industry', hash: '#' + q.replace('/','-') };
+      if (q === 'home') return { page: 'home', hash: '#home' };
+      return { page: 'lost', hash: '#lost' };
+    }
+    var raw = location.hash || '#home';
+    var key = raw.split('?')[0];
+    if (key === '#lost' || key === '#404') return { page: 'lost', hash: key };
+    if (key.indexOf('#industry-') === 0) return { page: 'industry', hash: raw, slug: key.slice(11) };
+    if (ROUTES[key]) return { page: ROUTES[key], hash: raw };
+    return { page: 'lost', hash: key };
+  }
+
+  function wrapSrcdoc(inner) {
+    var theme = root.getAttribute('data-theme') || 'light';
+    var sprite = (doc.getElementById('iconSprite') || { outerHTML: '' }).outerHTML;
+    var state = window.WEBEVER_FRAME_STATE ? '<scr'+'ipt>window.WEBEVER=' + JSON.stringify(window.WEBEVER_FRAME_STATE) + ';</scr'+'ipt>' : '';
+    return '<!DOCTYPE html><html lang="en" data-theme="' + theme + '"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="designs.css"></head><body class="embed">' +
+      sprite + state + inner +
+      '<scr'+'ipt>(function(){function send(d){try{parent.postMessage(Object.assign({source:"webever"},d),"*")}catch(e){}}function report(){var box=document.getElementById("page-fit")||document.body;var h=Math.ceil(box.getBoundingClientRect().height);send({type:"height",h:h})}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(href.charAt(0)==="#"){e.preventDefault();send({type:"navigate",hash:href})}});window.addEventListener("message",function(e){var d=e.data||{};if(d.source==="webever-parent"&&d.type==="theme")document.documentElement.setAttribute("data-theme",d.theme)});window.addEventListener("load",report);window.addEventListener("resize",report);setTimeout(report,60);setTimeout(report,300);send({type:"ready"})})();</scr'+'ipt>
+  <script>
+  (function () {
+    var stage = document.getElementById('wllStage');
+    if (!stage) return;
+    var shots = stage.querySelectorAll('.wll-photo');
+    var card = document.getElementById('wllFloat');
+    var cards = [
+      { k: 'Session', t: 'Morning lesson', d: 'Ship a build before noon' },
+      { k: 'Pair', t: 'Young x older', d: 'Sit with people who already built' },
+      { k: 'App', t: '360 in your pocket', d: 'Tasks and founder notes' },
+      { k: 'Tools', t: 'Enterprise workspace', d: 'Same stack from day one' }
+    ];
+    var i = 0;
+    function show(n) {
+      i = n % shots.length;
+      shots.forEach(function (img, idx) { img.classList.toggle('is-on', idx === i); });
+      var c = cards[i % cards.length];
+      card.classList.remove('is-in');
+      card.querySelector('.wll-float-kicker').textContent = c.k;
+      card.querySelector('b').textContent = c.t;
+      card.querySelector('small').textContent = c.d;
+      void card.offsetWidth;
+      card.classList.add('is-in');
+    }
+    show(0);
+    setInterval(function () { show(i + 1); }, 3200);
+  })();
+  </script>
+
+</body></html>';
+  }
+
+  function showHome() {
+    landing.classList.add('is-on');
+    framewrap.classList.remove('is-on');
+    framewrap.hidden = true;
+    landing.hidden = false;
+    frame.removeAttribute('srcdoc');
+  }
+  function showFrame() {
+    landing.classList.remove('is-on');
+    landing.hidden = true;
+    framewrap.hidden = false;
+    framewrap.classList.add('is-on');
+  }
+  function showLost() {
+    var tpl = doc.getElementById('page-lost');
+    showFrame();
+    frame.srcdoc = wrapSrcdoc(tpl ? tpl.innerHTML : '<section class="page-lost"><h1>Lost.</h1><a href="#home">Home</a></section>');
+  }
+  function loadFile(file) {
+    if (cache[file]) return Promise.resolve(cache[file]);
+    return fetch(file).then(function (r) {
+      if (!r.ok) throw new Error('missing');
+      return r.text();
+    }).then(function (t) { cache[file] = t; return t; });
+  }
+  function bodyOf(html) {
+    var m = html.match(/<body[^>]*>([\s\S]*)<\/body>/i);
+    return m ? m[1] : html;
+  }
+
+  function applyRoute(route, push) {
+    if (route.page === 'home') {
+      showHome();
+      var id = (route.hash || '').split('?')[0].replace('#','');
+      if (id && id !== 'home' && id !== 'top' && id !== 'ask') {
+        var el = doc.getElementById(id);
+        if (el) setTimeout(function () { el.scrollIntoView({ behavior: 'smooth', block: 'start' }); }, 20);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else if (route.page === 'lost') {
+      showLost();
+      window.scrollTo(0, 0);
+    } else {
+      var file = FILE[route.page];
+      if (!file) { showLost(); return; }
+      window.WEBEVER_FRAME_STATE = { page: route.page, slug: route.slug || (route.hash || '').split('?')[0].replace('#industry-','') };
+      loadFile(file).then(function (html) {
+        showFrame();
+        frame.srcdoc = wrapSrcdoc(bodyOf(html));
+        window.scrollTo(0, 0);
+      }).catch(showLost);
+    }
+    if (push !== false) {
+      var next = route.hash || '#home';
+      if (location.hash !== next) {
+        try { history.replaceState(null, '', next); } catch (e) {}
+      }
+    }
+    window.postMessage({ source: 'webever', type: 'route', page: route.page, hash: route.hash }, '*');
+  }
+
+  doc.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a');
+    if (!a) return;
+    var href = a.getAttribute('href') || '';
+    if (href.charAt(0) !== '#') return;
+    e.preventDefault();
+    var key = href.split('?')[0];
+    var route;
+    if (key === '#lost' || key === '#404') route = { page: 'lost', hash: href };
+    else if (key.indexOf('#industry-') === 0) route = { page: 'industry', hash: href, slug: key.slice(11) };
+    else route = { page: ROUTES[key] || 'lost', hash: href };
+    if (location.hash !== href) history.pushState(null, '', href);
+    applyRoute(route, false);
+    var sheet = doc.getElementById('sheet');
+    if (sheet && sheet.classList.contains('open')) {
+      sheet.classList.remove('open');
+      sheet.setAttribute('aria-hidden', 'true');
+      doc.body.style.overflow = '';
+    }
+  });
+
+  window.addEventListener('message', function (e) {
+    var d = e.data || {};
+    if (d.source !== 'webever') return;
+    if (d.type === 'height' && frame) {
+      frame.style.height = Math.max(1, Math.ceil(d.h || 0)) + 'px';
+    }
+    if (d.type === 'navigate' && d.hash) {
+      var href = d.hash;
+      var key = href.split('?')[0];
+      var route;
+      if (key === '#lost' || key === '#404') route = { page: 'lost', hash: href };
+      else if (key.indexOf('#industry-') === 0) route = { page: 'industry', hash: href, slug: key.slice(11) };
+      else route = { page: ROUTES[key] || 'lost', hash: href };
+      if (location.hash !== href) history.pushState(null, '', href);
+      applyRoute(route, false);
+    }
+  });
+
+  window.addEventListener('hashchange', function () { applyRoute(parseRoute(), false); });
+  window.addEventListener('popstate', function () { applyRoute(parseRoute(), false); });
+  applyRoute(parseRoute(), false);
+})();
+
+</script>
+</body>
+</html>
