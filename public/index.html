@@ -14,8 +14,8 @@
     :root { --sky: #1A62D4; --blue: #1A62D4; --blue-deep: #1249A8; --ink-2: #1249A8; }
     :root[data-theme="dark"] { --blue: #3D78E8; --sky: #3D78E8; --ink-2: #8AAEFF; }
     .blob.b1, .blob.b6, .cta .blob.o3 { --c: #0A44FF; }
-    .pblob { background: radial-gradient(circle, rgba(10,68,255,.85) 0%, rgba(10,68,255,.38) 46%, transparent 70%); }
-    .pblob.p3 { background: radial-gradient(circle, rgba(92,130,255,.75) 0%, transparent 68%); }
+    .pblob { background: radial-gradient(circle, rgba(124,58,237,.85) 0%, rgba(124,58,237,.36) 46%, transparent 70%); }
+    .pblob.p3 { background: radial-gradient(circle, rgba(192,132,252,.78) 0%, transparent 68%); }
     .prompt {
       border-color: color-mix(in srgb, #1A62D4 34%, var(--line));
       background: color-mix(in srgb, var(--bg) 94%, #1A62D4);
@@ -105,7 +105,7 @@
 <svg id="iconSprite" width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
   <defs>
     <symbol id="i-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
-    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24"><line x1="4" y1="8" x2="20" y2="8"/><line x1="4" y1="16" x2="20" y2="16"/></symbol>
     <symbol id="i-x" viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></symbol>
     <symbol id="i-android" viewBox="0 0 24 24"><path d="M17.6 9.5l1.2-2.1a.4.4 0 0 0-.7-.4l-1.2 2.1a6.4 6.4 0 0 0-9.8 0L5.9 7a.4.4 0 0 0-.7.4L6.4 9.5A5.8 5.8 0 0 0 4 14v5.2a1 1 0 0 0 1 1h1.4a1 1 0 0 0 1-1V16h9.2v3.2a1 1 0 0 0 1 1H19a1 1 0 0 0 1-1V14a5.8 5.8 0 0 0-2.4-4.5zM8.2 13.2a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8zm7.6 0a.9.9 0 1 1 0-1.8.9.9 0 0 1 0 1.8z"/></symbol>
     <symbol id="i-arrow-right" viewBox="0 0 24 24"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></symbol>
@@ -1084,7 +1084,7 @@
   var form = $('#askForm'), input = $('#askInput'), modeSel = $('#askMode'), modeIcon = $('#modeIcon use');
   var cards = $$('.cardub');
   var MODES = {
-    discover: { icon: '#i-compass', label: 'Discover', ph: 'How does SEO help improve...' },
+    discover: { icon: '#i-sparkles', label: 'Discover', ph: 'How does SEO help improve...' },
     build: { icon: '#i-terminal', label: 'Build', ph: 'Describe the app or site you want to build...' },
     research: { icon: '#i-infinity', label: 'Research', ph: 'What do you want to research?' }
   };
