@@ -526,15 +526,14 @@
     <section class="section" id="wll360">
       <div class="wrap wll-plain">
         <div class="wll-stage" id="wllStage">
-          <img class="wll-photo is-on" src="assets/photos/1522202176988-66273c2fd55f.jpg" alt="Young and older founders working together" data-wll="0">
-          <img class="wll-photo" src="assets/photos/1519389950473-47ba0277781c.jpg" alt="" data-wll="1">
-          <img class="wll-photo" src="assets/photos/1522071820081-009f0129c71c.jpg" alt="" data-wll="2">
-          <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="" data-wll="3">
-          <article class="wll-float" id="wllFloat" aria-live="polite">
-            <span class="wll-float-kicker">Session</span>
-            <b>Morning lesson</b>
-            <small>Ship a build before noon</small>
-          </article>
+          <img class="wll-photo is-on" src="assets/photos/1551650975-87deedd944c3.jpg" alt="WLL 360 app on a phone">
+          <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="">
+          <img class="wll-photo" src="assets/photos/1551288049-bebda4e38f71.jpg" alt="">
+          <img class="wll-photo" src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="">
+          <article class="wll-float f1"><span>Lessons</span><b>Morning session</b><small>Open a lesson and finish it</small></article>
+          <article class="wll-float f2"><span>Tasks</span><b>3 left today</b><small>Ship a build before noon</small></article>
+          <article class="wll-float f3"><span>Notes</span><b>Founder notes</b><small>Saved in the 360 app</small></article>
+          <article class="wll-float f4"><span>Progress</span><b>Day 12</b><small>Zero to CEO, one step</small></article>
         </div>
         <div class="wll-kicker">
           <span class="wll-badge">WLL 360</span>
@@ -1598,34 +1597,6 @@
     return '<!DOCTYPE html><html lang="en" data-theme="' + theme + '"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="designs.css"></head><body class="embed">' +
       sprite + state + inner +
       '<scr'+'ipt>(function(){function send(d){try{parent.postMessage(Object.assign({source:"webever"},d),"*")}catch(e){}}function report(){var box=document.getElementById("page-fit")||document.body;var h=Math.ceil(box.getBoundingClientRect().height);send({type:"height",h:h})}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(href.charAt(0)==="#"){e.preventDefault();send({type:"navigate",hash:href})}});window.addEventListener("message",function(e){var d=e.data||{};if(d.source==="webever-parent"&&d.type==="theme")document.documentElement.setAttribute("data-theme",d.theme)});window.addEventListener("load",report);window.addEventListener("resize",report);setTimeout(report,60);setTimeout(report,300);send({type:"ready"})})();</scr'+'ipt>
-  <script>
-  (function () {
-    var stage = document.getElementById('wllStage');
-    if (!stage) return;
-    var shots = stage.querySelectorAll('.wll-photo');
-    var card = document.getElementById('wllFloat');
-    var cards = [
-      { k: 'Session', t: 'Morning lesson', d: 'Ship a build before noon' },
-      { k: 'Pair', t: 'Young x older', d: 'Sit with people who already built' },
-      { k: 'App', t: '360 in your pocket', d: 'Tasks and founder notes' },
-      { k: 'Tools', t: 'Enterprise workspace', d: 'Same stack from day one' }
-    ];
-    var i = 0;
-    function show(n) {
-      i = n % shots.length;
-      shots.forEach(function (img, idx) { img.classList.toggle('is-on', idx === i); });
-      var c = cards[i % cards.length];
-      card.classList.remove('is-in');
-      card.querySelector('.wll-float-kicker').textContent = c.k;
-      card.querySelector('b').textContent = c.t;
-      card.querySelector('small').textContent = c.d;
-      void card.offsetWidth;
-      card.classList.add('is-in');
-    }
-    show(0);
-    setInterval(function () { show(i + 1); }, 3200);
-  })();
-  </script>
 
 </body></html>';
   }
@@ -1737,5 +1708,38 @@
 })();
 
 </script>
+
+<script>
+(function () {
+  var stage = document.getElementById('wllStage');
+  if (!stage) return;
+  var shots = stage.querySelectorAll('.wll-photo');
+  var cards = stage.querySelectorAll('.wll-float');
+  var sets = [
+    ['Morning session', '3 left today', 'Founder notes', 'Day 12'],
+    ['Pair with a builder', 'Review the plan', 'Voice note saved', 'Week 2'],
+    ['App lesson open', 'Ship the screen', 'Checklist done', 'Streak 5'],
+    ['Workspace ready', 'Next task up', 'Note shared', 'On track']
+  ];
+  var subs = [
+    ['Open a lesson and finish it', 'Ship a build before noon', 'Saved in the 360 app', 'Zero to CEO, one step'],
+    ['Sit with someone who built', 'Tasks stay in the app', 'Come back anytime', 'Same tools from day one'],
+    ['Lessons live on your phone', 'One build, then preview', 'Short notes, not a diary', 'Keep the streak going'],
+    ['Enterprise tools, day one', 'Clear the list', 'Pinned in the app', 'Next session is set']
+  ];
+  var i = 0;
+  function show(n) {
+    i = n % shots.length;
+    shots.forEach(function (img, idx) { img.classList.toggle('is-on', idx === i); });
+    cards.forEach(function (card, idx) {
+      card.querySelector('b').textContent = sets[i][idx];
+      card.querySelector('small').textContent = subs[i][idx];
+    });
+  }
+  show(0);
+  setInterval(function () { show(i + 1); }, 3400);
+})();
+</script>
+
 </body>
 </html>
