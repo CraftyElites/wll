@@ -1602,3 +1602,19 @@
     .wll-float.f2, .wll-float.f4, .wll-float.f6 { right: 0 !important; left: auto !important; transform: translateX(46%); }
     .wll-float.f4 { right: 0 !important; }
     .wll-float.f6 { right: 8% !important; }
+
+    #logoImg { width: 36px; height: 36px; object-fit: contain; }
+    .search-panel { border-radius: 2px !important; }
+    .search-field { border-radius: 2px !important; }
+    .search-field input { border-radius: 0 !important; }
+    .wll-stage { overflow: visible !important; }
+    .wll-float {
+      width: 156px !important;
+      max-width: 156px !important;
+      border-radius: 6px !important;
+      padding: .35em .55em !important;
+    }
+    .wll-float.f1 { top: 10% !important; left: 0 !important; right: auto !important; transform: translateX(-50%) !important; }
+    .wll-float.f2 { top: 10% !important; right: 0 !important; left: auto !important; transform: translateX(50%) !important; }
+    .wll-float.f5 { bottom: 12% !important; left: 0 !important; right: auto !important; transform: translateX(-50%) !important; }
+    .wll-float.f6 { bottom: 12% !important; right: 0 !important; left: auto !important; transform: translateX(50%) !important; }
