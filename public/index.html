@@ -527,15 +527,15 @@
     
     <section class="section" id="wll360">
       <div class="wrap wll-plain">
-        <div class="wll-stage" id="wllStage">
+        <div class="wll-stage" id="wllStage" style="overflow:visible !important;border:0;position:relative">
           <img class="wll-photo is-on" src="assets/photos/1551650975-87deedd944c3.jpg" alt="WLL 360 app">
           <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="">
           <img class="wll-photo" src="assets/photos/analytics-workspace.jpg" alt="">
           <img class="wll-photo" src="assets/photos/code-editor.jpg" alt="">
-          <article class="wll-float f1"><span>Lessons</span><b>Start the day</b><small>Open the app first</small></article>
-          <article class="wll-float f2"><span>Tasks</span><b>Next task up</b><small>Clear the list</small></article>
-          <article class="wll-float f5"><span>Notes</span><b>Note shared</b><small>Pinned in the app</small></article>
-          <article class="wll-float f6"><span>Streak</span><b>Day 18</b><small>Score updates in the app</small></article>
+          <article class="wll-float f1" style="width:150px;border-radius:16px;top:12%;left:0;right:auto;transform:translateX(-50%);z-index:3"><span>Lessons</span><b>Start the day</b><small>Open the app first</small></article>
+          <article class="wll-float f2" style="width:150px;border-radius:16px;top:34%;right:0;left:auto;transform:translateX(50%);z-index:3"><span>Tasks</span><b>Next task up</b><small>Clear the list</small></article>
+          <article class="wll-float f5" style="width:150px;border-radius:16px;top:48%;bottom:auto;left:0;transform:translateX(-46%);z-index:3"><span>Notes</span><b>Note shared</b><small>Pinned in the app</small></article>
+          <article class="wll-float f6" style="width:168px;border-radius:16px;bottom:8%;top:auto;right:0;transform:translateX(48%);z-index:3"><span>Streak</span><b>Day 18</b><small>Score updates in the app</small></article>
         </div>
         <div class="wll-kicker">
           <span class="wll-badge">WLL 360</span>
@@ -1440,7 +1440,7 @@
     Array.prototype.forEach.call(dotSvgs, function (svg, n) {
       var sh = SHAPES[n];
       if (!sh) return;
-      var pts = [], pitch = 1.5, row = 0;
+      var pts = [], pitch = 2.8, row = 0;
       for (var y = 3.6; y <= 20.4; y += pitch * 0.866, row++) {
         for (var x = 3.6 + (row % 2 ? pitch / 2 : 0); x <= 20.4; x += pitch) {
           if (inside(sh, x, y)) pts.push([x, y]);
@@ -1457,22 +1457,9 @@
     });
     /* every loop: both badges carry the same icon, then move to the next one (3 icons, then again) */
     var step = 0;
-    var PETALS = [
-      '<path d="M12 3c1.6 2.4 1.4 4.4.4 6 2.2-.4 4.2.4 5.8 2-2 1-3.4 2.6-4 4.6 1.6.8 2.8 2.2 3.2 4.2-2.2-.2-4-1.4-5.2-3.2-1 2-2.8 3.4-5 3.8.4-2.2 1.6-3.8 3.4-4.8C8.4 14 6.6 12.4 4.4 12c2-.8 3.8-1.2 5.4-.6C8.8 9.2 8.8 6.6 10 4.2 10.6 3.4 11.2 3 12 3z"/>',
-      '<path d="M12 2.2c2.4 1.2 3.6 3.4 3.4 5.6 2.2.2 4 1.6 4.8 3.6-2.2.6-3.8 2-4.6 3.8 1.8 1.2 3 3 3.2 5-2.4-.6-4.2-2-5.2-3.8-1.2 2.2-3 3.6-5.4 4 .2-2.4 1.4-4.2 3.4-5.4-1.6-1.4-3.6-2-5.8-1.8 1.4-2 3.4-3.2 5.6-3.4C9.2 7.4 9.6 4.8 11 2.8c.3-.2.6-.4 1-.6z"/>',
-      '<path d="M12 2c1.2 2.8.6 4.8-.6 6.4 2.4 0 4.6 1.2 6 3.2-2.2 1.4-3.6 3.2-4 5.4 1.8.6 3.2 2 3.8 3.8-2.6 0-4.6-1.2-5.8-3.2-1.4 2.2-3.4 3.6-6 4 .6-2.2 2-4 4-5.2C7.2 15 5.2 13.2 2.8 12.4 5 11 7.2 10.4 9.2 10.6 8.4 8.2 8.6 5.6 9.8 3.2 10.4 2.4 11.2 2 12 2z"/>'
-    ];
-    function paintPetals(n) {
-      var marks = pair.querySelectorAll('svg');
-      Array.prototype.forEach.call(marks, function (svg) {
-        svg.innerHTML = PETALS[n % 3];
-        svg.setAttribute('fill', 'currentColor');
-      });
-    }
     function beat() {
       pair.classList.remove('writing');
       pair.setAttribute('data-step', String(step % 3));
-      paintPetals(step % 3);
       void pair.offsetWidth;
       pair.classList.add('writing');
       step += 1;
