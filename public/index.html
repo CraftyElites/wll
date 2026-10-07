@@ -130,6 +130,7 @@
     <symbol id="i-git-branch" viewBox="0 0 24 24"><line x1="6" y1="3" x2="6" y2="15"/><circle cx="18" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><path d="M18 9a9 9 0 0 1-9 9"/></symbol>
     <symbol id="i-database" viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></symbol>
     <symbol id="i-bar-chart" viewBox="0 0 24 24"><line x1="12" y1="20" x2="12" y2="10"/><line x1="18" y1="20" x2="18" y2="4"/><line x1="6" y1="20" x2="6" y2="16"/></symbol>
+    <symbol id="i-discover" viewBox="0 0 24 24"><circle cx="11" cy="11" r="5.2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M15.2 15.2L20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="11" cy="11" r="1.4" fill="currentColor"/></symbol>
     <symbol id="i-sparkles" viewBox="0 0 24 24"><path d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z"/><path d="M5 3v4"/><path d="M19 17v4"/><path d="M3 5h4"/><path d="M17 19h4"/></symbol>
     <symbol id="i-video" viewBox="0 0 24 24"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2"/></symbol>
     <symbol id="i-image" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></symbol>
@@ -154,7 +155,7 @@
       <circle cx="17.2" cy="14" r="1"/>
     </symbol>
     <symbol id="i-rocket" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/><path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/><path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/></symbol>
-    <symbol id="i-mic" viewBox="0 0 24 24"><path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/><line x1="8" y1="23" x2="16" y2="23"/></symbol>
+    <symbol id="i-mic" viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M7 11.5a5 5 0 0 0 10 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 16.5V20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M9 20.2h6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></symbol>
     <symbol id="i-life-buoy" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="4.93" y1="4.93" x2="9.17" y2="9.17"/><line x1="14.83" y1="14.83" x2="19.07" y2="19.07"/><line x1="14.83" y1="9.17" x2="19.07" y2="4.93"/><line x1="4.93" y1="19.07" x2="9.17" y2="14.83"/></symbol>
     <symbol id="i-flower" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="4.2"/><circle cx="16.95" cy="10.4" r="4.2"/><circle cx="15.06" cy="16.2" r="4.2"/><circle cx="8.94" cy="16.2" r="4.2"/><circle cx="7.05" cy="10.4" r="4.2"/><circle cx="12" cy="12" r="4.4"/></symbol>
     <symbol id="i-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
@@ -527,7 +528,7 @@
     
     <section class="section" id="wll360">
       <div class="wrap wll-plain">
-        <div class="wll-stage" id="wllStage" style="overflow:visible !important;border:0;position:relative">
+        <div class="wll-frame"><div class="wll-stage" id="wllStage" style="overflow:visible;border:0;position:relative">
           <img class="wll-photo is-on" src="assets/photos/1551650975-87deedd944c3.jpg" alt="WLL 360 app">
           <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="">
           <img class="wll-photo" src="assets/photos/analytics-workspace.jpg" alt="">
@@ -536,7 +537,7 @@
           <article class="wll-float f2" style="width:150px;border-radius:16px;top:34%;right:0;left:auto;transform:translateX(50%);z-index:3"><span>Tasks</span><b>Next task up</b><small>Clear the list</small></article>
           <article class="wll-float f5" style="width:150px;border-radius:16px;top:48%;bottom:auto;left:0;transform:translateX(-46%);z-index:3"><span>Notes</span><b>Note shared</b><small>Pinned in the app</small></article>
           <article class="wll-float f6" style="width:168px;border-radius:16px;bottom:8%;top:auto;right:0;transform:translateX(48%);z-index:3"><span>Streak</span><b>Day 18</b><small>Score updates in the app</small></article>
-        </div>
+        </div></div>
         <div class="wll-kicker">
           <span class="wll-badge">WLL 360</span>
           <span class="wll-avatars" aria-hidden="true">
@@ -1084,7 +1085,7 @@
   var form = $('#askForm'), input = $('#askInput'), modeSel = $('#askMode'), modeIcon = $('#modeIcon use');
   var cards = $$('.cardub');
   var MODES = {
-    discover: { icon: '#i-sparkles', label: 'Discover', ph: 'How does SEO help improve...' },
+    discover: { icon: '#i-discover', label: 'Discover', ph: 'How does SEO help improve...' },
     build: { icon: '#i-terminal', label: 'Build', ph: 'Describe the app or site you want to build...' },
     research: { icon: '#i-infinity', label: 'Research', ph: 'What do you want to research?' }
   };

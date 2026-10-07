@@ -1647,3 +1647,12 @@
     @keyframes petalSpin { from { transform: rotate(-24deg) scale(.8); } to { transform: none; } }
     .wll-photo { border-radius: 18px; }
     .wll-stage { overflow: visible !important; border: 0 !important; }
+
+    .wll-frame { overflow: hidden; border-radius: 20px; padding: 22px 8px; }
+    .wll-frame .wll-stage { width: 74%; margin: 0 auto; height: 250px; }
+    .fl-pair, .fl-badge, .fl-dot, .fl-solid { color: #7c3aed !important; }
+    .fl-badge svg { fill: #7c3aed !important; }
+    .fl-pair.writing .fl-badge { animation: flSpin .85s var(--ease) both !important; }
+    .fl-pair.writing .fl-dot svg,
+    .fl-pair.writing .fl-solid svg { animation: flType .8s steps(8, end) both !important; }
+    .fl-pair.writing .fl-dot svg circle { animation: none !important; }
