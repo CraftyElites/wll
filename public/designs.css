@@ -1679,3 +1679,14 @@
     .ubs { position: relative; z-index: 20; transform: translateZ(0); }
     .cardub { position: relative; z-index: 21; }
     .prompt { position: relative; z-index: 2; }
+
+
+    /* hero: plain Start Today link, no button shell */
+    .start-link {
+      display: inline-flex; align-items: center; gap: .5em; align-self: flex-start;
+      margin-bottom: .75em; padding: 0; background: none; border: 0; box-shadow: none;
+      font-family: var(--display); font-weight: 700; font-size: 1.05rem; letter-spacing: -.02em;
+      color: var(--ink); text-decoration: none; position: relative; z-index: 3;
+    }
+    .start-link .ic { width: 1.15em; height: 1.15em; stroke-width: 1.9; transition: transform .2s var(--ease); }
+    .start-link:hover .ic { transform: translateX(4px); }
