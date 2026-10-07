@@ -13,7 +13,8 @@
     /* Buttons: greenish blue, less electric blue */
     :root { --sky: #1A62D4; --blue: #1A62D4; --blue-deep: #1249A8; --ink-2: #1249A8; }
     :root[data-theme="dark"] { --blue: #3D78E8; --sky: #3D78E8; --ink-2: #8AAEFF; }
-    .blob.b1, .blob.b6, .cta .blob.o3 { --c: #0A44FF; }
+    .blob.b1, .blob.b6, .cta .blob.o3 { --c: #38bdf8; }
+    :root[data-theme="dark"] .blob.b1, :root[data-theme="dark"] .blob.b6, :root[data-theme="dark"] .cta .blob.o3 { --c: #0A44FF; }
     .pblob { background: radial-gradient(circle, rgba(124,58,237,.85) 0%, rgba(124,58,237,.36) 46%, transparent 70%); }
     .pblob.p3 { background: radial-gradient(circle, rgba(192,132,252,.78) 0%, transparent 68%); }
     .prompt {
@@ -276,7 +277,7 @@
 
         <div class="hero-copy">
           <a class="chip-cloud" href="#cloud">
-            <span class="chip-logo"><svg class="ic"><use href="#i-cloud"/></svg></span>
+            <span class="chip-logo" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path fill="currentColor" d="M6.2 18.2h11.2a4.4 4.4 0 0 0 .5-8.8 5.8 5.8 0 0 0-11.2-1.4 4 4 0 0 0-.5 10.2z"/></svg></span>
             <span class="chip-name">Auxa Cloud <i></i> Compute</span>
             <span class="chip-cta">Get 1GB free</span>
           </a>
@@ -296,7 +297,7 @@
                 </span>
               </span></span>
             </h1>
-            <p class="lead">Type the product once. Webever writes, previews and ships it: builds, research and store files included.</p>
+            <p class="lead">Type it once. Webever ships the build. <a href="#wll360">WLL 360</a></p>
           </div>
           <div class="ask-wrap flex-col g-6" id="ask">
             <div class="logo-sprinkle" aria-hidden="true" title="Works with your stack">
@@ -360,7 +361,7 @@
         </div>
         <div class="dolphins-stack">
           <article class="dolphin-card big">
-            <div class="dolphin-media" data-canvas="pdf" data-img="assets/photos/1586281380349-632531db7ed4.jpg">
+            <div class="dolphin-media" data-canvas="pdf" data-img="assets/photos/dolphin-tools.jpg">
               <canvas></canvas>
               <img alt="" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
             </div>
@@ -393,7 +394,7 @@
           </div>
         </div>
         <div class="dolphins-cta">
-          <a class="btn" href="#ask"><svg class="ic"><use href="#i-rocket"/></svg>Explore Dolphins tools</a>
+          <a class="btn" href="#ask"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Explore Dolphins tools</a>
         </div>
       </div>
     </section>
@@ -414,13 +415,13 @@
       <div class="soft-track-wrap" aria-label="Product screens scrolling">
         <div class="soft-track">
               <figure class="soft-slide">
-                <img src="assets/photos/1551288049-bebda4e38f71.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/analytics-workspace.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
-                <img src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/code-editor.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
-                <img src="assets/photos/1460925895917-afdab827c52f.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/growth-dashboard.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
                 <img src="assets/photos/1551650975-87deedd944c3.jpg" alt="Mobile app preview" loading="lazy" onerror="this.parentElement.classList.add('blank')">
@@ -438,13 +439,13 @@
                 <img src="assets/photos/1559028012-481c04fa702d.jpg" alt="Product design board" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
-                <img src="assets/photos/1551288049-bebda4e38f71.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/analytics-workspace.jpg" alt="Analytics workspace" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
-                <img src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/code-editor.jpg" alt="Code editor" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
-                <img src="assets/photos/1460925895917-afdab827c52f.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
+                <img src="assets/photos/growth-dashboard.jpg" alt="Growth dashboard" loading="lazy" onerror="this.parentElement.classList.add('blank')">
               </figure>
               <figure class="soft-slide">
                 <img src="assets/photos/1551650975-87deedd944c3.jpg" alt="Mobile app preview" loading="lazy" onerror="this.parentElement.classList.add('blank')">
@@ -528,8 +529,8 @@
         <div class="wll-stage" id="wllStage">
           <img class="wll-photo is-on" src="assets/photos/1551650975-87deedd944c3.jpg" alt="WLL 360 app">
           <img class="wll-photo" src="assets/photos/1498050108023-c5249f4df085.jpg" alt="">
-          <img class="wll-photo" src="assets/photos/1551288049-bebda4e38f71.jpg" alt="">
-          <img class="wll-photo" src="assets/photos/1517694712202-14dd9538aa97.jpg" alt="">
+          <img class="wll-photo" src="assets/photos/analytics-workspace.jpg" alt="">
+          <img class="wll-photo" src="assets/photos/code-editor.jpg" alt="">
           <article class="wll-float f1"><span>Lessons</span><b>Morning session</b><small>Open a lesson in the app</small></article>
           <article class="wll-float f2"><span>Tasks</span><b>3 left today</b><small>Clear them before noon</small></article>
           <article class="wll-float f3"><span>Notes</span><b>Founder notes</b><small>Short notes stay in the app</small></article>
@@ -540,9 +541,9 @@
         <div class="wll-kicker">
           <span class="wll-badge">WLL 360</span>
           <span class="wll-avatars" aria-hidden="true">
-            <img src="assets/photos/1507003211169-0a1dd722bf5d.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <img src="assets/photos/1573496359142-b8d87734a5a2.jpg" alt="" loading="lazy" onerror="this.remove()">
-            <img src="assets/photos/1544005313-94ddf0286df2.jpg" alt="" loading="lazy" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd722bf5d?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
           </span>
         </div>
         <h2>Zero to CEO.</h2>
