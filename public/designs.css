@@ -144,7 +144,9 @@
       line-height: 1;
       color: inherit;
     }
-    .brand-name .wordmark { height: 1.15rem; width: auto; aspect-ratio: 1215 / 243; align-self: center; fill: currentColor; color: inherit; }
+    .brand-name .wordmark { height: 1rem; width: auto; aspect-ratio: 1215 / 243; flex: none; color: var(--ink); fill: currentColor; }
+    .wm-inline { color: inherit; display: inline-block; height: .78em; width: auto; aspect-ratio: 1215 / 243; vertical-align: -.06em; color: inherit; fill: currentColor; }
+    .wordmark path, .wm-inline path { fill: currentColor; }
     .brand-name span { font-weight: 650; font-size: 1.05rem; letter-spacing: -.02em; }
     .brand-name .country {
       font-size: .58rem; font-weight: 700; color: var(--muted);
@@ -154,7 +156,7 @@
     @media (max-width: 640px) {
       .brand-name b { font-size: 1.05rem; }
       .brand-name span { font-size: 1rem; }
-      .brand-name .wordmark { height: 1rem; }
+      .brand-name .wordmark { height: .88rem; }
       .brand-mark { width: 34px; height: 34px; }
     }
 
@@ -232,7 +234,7 @@
     /* hero - clip overflow on mobile so blobs/ubs don't spill sideways */
     .hero { position: relative; padding: .5em 0 2.8em; overflow-x: clip; overflow-y: visible; }
     .hero-grid { max-width: var(--max); margin: 0 auto; padding: 0 1.25em; display: grid; gap: 1.5em; position: relative; z-index: 1; }
-    .hero-visual { position: relative; isolation: isolate; padding: 2.2em 0 1.6em; overflow: visible; z-index: 0; }
+    .hero-visual { position: relative; padding: 2.2em 0 1.6em; overflow: visible; }
     .hero-copy { position: relative; z-index: 2; }
     @media (min-width: 900px) {
       .hero-grid { grid-template-columns: 1fr 1fr; align-items: center; gap: 3.2em; padding-top: 2.2em; }
@@ -269,9 +271,9 @@
     @keyframes blob-in { to { opacity: var(--o, .8); } }
     @keyframes drift { from { transform: translate3d(0, 0, 0) scale(1); } to { transform: translate3d(var(--dx), var(--dy), 0) scale(1.18); } }
 
-    .ubs { display: flex; gap: .55em; align-items: center; justify-content: center; max-width: 640px; margin: 0 auto; }
+    .ubs { position: relative; z-index: 5; display: flex; gap: .55em; align-items: center; justify-content: center; max-width: 640px; margin: 0 auto; }
     .cardub {
-      position: relative; flex: 1 1 0; min-width: 0; max-width: 300px; aspect-ratio: 1;
+      position: relative; z-index: 1; flex: 1 1 0; min-width: 0; max-width: 300px; aspect-ratio: 1;
       border-radius: 40%; padding: .4em; background: var(--frame); border: 1px solid var(--line);
       container-type: inline-size; color: #fff;
       animation: pop .8s var(--ease) both;
@@ -413,7 +415,13 @@
     .mode .ic { width: 1.1em; height: 1.1em; }
     .tool { width: 40px; height: 40px; border-radius: 50%; display: grid; place-items: center; color: var(--muted); transition: background .2s, color .2s; }
     .tool:hover { background: var(--bg-soft); color: var(--ink); }
-    .tool.listening { background: rgba(255, 95, 176, .18); color: var(--accent); }
+    .tool { position: relative; background: var(--bg-soft); border: 1px solid var(--line); }
+    .tool:hover { transform: translateY(-1px); }
+    .tool:active { transform: scale(.92); }
+    .tool .mic-ic { width: 20px; height: 20px; stroke-width: 1.8; }
+    .tool.listening { background: rgba(255, 95, 176, .18); color: var(--accent); border-color: transparent; }
+    .tool.listening::after { content: ""; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--accent); opacity: 0; animation: mic-pulse 1.4s ease-out infinite; }
+    @keyframes mic-pulse { 0% { transform: scale(.85); opacity: .7; } 100% { transform: scale(1.35); opacity: 0; } }
     .prompt .send {
       width: 36px; color: #fff; justify-content: center; aspect-ratio: 1; border-radius: 50%;
       background: #111; transition: transform .18s var(--ease);
@@ -1243,7 +1251,6 @@
       background: var(--bg-soft);
     }
     .chat-head b { display: block; font-size: .95rem; }
-    .wm-inline { display: inline-block; height: .78em; width: auto; aspect-ratio: 1215 / 243; vertical-align: -.06em; fill: currentColor; }
     .chat-head small { color: var(--muted); font-weight: 600; }
     .chat-log {
       flex: 1; overflow-y: auto; padding: 1em; display: flex; flex-direction: column; gap: .65em;
@@ -1663,3 +1670,12 @@
     #wll360, #wll360 .wrap { overflow: hidden; }
     .wll-float.f1, .wll-float.f5 { transform: translateX(-30%) !important; }
     .wll-float.f2, .wll-float.f6 { transform: translateX(30%) !important; }
+
+    /* layering: blobs always sit behind the cards */
+    .hero-visual { isolation: auto; z-index: auto; }
+    .blobs, .prompt-blobs { z-index: 0; pointer-events: none; }
+    .blob, .pblob { pointer-events: none; z-index: 0; }
+    .hero-copy { z-index: 2; }
+    .ubs { position: relative; z-index: 20; transform: translateZ(0); }
+    .cardub { position: relative; z-index: 21; }
+    .prompt { position: relative; z-index: 2; }
