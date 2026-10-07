@@ -1579,3 +1579,26 @@
     .search-meta { margin: 0; padding: .45em .95em 0; font-size: .75rem; }
     .search-hits { padding: .4em .55em .7em; }
     .search-hits a { border-radius: 8px; padding: .7em .75em; }
+
+    a.chip-cloud, a.chip-cloud:hover {
+      background: transparent !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      padding: 0 !important;
+      border-radius: 0 !important;
+    }
+    a.chip-cloud .auxa-mark { width: 26px !important; height: 16px !important; max-width: 26px !important; }
+    .maintext .fl-badge { background: none !important; border: 0 !important; outline: 0 !important; box-shadow: none !important; }
+    .search-panel { border-radius: 6px !important; }
+    .search-field, .search-close, .search-hits a { border-radius: 4px !important; }
+    .search-panel-top { background: color-mix(in srgb, var(--bg) 88%, var(--ink)); }
+    .wll-plain { overflow: visible !important; }
+    .wll-stage { overflow: visible !important; margin-left: 18px; margin-right: 18px; }
+    .wll-float { width: 168px !important; border-radius: 8px !important; }
+    .wll-float.f1, .wll-float.f3, .wll-float.f5 { left: auto !important; right: auto !important; transform: translateX(-46%); }
+    .wll-float.f1 { left: 0 !important; }
+    .wll-float.f3 { left: 0 !important; }
+    .wll-float.f5 { left: 8% !important; }
+    .wll-float.f2, .wll-float.f4, .wll-float.f6 { right: 0 !important; left: auto !important; transform: translateX(46%); }
+    .wll-float.f4 { right: 0 !important; }
+    .wll-float.f6 { right: 8% !important; }
