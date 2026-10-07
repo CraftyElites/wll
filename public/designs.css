@@ -1541,7 +1541,7 @@
       height: 1.15em !important;
     }
     .fl-dot svg { fill: #3b82f6 !important; }
-    .fl-solid svg { fill: #7c3aed !important; }
+    .fl-solid svg { fill: #8e245c !important; }
 
     /* Build and Research cards are different shapes */
     
@@ -1586,7 +1586,7 @@
     a.chip-cloud .auxa-mark { width: 26px !important; height: 16px !important; max-width: 26px !important; }
     .maintext .fl-badge { background: none !important; border: 0 !important; outline: 0 !important; box-shadow: none !important; }
     .search-panel { border-radius: 6px !important; }
-    .search-field, .search-close, .search-hits a { border-radius: 4px !important; }
+    .search-field, .search-close, .search-hits a { border-radius: 8px !important; }
     .search-panel-top { background: color-mix(in srgb, var(--bg) 88%, var(--ink)); }
     .wll-plain { overflow: visible !important; }
     .wll-stage { overflow: visible !important; margin-left: 18px; margin-right: 18px; }
@@ -1617,9 +1617,9 @@
 
     .search-overlay .search-panel,
     .search-overlay .search-panel * { }
-    .search-overlay .search-panel { border-radius: 4px !important; }
+    .search-overlay .search-panel { border-radius: 8px !important; }
     .search-overlay .search-field,
-    .search-overlay .search-field input { border-radius: 4px !important; }
+    .search-overlay .search-field input { border-radius: 8px !important; }
     .fl-pair.writing .fl-badge { animation: petalIn .7s var(--ease) both !important; }
     .fl-pair.writing .fl-dot { animation-name: petalIn !important; }
     .fl-pair.writing .fl-solid { animation-name: petalInRev !important; }
@@ -1646,8 +1646,8 @@
 
     .wll-frame { overflow: hidden; border-radius: 20px; padding: 22px 8px; }
     .wll-frame .wll-stage { width: 74%; margin: 0 auto; height: 250px; }
-    .fl-pair, .fl-badge, .fl-dot, .fl-solid { color: #7c3aed !important; }
-    .fl-badge svg { fill: #7c3aed !important; }
+    .fl-pair, .fl-badge, .fl-dot, .fl-solid { color: #8e245c !important; }
+    .fl-badge svg { fill: #8e245c !important; }
     .fl-pair.writing .fl-badge { animation: flSpin .85s var(--ease) both !important; }
     .fl-pair.writing .fl-dot svg,
     .fl-pair.writing .fl-solid svg { animation: flType .8s steps(8, end) both !important; }
@@ -1660,3 +1660,16 @@
     #wll360, #wll360 .wrap { overflow: hidden; }
     .wll-float.f1, .wll-float.f5 { transform: translateX(-30%) !important; }
     .wll-float.f2, .wll-float.f6 { transform: translateX(30%) !important; }
+
+    :root[data-theme="light"] .hero-visual .blobs { z-index: 0 !important; }
+    :root[data-theme="light"] .hero-visual .ubs,
+    :root[data-theme="light"] .hero-visual .cardub { position: relative; z-index: 2; }
+    .search-overlay .search-panel { border-radius: 8px !important; }
+
+    .wordmark { height: 18px; width: auto; display: block; }
+    :root[data-theme="light"] .wordmark { filter: invert(1); }
+    .brand-name { display: inline-flex; align-items: center; gap: .35em; }
+    :root[data-theme="light"] .hero-visual .blobs { z-index: 0 !important; }
+    :root[data-theme="light"] .ubs, :root[data-theme="light"] .cardub { position: relative; z-index: 3; }
+    .fl-pair, .fl-badge, .fl-dot, .fl-solid, .fl-badge svg { color: #8e1d4e !important; fill: #8e1d4e !important; }
+    .search-overlay .search-panel { border-radius: 12px !important; }
