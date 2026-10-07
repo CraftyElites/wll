@@ -13,7 +13,7 @@
     /* Buttons: greenish blue, less electric blue */
     :root { --sky: #1A62D4; --blue: #1A62D4; --blue-deep: #1249A8; --ink-2: #1249A8; }
     :root[data-theme="dark"] { --blue: #3D78E8; --sky: #3D78E8; --ink-2: #8AAEFF; }
-    .blob.b1, .blob.b6, .cta .blob.o3 { --c: #38bdf8; }
+    .blob.b1, .blob.b6, .blob.b7, .cta .blob.o3 { --c: #1f86d8; }
     :root[data-theme="dark"] .blob.b1, :root[data-theme="dark"] .blob.b6, :root[data-theme="dark"] .cta .blob.o3 { --c: #0A44FF; }
     .pblob { background: radial-gradient(circle, rgba(124,58,237,.85) 0%, rgba(124,58,237,.36) 46%, transparent 70%); }
     .pblob.p3 { background: radial-gradient(circle, rgba(192,132,252,.78) 0%, transparent 68%); }
@@ -246,6 +246,7 @@
           <div class="blobs" aria-hidden="true">
             <i class="blob b1"></i><i class="blob b2"></i><i class="blob b3"></i>
             <i class="blob b4"></i><i class="blob b5"></i><i class="blob b6"></i>
+            <i class="blob b7"></i>
           </div>
           <div class="ubs">
             <button class="cardub" type="button" data-mode="build" aria-pressed="false" aria-label="Build. Start a build prompt">
@@ -277,7 +278,7 @@
 
         <div class="hero-copy">
           <a class="chip-cloud" href="#cloud">
-            <span class="chip-logo" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path fill="currentColor" d="M6.2 18.2h11.2a4.4 4.4 0 0 0 .5-8.8 5.8 5.8 0 0 0-11.2-1.4 4 4 0 0 0-.5 10.2z"/></svg></span>
+            <span class="chip-logo" aria-hidden="true"><svg class="ic" viewBox="0 0 24 24"><path fill="#f5720f" d="M4.2 15.6c.2-2.4 2-4.1 4.3-4.2.5-2.6 2.8-4.4 5.5-4.1 1.8.2 3.3 1.3 4.1 2.9 2.1.3 3.7 2.1 3.6 4.2-.1 2.2-2 3.9-4.2 3.9H8.1c-2.2 0-4.1-1.2-3.9-2.7z"/></svg></span>
             <span class="chip-name">Auxa Cloud <i></i> Compute</span>
             <span class="chip-cta">Get 1GB free</span>
           </a>
@@ -286,7 +287,7 @@
               <span>Build hybrid software.</span>
               <span class="hl">Keep 40% of your week. <span class="fl-pair writing" id="flPair" data-step="0" aria-hidden="true">
                 <span class="fl-badge fl-dot">
-                  <svg class="s0" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="3.4"/><circle cx="16.7" cy="10.4" r="3.4"/><circle cx="15" cy="16" r="3.4"/><circle cx="9" cy="16" r="3.4"/><circle cx="7.3" cy="10.4" r="3.4"/></svg>
+                  <svg class="s0" viewBox="0 0 24 24"><circle cx="12" cy="7.2" r="4.6"/><circle cx="16.6" cy="13.4" r="4.4"/><circle cx="8.2" cy="14.2" r="4.2"/></svg>
                   <svg class="s1" viewBox="0 0 24 24"><circle cx="12.0" cy="6.7" r="4.3"/><circle cx="17.3" cy="12.0" r="4.3"/><circle cx="12.0" cy="17.3" r="4.3"/><circle cx="6.7" cy="12.0" r="4.3"/><circle cx="12" cy="12" r="3.2"/></svg>
                   <svg class="s2" viewBox="0 0 24 24"><circle cx="12.0" cy="6.3" r="3.4"/><circle cx="16.94" cy="9.15" r="3.4"/><circle cx="16.94" cy="14.85" r="3.4"/><circle cx="12.0" cy="17.7" r="3.4"/><circle cx="7.06" cy="14.85" r="3.4"/><circle cx="7.06" cy="9.15" r="3.4"/><circle cx="12" cy="12" r="3.3"/></svg>
                 </span>
@@ -297,7 +298,7 @@
                 </span>
               </span></span>
             </h1>
-            <p class="lead">Type it once. Webever ships the build. <a href="#wll360">WLL 360</a></p>
+            <p class="lead">Describe the product once. Webever drafts the hybrid app, keeps the preview and files together, and leaves a path you can open. <a href="#wll360">WLL 360</a></p>
           </div>
           <div class="ask-wrap flex-col g-6" id="ask">
             <div class="logo-sprinkle" aria-hidden="true" title="Works with your stack">
