@@ -1544,11 +1544,7 @@
     .fl-solid svg { fill: #7c3aed !important; }
 
     /* Build and Research cards are different shapes */
-    .cardub:first-child { border-radius: 22px; }
-    .cardub:nth-child(2) { border-radius: 46%; }
-    .cardub:first-child .ub-inner { border-radius: 18px; }
-    .cardub:nth-child(2) .ub-inner { border-radius: 46%; }
-
+    
     /* WLL cards: wide rectangles hanging off the image */
     .wll-stage { overflow: visible !important; }
     .wll-float {
@@ -1656,3 +1652,11 @@
     .fl-pair.writing .fl-dot svg,
     .fl-pair.writing .fl-solid svg { animation: flType .8s steps(8, end) both !important; }
     .fl-pair.writing .fl-dot svg circle { animation: none !important; }
+
+    .cardub, .cardub .ub-inner { border-radius: 40% !important; }
+    .fl-pair.writing .fl-dot,
+    .fl-pair.writing .fl-solid { animation: flSpin .9s var(--ease) both !important; }
+    .wll-frame { overflow: hidden !important; }
+    #wll360, #wll360 .wrap { overflow: hidden; }
+    .wll-float.f1, .wll-float.f5 { transform: translateX(-30%) !important; }
+    .wll-float.f2, .wll-float.f6 { transform: translateX(30%) !important; }
