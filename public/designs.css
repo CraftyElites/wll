@@ -1514,3 +1514,68 @@
     .wll-float.f6 { bottom: 8%; right: -46px; }
     .wll-ctas .btn-build, .wll-ctas .btn-app { gap: .45em; }
     .wll-ctas .ic { width: 16px; height: 16px; }
+
+    /* Auxa hero mark: solid cloud only, no chip, no circle */
+    a.chip-cloud {
+      background: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      padding: 0 !important;
+    }
+    .auxa-mark {
+      width: 42px; height: 26px; display: block; flex: none;
+      background: none !important; border: 0 !important; border-radius: 0 !important;
+    }
+    .chip-logo { display: none !important; }
+
+    /* Headline petals: no square frame, two distinct blooms */
+    .maintext .fl-badge,
+    .maintext .fl-badge.fl-dot,
+    .maintext .fl-badge.fl-solid {
+      background: none !important;
+      border: 0 !important;
+      box-shadow: none !important;
+      border-radius: 0 !important;
+      width: 1.15em !important;
+      height: 1.15em !important;
+    }
+    .fl-dot svg { fill: #3b82f6 !important; }
+    .fl-solid svg { fill: #7c3aed !important; }
+
+    /* Build and Research cards are different shapes */
+    .cardub:first-child { border-radius: 22px; }
+    .cardub:nth-child(2) { border-radius: 46%; }
+    .cardub:first-child .ub-inner { border-radius: 18px; }
+    .cardub:nth-child(2) .ub-inner { border-radius: 46%; }
+
+    /* WLL cards: wide rectangles hanging off the image */
+    .wll-stage { overflow: visible !important; }
+    .wll-float {
+      width: 196px !important;
+      min-height: 0 !important;
+      border-radius: 10px !important;
+      padding: .4em .65em !important;
+    }
+    .wll-float.f1 { left: -42px !important; }
+    .wll-float.f3 { left: -56px !important; }
+    .wll-float.f5 { left: -36px !important; }
+    .wll-float.f2 { right: -42px !important; }
+    .wll-float.f4 { right: -56px !important; }
+    .wll-float.f6 { right: -36px !important; }
+
+    /* Quick search */
+    .search-overlay { background: rgba(8,10,16,.62); }
+    .search-panel {
+      max-width: 640px; border-radius: 14px; padding: 0;
+      overflow: hidden; border: 1px solid var(--line);
+    }
+    .search-panel-top { padding: .85em .9em; border-bottom: 1px solid var(--line); gap: .6em; }
+    .search-field { border-radius: 8px; background: var(--bg-soft); }
+    .search-close {
+      border: 1px solid var(--line); background: var(--bg); color: var(--muted);
+      border-radius: 8px; padding: .35em .55em; font-size: .72rem; font-weight: 700;
+    }
+    .search-meta { margin: 0; padding: .45em .95em 0; font-size: .75rem; }
+    .search-hits { padding: .4em .55em .7em; }
+    .search-hits a { border-radius: 8px; padding: .7em .75em; }
