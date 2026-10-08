@@ -1690,3 +1690,112 @@
     }
     .start-link .ic { width: 1.15em; height: 1.15em; stroke-width: 1.9; transition: transform .2s var(--ease); }
     .start-link:hover .ic { transform: translateX(4px); }
+
+/* App cards: Auxa BUS layout */
+.app-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.6em 1.25em;
+}
+@media (min-width: 700px) {
+  .app-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (min-width: 1100px) {
+  .app-grid { grid-template-columns: 1fr 1fr 1fr; }
+}
+.app-card {
+  display: flex;
+  flex-direction: column;
+  gap: .7em;
+  text-decoration: none;
+  color: inherit;
+  min-width: 0;
+}
+.app-shot {
+  display: block;
+  height: 168px;
+  border-radius: 16px;
+  background: #000;
+  overflow: hidden;
+}
+.app-shot img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.app-meta {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+  min-width: 0;
+}
+.app-ic {
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  background: #f5720f;
+  color: #fff;
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.app-ic .ic { width: 22px; height: 22px; stroke: #fff; }
+.app-copy { min-width: 0; display: flex; flex-direction: column; gap: .08em; }
+.app-copy b {
+  font-family: var(--display);
+  font-size: .98rem;
+  letter-spacing: -.02em;
+  font-weight: 800;
+  line-height: 1.15;
+}
+.app-copy small {
+  color: var(--muted);
+  font-size: .78rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.app-dl {
+  margin-left: auto;
+  color: var(--ink);
+  display: grid;
+  place-items: center;
+  flex: none;
+}
+.app-dl .ic { width: 20px; height: 20px; }
+.app-card:hover .app-dl { transform: translateY(2px); }
+
+/* Who it's for: text + arrow left, icon right, no button fill */
+.aud { border-radius: 20px; }
+.aud .mock { border-radius: 12px 12px 0 0; }
+.aud-cta,
+.aud-ent .aud-cta,
+.aud-dev .aud-cta,
+.aud-cre .aud-cta {
+  background: transparent !important;
+  background-image: none !important;
+  color: inherit !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  border-radius: 0 !important;
+  padding: .2em 0 !important;
+  justify-content: space-between;
+  gap: .8em;
+}
+.aud-cta-text {
+  display: inline-flex;
+  align-items: center;
+  gap: .4em;
+  font-weight: 700;
+}
+.aud-cta .go { margin-left: 0; }
+.aud-cta-mark { margin-left: auto; width: 1.15em; height: 1.15em; flex: none; }
+
+/* Auxa Cloud mark in the hero: a bit larger */
+a.chip-cloud .auxa-mark,
+.auxa-mark {
+  width: 52px !important;
+  height: 32px !important;
+  max-width: 52px !important;
+}
