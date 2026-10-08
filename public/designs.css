@@ -1804,13 +1804,14 @@ a.chip-cloud .auxa-mark,
   max-width: 36px !important;
 }
 
-/* Hero petals: same flowers, soft orange only, light glow */
+/* Hero petals: same flowers, diffused orange gradient, bubbling glow */
 .maintext .fl-pair {
   display: inline-flex !important;
   align-items: center;
-  gap: .06em;
-  vertical-align: -.12em;
-  margin-left: .1em;
+  gap: .08em;
+  vertical-align: -.14em;
+  margin-left: .12em;
+  overflow: visible;
 }
 .maintext .fl-badge,
 .maintext .fl-dot,
@@ -1819,44 +1820,39 @@ a.chip-cloud .auxa-mark,
   border: 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  width: 1.05em !important;
-  height: 1.05em !important;
-  color: #f5923a !important;
-  filter: drop-shadow(0 0 2px rgba(245, 146, 58, .28));
+  width: 1.12em !important;
+  height: 1.12em !important;
+  overflow: visible !important;
+  color: #ff9a3c !important;
+  animation: petalBubble 2.4s ease-in-out infinite !important;
+  filter: drop-shadow(0 0 5px rgba(255, 138, 42, .7)) drop-shadow(0 0 10px rgba(245, 114, 15, .4));
 }
+.maintext .fl-solid { animation-delay: .35s !important; }
 .maintext .fl-badge svg,
-.fl-dot svg,
-.fl-solid svg,
-.fl-badge svg circle,
-.fl-badge svg path {
-  fill: #f5923a !important;
-  color: #f5923a !important;
-  stroke: none !important;
-}
-.fl-dot svg circle { fill: #ffb15a !important; }
-.fl-solid svg,
+.maintext .fl-dot svg,
+.maintext .fl-solid svg,
+.maintext .fl-badge svg *,
+.fl-dot svg circle,
 .fl-solid svg circle,
-.fl-solid svg path { fill: #f5720f !important; }
-.fl-pair.writing .fl-badge {
-  animation: petalSoft 2.6s var(--ease) both !important;
-}
-.fl-pair.writing .fl-solid { animation-delay: .12s !important; }
-.fl-pair.writing .fl-badge svg,
-.fl-pair.writing .fl-dot svg,
-.fl-pair.writing .fl-solid svg,
-.fl-pair.writing .fl-dot svg circle {
+.fl-solid svg path,
+.fl-dot svg path {
+  fill: url(#petalWash) !important;
+  stroke: none !important;
   animation: none !important;
   clip-path: none !important;
 }
-@keyframes petalSoft {
-  from { opacity: 0; transform: rotate(-18deg) scale(.78); }
-  to { opacity: 1; transform: none; }
+.fl-pair.writing .fl-badge,
+.fl-pair.writing .fl-dot,
+.fl-pair.writing .fl-solid {
+  animation: petalBubble 2.4s ease-in-out infinite !important;
 }
-
-/* Application track: softer, tighter edge fade */
-.soft-track-wrap {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
-  -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 2.2%, #000 97.8%, transparent 100%) !important;
-  mask-image: linear-gradient(90deg, transparent 0, #000 2.2%, #000 97.8%, transparent 100%) !important;
+.fl-pair.writing .fl-solid { animation-delay: .35s !important; }
+@keyframes petalBubble {
+  0% { opacity: .25; transform: rotate(-22deg) scale(.62); filter: drop-shadow(0 0 2px rgba(255, 150, 40, .25)); }
+  35% { opacity: 1; transform: rotate(8deg) scale(1.16); filter: drop-shadow(0 0 7px rgba(255, 148, 48, .85)) drop-shadow(0 0 14px rgba(245, 114, 15, .45)); }
+  68% { opacity: .8; transform: rotate(-6deg) scale(.94); filter: drop-shadow(0 0 5px rgba(255, 138, 42, .6)); }
+  100% { opacity: .2; transform: rotate(18deg) scale(.66); filter: drop-shadow(0 0 2px rgba(255, 150, 40, .2)); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .maintext .fl-badge { animation: none !important; opacity: 1; }
 }
