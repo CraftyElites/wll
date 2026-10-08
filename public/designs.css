@@ -1804,14 +1804,13 @@ a.chip-cloud .auxa-mark,
   max-width: 36px !important;
 }
 
-/* Hero petals: same flowers, diffused orange gradient, bubbling glow */
+/* Hero petals: flat diffused orange, arrive then stay */
 .maintext .fl-pair {
   display: inline-flex !important;
   align-items: center;
-  gap: .08em;
-  vertical-align: -.14em;
-  margin-left: .12em;
-  overflow: visible;
+  gap: .06em;
+  vertical-align: -.12em;
+  margin-left: .1em;
 }
 .maintext .fl-badge,
 .maintext .fl-dot,
@@ -1820,14 +1819,13 @@ a.chip-cloud .auxa-mark,
   border: 0 !important;
   box-shadow: none !important;
   border-radius: 0 !important;
-  width: 1.12em !important;
-  height: 1.12em !important;
-  overflow: visible !important;
-  color: #ff9a3c !important;
-  animation: petalBubble 2.4s ease-in-out infinite !important;
-  filter: drop-shadow(0 0 5px rgba(255, 138, 42, .7)) drop-shadow(0 0 10px rgba(245, 114, 15, .4));
+  width: 1.05em !important;
+  height: 1.05em !important;
+  color: #f5923a !important;
+  filter: none !important;
+  animation: petalArrive 5.2s cubic-bezier(.2,.8,.2,1) infinite !important;
 }
-.maintext .fl-solid { animation-delay: .35s !important; }
+.maintext .fl-solid { animation-delay: .15s !important; }
 .maintext .fl-badge svg,
 .maintext .fl-dot svg,
 .maintext .fl-solid svg,
@@ -1840,18 +1838,34 @@ a.chip-cloud .auxa-mark,
   stroke: none !important;
   animation: none !important;
   clip-path: none !important;
+  filter: none !important;
 }
 .fl-pair.writing .fl-badge,
 .fl-pair.writing .fl-dot,
 .fl-pair.writing .fl-solid {
-  animation: petalBubble 2.4s ease-in-out infinite !important;
+  animation: petalArrive 5.2s cubic-bezier(.2,.8,.2,1) infinite !important;
+  filter: none !important;
 }
-.fl-pair.writing .fl-solid { animation-delay: .35s !important; }
-@keyframes petalBubble {
-  0% { opacity: .25; transform: rotate(-22deg) scale(.62); filter: drop-shadow(0 0 2px rgba(255, 150, 40, .25)); }
-  35% { opacity: 1; transform: rotate(8deg) scale(1.16); filter: drop-shadow(0 0 7px rgba(255, 148, 48, .85)) drop-shadow(0 0 14px rgba(245, 114, 15, .45)); }
-  68% { opacity: .8; transform: rotate(-6deg) scale(.94); filter: drop-shadow(0 0 5px rgba(255, 138, 42, .6)); }
-  100% { opacity: .2; transform: rotate(18deg) scale(.66); filter: drop-shadow(0 0 2px rgba(255, 150, 40, .2)); }
+.fl-pair.writing .fl-solid { animation-delay: .15s !important; }
+@keyframes petalArrive {
+  0% { opacity: 0; transform: rotate(-14deg) scale(.84); }
+  16% { opacity: 1; transform: none; }
+  82% { opacity: 1; transform: none; }
+  100% { opacity: 0; transform: rotate(8deg) scale(.9); }
+}
+
+/* Applications: full screen width, no edge crop */
+#software .soft-track-wrap {
+  width: 100% !important;
+  max-width: none !important;
+  margin: .4em 0 0 !important;
+  padding: 0 !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  overflow: hidden;
+}
+#software .soft-track {
+  padding-left: 0;
 }
 @media (prefers-reduced-motion: reduce) {
   .maintext .fl-badge { animation: none !important; opacity: 1; }
