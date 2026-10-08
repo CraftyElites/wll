@@ -1691,22 +1691,15 @@
     .start-link .ic { width: 1.15em; height: 1.15em; stroke-width: 1.9; transition: transform .2s var(--ease); }
     .start-link:hover .ic { transform: translateX(4px); }
 
-/* App cards: Auxa BUS layout */
-.app-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 1.6em 1.25em;
-}
-@media (min-width: 700px) {
-  .app-grid { grid-template-columns: 1fr 1fr; }
-}
-@media (min-width: 1100px) {
-  .app-grid { grid-template-columns: 1fr 1fr 1fr; }
-}
-.app-card {
+/* App cards: Auxa BUS layout, scrolling track */
+.soft-track-wrap .soft-track { animation: softTrack 42s linear infinite; }
+.soft-track-wrap:hover .soft-track { animation-play-state: paused; }
+.soft-track .app-card {
   display: flex;
   flex-direction: column;
   gap: .7em;
+  width: min(78vw, 340px);
+  flex: none;
   text-decoration: none;
   color: inherit;
   min-width: 0;
@@ -1715,8 +1708,15 @@
   display: block;
   height: 168px;
   border-radius: 16px;
-  background: #000;
   overflow: hidden;
+  background: linear-gradient(160deg, #e7eef8, #f7f9fc);
+  border: 1px solid #c9d3e0;
+  box-shadow: 0 10px 24px rgba(16, 24, 40, .08);
+}
+:root[data-theme="dark"] .app-shot {
+  background: linear-gradient(160deg, #243044, #18202c);
+  border-color: #3d4b60;
+  box-shadow: 0 10px 24px rgba(0,0,0,.28);
 }
 .app-shot img {
   width: 100%;
@@ -1734,13 +1734,14 @@
   width: 42px;
   height: 42px;
   border-radius: 12px;
-  background: #f5720f;
-  color: #fff;
+  background: var(--bg-soft);
+  color: var(--ink);
+  border: 1px solid var(--line);
   display: grid;
   place-items: center;
   flex: none;
 }
-.app-ic .ic { width: 22px; height: 22px; stroke: #fff; }
+.app-ic .ic { width: 22px; height: 22px; stroke: currentColor; }
 .app-copy { min-width: 0; display: flex; flex-direction: column; gap: .08em; }
 .app-copy b {
   font-family: var(--display);
@@ -1764,7 +1765,10 @@
   flex: none;
 }
 .app-dl .ic { width: 20px; height: 20px; }
-.app-card:hover .app-dl { transform: translateY(2px); }
+@media (min-width: 800px) {
+  .soft-track .app-card { width: 380px; }
+  .app-shot { height: 210px; }
+}
 
 /* Who it's for: text + arrow left, icon right, no button fill */
 .aud { border-radius: 20px; }
@@ -1792,10 +1796,70 @@
 .aud-cta .go { margin-left: 0; }
 .aud-cta-mark { margin-left: auto; width: 1.15em; height: 1.15em; flex: none; }
 
-/* Auxa Cloud mark in the hero: a bit larger */
+/* Auxa Cloud mark: only a little larger than before */
 a.chip-cloud .auxa-mark,
 .auxa-mark {
-  width: 52px !important;
-  height: 32px !important;
-  max-width: 52px !important;
+  width: 36px !important;
+  height: 22px !important;
+  max-width: 36px !important;
+}
+
+/* Hero petals: orange diffusion glow, fade grow rotate, no typewriter */
+.maintext .fl-pair,
+.maintext .fl-pair.writing {
+  display: inline-flex !important;
+  align-items: center;
+  gap: .2em;
+  vertical-align: -.08em;
+  margin-left: .18em;
+}
+.glow-petal {
+  position: relative;
+  width: 1.45em;
+  height: .78em;
+  border-radius: 999px;
+  flex: none;
+  background:
+    radial-gradient(circle at 32% 42%, #fff 0%, #fff 16%, rgba(255,236,210,.2) 17%, transparent 18%),
+    linear-gradient(90deg, #fff6ea 0%, #ffd7a8 28%, #ff9a3c 62%, #f5720f 100%);
+  box-shadow:
+    0 0 10px 3px rgba(255, 154, 60, .75),
+    0 0 22px 8px rgba(245, 114, 15, .45);
+  animation: petalGlow 2.8s cubic-bezier(.2,.8,.2,1) infinite;
+}
+.glow-petal::after {
+  content: "";
+  position: absolute;
+  inset: -9px -8px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255,150,50,.55) 0%, rgba(245,114,15,.22) 42%, transparent 72%);
+  filter: blur(2px);
+  z-index: -1;
+}
+.glow-petal.alt {
+  width: 1.15em;
+  height: .66em;
+  animation-delay: .45s;
+  background:
+    radial-gradient(circle at 30% 40%, #fff 0%, #fff 14%, transparent 16%),
+    linear-gradient(100deg, #ffe7c4 0%, #ffb15a 48%, #ff7a1a 100%);
+}
+@keyframes petalGlow {
+  0% { opacity: 0; transform: rotate(-32deg) scale(.4); }
+  28% { opacity: 1; transform: rotate(8deg) scale(1.08); }
+  62% { opacity: .92; transform: rotate(0deg) scale(1); }
+  100% { opacity: 0; transform: rotate(22deg) scale(.62); }
+}
+.fl-pair.writing .fl-badge,
+.fl-pair.writing .fl-dot,
+.fl-pair.writing .fl-solid,
+.fl-pair.writing .fl-badge svg,
+.fl-pair.writing .fl-dot svg,
+.fl-pair.writing .fl-solid svg,
+.fl-pair.writing .fl-dot svg circle {
+  animation: none !important;
+}
+@media (prefers-reduced-motion: reduce) {
+  .glow-petal { animation: none; opacity: 1; }
+  .soft-track { animation: none; }
 }
