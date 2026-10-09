@@ -1947,3 +1947,79 @@ a.chip-cloud .auxa-mark,
 .aud.aud-ent .li-ic { background: rgba(255,255,255,.14) !important; color: #ffd7a8 !important; }
 .aud.aud-ent .aud-cta,
 .aud.aud-ent .aud-cta-text { color: #fff !important; }
+
+/* Bold: Nunito first, then the current display fonts */
+:root { --display: 'Nunito', 'Outfit', 'Syne', system-ui, sans-serif; }
+h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
+  font-family: 'Nunito', 'Outfit', 'Syne', system-ui, sans-serif;
+}
+
+/* Petals: flat diffused wash, tiny glow */
+.maintext .fl-badge::before {
+  inset: -12% !important;
+  background: radial-gradient(circle, rgba(245, 146, 58, .22) 0%, rgba(245, 114, 15, 0) 68%) !important;
+  filter: none !important;
+}
+.maintext .fl-badge,
+.maintext .fl-dot,
+.maintext .fl-solid,
+.maintext .fl-badge svg,
+.maintext .fl-badge svg * {
+  filter: none !important;
+  box-shadow: none !important;
+  text-shadow: none !important;
+}
+
+/* Hero lead link: bold, no underline */
+.lead a, .lead-link {
+  font-weight: 800;
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Enterprises: darker gold base */
+.aud.aud-ent,
+:root[data-theme="dark"] .aud.aud-ent {
+  background:
+    radial-gradient(80% 60% at 100% 0%, #c56a1a 0%, transparent 50%),
+    linear-gradient(165deg, #6a2c06 0%, #1c0c04 78%) !important;
+}
+
+/* Industry icons: larger, no ring */
+.ind-avatar,
+.ind-item:hover .ind-avatar {
+  width: 92px !important;
+  height: 92px !important;
+  border: 0 !important;
+  box-shadow: none !important;
+  background: transparent !important;
+}
+.ind-avatar img {
+  padding: 4% !important;
+  width: 100%;
+  height: 100%;
+}
+@media (min-width: 640px) {
+  .ind-avatar, .ind-item:hover .ind-avatar { width: 118px !important; height: 118px !important; }
+}
+
+/* Six jobs links and pricing pink -> pinkish purple */
+:root { --accent: #b14bd4; }
+:root[data-theme="dark"] { --accent: #d08af0; }
+.job-cta { color: #b14bd4 !important; }
+.job-cta:hover { color: var(--ink) !important; }
+.price-card.featured { border-color: #b14bd4 !important; }
+.price-badge,
+.price-card.featured .price-cta { background: #b14bd4 !important; }
+
+/* Light theme: blobs stay behind the Build and Research cards */
+.hero-visual { isolation: isolate; }
+.hero-visual .blobs { z-index: 0 !important; }
+.hero-visual .ubs,
+.hero-visual .cardub {
+  position: relative;
+  z-index: 4 !important;
+}
+.cardub { background: var(--bg) !important; }
+:root[data-theme="light"] .blob { opacity: .55; }
+:root[data-theme="light"] .hero-visual .blob.b7 { opacity: .35; }
