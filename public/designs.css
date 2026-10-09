@@ -1870,3 +1870,50 @@ a.chip-cloud .auxa-mark,
 @media (prefers-reduced-motion: reduce) {
   .maintext .fl-badge { animation: none !important; opacity: 1; }
 }
+
+/* Petal glow sits behind the flower, shape stays flat */
+.maintext .fl-badge,
+.maintext .fl-dot,
+.maintext .fl-solid {
+  position: relative;
+  isolation: isolate;
+}
+.maintext .fl-badge::before {
+  content: "";
+  position: absolute;
+  inset: -70%;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 176, 72, .9) 0%, rgba(245, 114, 15, .42) 38%, rgba(245, 114, 15, 0) 70%);
+  filter: blur(3px);
+  pointer-events: none;
+}
+
+/* Creators card: dark purple gradient */
+.aud.aud-cre {
+  background:
+    radial-gradient(100% 80% at 100% 0%, #7c3aed 0%, transparent 52%),
+    radial-gradient(90% 80% at 0% 100%, #4c1d95 0%, transparent 58%),
+    linear-gradient(165deg, #160828 0%, #0b0614 72%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+
+/* Industry circles: transparent PNG icons from /assets/icons/ */
+.ind-avatar {
+  background: transparent !important;
+  box-shadow: none !important;
+  border-color: color-mix(in srgb, var(--line) 80%, transparent) !important;
+  overflow: visible;
+}
+.ind-avatar img {
+  object-fit: contain !important;
+  background: transparent !important;
+  padding: 18%;
+}
+.ind-fallback { display: none; width: 42%; height: 42%; color: var(--ink); }
+.ind-avatar.icon-fallback .ind-fallback { display: block; }
+.ind-item:hover .ind-avatar {
+  border-color: var(--sky) !important;
+  box-shadow: none !important;
+}
