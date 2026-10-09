@@ -2023,3 +2023,74 @@ h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
 .cardub { background: var(--bg) !important; }
 :root[data-theme="light"] .blob { opacity: .55; }
 :root[data-theme="light"] .hero-visual .blob.b7 { opacity: .35; }
+
+/* Display: Bricolage Grotesk, then Outfit and Syne */
+:root { --display: 'Bricolage Grotesk', 'Outfit', 'Syne', system-ui, sans-serif; }
+h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
+  font-family: 'Bricolage Grotesk', 'Outfit', 'Syne', system-ui, sans-serif;
+  font-weight: 800;
+}
+
+/* Six jobs links stay blue */
+.job-cta, .job-cta:hover { color: #1A62D4 !important; }
+:root[data-theme="dark"] .job-cta,
+:root[data-theme="dark"] .job-cta:hover { color: #8AAEFF !important; }
+
+/* WLL buttons: tighter radius; first button follows theme */
+.wll-ctas .btn-build,
+.wll-ctas .btn-app { border-radius: 8px !important; }
+.wll-ctas .btn-build {
+  background: #111 !important;
+  color: #fff !important;
+  box-shadow: none !important;
+}
+:root[data-theme="dark"] .wll-ctas .btn-build {
+  background: #fff !important;
+  color: #111 !important;
+}
+
+/* Hero: faded dots behind the cards, dodger-blue blob, cards on top */
+.blob.b4, .hero .blob.b4 { --c: #1E90FF !important; }
+.hero-visual { isolation: isolate; }
+.hero-visual .blobs { z-index: 0 !important; }
+.hero-visual::after {
+  content: "";
+  position: absolute;
+  inset: 8% 6% 18%;
+  z-index: 1;
+  pointer-events: none;
+  background-image: radial-gradient(rgba(18, 73, 168, .28) 1.1px, transparent 1.4px);
+  background-size: 16px 16px;
+  -webkit-mask-image: radial-gradient(circle at 50% 45%, #000 20%, transparent 72%);
+  mask-image: radial-gradient(circle at 50% 45%, #000 20%, transparent 72%);
+  opacity: .55;
+}
+:root[data-theme="dark"] .hero-visual::after {
+  background-image: radial-gradient(rgba(255,255,255,.22) 1.1px, transparent 1.4px);
+}
+.hero-visual .ubs,
+.hero-visual .cardub,
+.hero-visual .cardub .ub-inner {
+  position: relative;
+  z-index: 8 !important;
+}
+.hero-visual .cardub { background: var(--bg) !important; }
+
+/* Footer: smaller type, quieter socials */
+.site-footer { padding: 2em 0 1.2em; }
+.foot-brand p,
+.foot-col a,
+.foot-col h4,
+.copy,
+.theme-toggle button { font-size: .78rem; }
+.foot-col h4 { font-size: .82rem; margin-bottom: .45em; }
+.foot-col a { padding: .22em 0; gap: .4em; }
+.socials a {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  background: transparent;
+  color: #8b939c;
+}
+.socials a:hover { color: var(--ink); border-color: transparent; }
+.socials .ic { width: 16px; height: 16px; fill: currentColor; stroke: none; }
