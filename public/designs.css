@@ -1917,3 +1917,33 @@ a.chip-cloud .auxa-mark,
   border-color: var(--sky) !important;
   box-shadow: none !important;
 }
+
+/* Petals: flat wash, small glow only */
+.maintext .fl-badge::before {
+  inset: -28% !important;
+  background: radial-gradient(circle, rgba(245, 146, 58, .45) 0%, rgba(245, 114, 15, .16) 46%, transparent 70%) !important;
+  filter: blur(2px) !important;
+}
+.maintext .fl-badge,
+.maintext .fl-dot,
+.maintext .fl-solid {
+  filter: none !important;
+  box-shadow: none !important;
+}
+
+/* Enterprises card: deep gold orange */
+.aud.aud-ent,
+:root[data-theme="dark"] .aud.aud-ent {
+  background:
+    radial-gradient(90% 70% at 100% 0%, #f0a04a 0%, transparent 52%),
+    radial-gradient(80% 70% at 0% 100%, #b45309 0%, transparent 58%),
+    linear-gradient(165deg, #8a3b08 0%, #3d1a04 70%) !important;
+  color: #fff !important;
+  border-color: transparent !important;
+}
+.aud.aud-ent::before { display: none !important; }
+.aud.aud-ent .aud-icon { background: #fff !important; color: #8a3b08 !important; }
+.aud.aud-ent .aud-tag { background: rgba(255,255,255,.16) !important; color: #fff !important; }
+.aud.aud-ent .li-ic { background: rgba(255,255,255,.14) !important; color: #ffd7a8 !important; }
+.aud.aud-ent .aud-cta,
+.aud.aud-ent .aud-cta-text { color: #fff !important; }
