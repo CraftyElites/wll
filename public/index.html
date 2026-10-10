@@ -938,24 +938,27 @@
     if (img) { link.rel = 'icon'; link.href = img.src; doc.head.appendChild(link); }
   })();
 
-  /* country tag from IP (header only) */
+  /* country tag from IP: header and menu */
   (function () {
-    var el = $('#countryTag');
-    if (!el) return;
+    var tags = $$('.country');
+    if (!tags.length) return;
+    function paint(cc) {
+      tags.forEach(function (el) { el.textContent = cc; });
+    }
     var cached = null;
     try { cached = JSON.parse(localStorage.getItem('webever-cc') || 'null'); } catch (e) {}
     if (cached && cached.cc && cached.exp > Date.now()) {
-      el.textContent = cached.cc;
+      paint(cached.cc);
       return;
     }
     fetch('https://ipapi.co/json/')
       .then(function (r) { return r.json(); })
       .then(function (d) {
         var cc = (d && d.country_code) ? String(d.country_code).toUpperCase() : 'NG';
-        el.textContent = cc;
+        paint(cc);
         try { localStorage.setItem('webever-cc', JSON.stringify({ cc: cc, exp: Date.now() + 86400000 })); } catch (e) {}
       })
-      .catch(function () { el.textContent = 'NG'; });
+      .catch(function () { paint('NG'); });
   })();
 
   var toastEl = $('#toast'), toastTimer;

@@ -2175,3 +2175,37 @@ h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
 .socials { gap: .15em; }
 .socials a { width: 32px; height: 32px; color: #8d949c; background: transparent; }
 .theme-toggle button { font-size: .74rem; }
+
+/* Real Bricolage Grotesque, local, bold like the sample */
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('fonts/bricolage-700.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Bricolage Grotesque';
+  font-style: normal;
+  font-weight: 800;
+  font-display: swap;
+  src: url('fonts/bricolage-800.woff2') format('woff2');
+}
+:root { --display: 'Bricolage Grotesque', 'Outfit', 'Syne', system-ui, sans-serif; }
+h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
+  font-family: 'Bricolage Grotesque', 'Outfit', 'Syne', system-ui, sans-serif !important;
+  font-weight: 800;
+}
+
+/* Desktop: larger description, narrower prompt, sections centered */
+@media (min-width: 900px) {
+  .hero-content .lead,
+  .lead { font-size: 1.05rem !important; max-width: 46ch; }
+  .ask-wrap, .prompt { max-width: 560px; }
+  .sec-head { margin-left: auto; margin-right: auto; text-align: center; }
+  .sec-head p { margin-left: auto; margin-right: auto; }
+  .wrap { text-align: center; }
+  .aud-grid, .jobs, .price-grid, .industries-row, .foot-grid, .dolphins-stack {
+    text-align: left;
+  }
+}
