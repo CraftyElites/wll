@@ -2209,3 +2209,61 @@ h1, h2, h3, .sec-head h2, .brand-name, .brand-name b, .maintext, b, strong {
     text-align: left;
   }
 }
+
+/* Hero headline uses Bricolage, not Outfit */
+h1.maintext,
+h1.maintext span,
+.maintext,
+.maintext span,
+.maintext .hl {
+  font-family: 'Bricolage Grotesque', 'Outfit', 'Syne', system-ui, sans-serif !important;
+  font-weight: 800 !important;
+}
+
+/* Desktop prompt stays wide, not slim */
+@media (min-width: 900px) {
+  .ask-wrap, .prompt { max-width: 720px !important; width: 100%; }
+  .hero-grid { max-width: 860px; }
+  .logo-sprinkle,
+  .logo-sprinkle.sec {
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Login / Sign up */
+.auth-actions { display: none; align-items: center; gap: .7em; margin-right: .35em; }
+@media (min-width: 880px) {
+  .auth-actions { display: flex; }
+}
+.auth-login {
+  color: #8b919a;
+  font-weight: 700;
+  font-size: .95rem;
+  text-decoration: none;
+  font-family: 'Bricolage Grotesque', 'Outfit', system-ui, sans-serif;
+}
+.auth-signup {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  padding: .45em 1.05em;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-weight: 800;
+  font-size: .95rem;
+  text-decoration: none;
+  font-family: 'Bricolage Grotesque', 'Outfit', system-ui, sans-serif;
+}
+:root[data-theme="dark"] .auth-signup { background: #fff; color: #111; }
+.sheet-auth {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: .8em;
+  margin: -.4em 0 1em;
+}
+.sheet-auth .auth-signup { min-height: 42px; padding: .5em 1.15em; }
