@@ -2278,3 +2278,14 @@ h1.maintext span,
   font-weight: 700;
 }
 .sheet-auth { justify-content: flex-start; margin: 0 0 .8em; }
+.sheet-top-actions { gap: .55em; }
+.sheet-top-actions .auth-login { font-size: .82rem; }
+
+/* Menu: Login beside Sign up, all menu type 20% smaller */
+.sheet-top-actions { gap: .45em; }
+.sheet-top-actions .auth-login { font-size: .76rem; }
+.sheet-auth { display: none; }
+.sheet-label { font-size: .64rem !important; }
+.sheet-links b { font-size: .86rem !important; }
+.sheet-links small { font-size: .69rem !important; }
+.sheet-links a, .sheet-search-link { font-size: .8rem; }
