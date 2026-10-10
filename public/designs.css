@@ -2267,3 +2267,14 @@ h1.maintext span,
   margin: -.4em 0 1em;
 }
 .sheet-auth .auth-signup { min-height: 42px; padding: .5em 1.15em; }
+
+/* Mobile menu: Sign up sits beside the close button */
+.sheet-top-actions { display: flex; align-items: center; gap: .4em; }
+.sheet-top-actions .auth-signup {
+  min-height: 30px;
+  padding: .28em .7em;
+  border-radius: 8px;
+  font-size: .78rem;
+  font-weight: 700;
+}
+.sheet-auth { justify-content: flex-start; margin: 0 0 .8em; }
