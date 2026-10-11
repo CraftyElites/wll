@@ -2393,3 +2393,48 @@ h1.maintext span,
   }
   .suggest { max-width: none !important; width: 100%; }
 }
+
+/* Card header: no pill outline. Icon and label sit as a quiet row. */
+.aud-top {
+  border: 0 !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  justify-content: flex-start !important;
+  gap: .65em !important;
+  background: none !important;
+}
+.aud-icon {
+  width: 32px !important;
+  height: 32px !important;
+  border-radius: 10px !important;
+  background: rgba(255,255,255,.16) !important;
+  color: #fff !important;
+}
+.aud-tag {
+  font-size: .78rem !important;
+  font-weight: 700;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  opacity: .85;
+}
+
+/* Developers: charcoal gradient so it separates in dark mode */
+.aud.aud-dev,
+:root[data-theme="dark"] .aud.aud-dev {
+  background-color: #2b3138 !important;
+  background-image:
+    radial-gradient(90% 70% at 100% 0%, #4b5563 0%, transparent 55%),
+    linear-gradient(165deg, #3a414a 0%, #1c2127 72%),
+    radial-gradient(rgba(255,255,255,.14) 1.05px, transparent 1.35px) !important;
+  background-size: auto, auto, 9px 9px !important;
+  border: 1px solid rgba(255,255,255,.08) !important;
+}
+
+/* Prompt matches the hero headline width */
+@media (min-width: 900px) {
+  .hero-grid { max-width: 920px !important; }
+  .hero-copy, .hero-content, .ask-wrap, .prompt, .suggest {
+    max-width: none !important;
+    width: 100% !important;
+  }
+}
