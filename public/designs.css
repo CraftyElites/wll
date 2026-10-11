@@ -2289,3 +2289,107 @@ h1.maintext span,
 .sheet-links b { font-size: .86rem !important; }
 .sheet-links small { font-size: .69rem !important; }
 .sheet-links a, .sheet-search-link { font-size: .8rem; }
+
+/* Audience cards: Cloudflare-style layout. Enterprise is orange. Others keep their color. */
+.aud {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 540px;
+  padding: 1.15em 1.1em 1.1em !important;
+  border-radius: 28px !important;
+  overflow: hidden;
+  color: #fff !important;
+  border: 0 !important;
+}
+.aud .mock,
+.aud .term { display: none !important; }
+.aud-top {
+  display: flex !important;
+  align-items: center;
+  justify-content: space-between;
+  gap: .7em;
+  margin: 0 0 1.35em !important;
+  padding: .38em .38em .38em .9em;
+  border: 1.5px solid rgba(255,255,255,.7);
+  border-radius: 999px;
+  background: transparent !important;
+}
+.aud-tag {
+  background: none !important;
+  color: #fff !important;
+  font-size: .86rem;
+  font-weight: 700;
+  padding: 0 !important;
+}
+.aud-icon {
+  width: 34px !important;
+  height: 34px !important;
+  border-radius: 50% !important;
+  background: #fff !important;
+  color: #111 !important;
+  flex: none;
+}
+.aud h3 {
+  margin: 0;
+  font-size: clamp(2rem, 5vw, 2.7rem) !important;
+  line-height: .96;
+  letter-spacing: -.045em;
+  color: #fff !important;
+  font-weight: 800;
+}
+.aud > p {
+  margin: .7em 0 .2em;
+  color: rgba(255,255,255,.82) !important;
+  font-size: 1.02rem;
+  line-height: 1.45;
+}
+.aud-list {
+  margin: .9em 0 1.3em;
+  color: #fff;
+}
+.aud-list li { color: #fff; }
+.aud-cta { margin-top: auto; }
+
+/* Enterprise: bright orange with a fine dotted wash */
+.aud.aud-ent,
+:root[data-theme="dark"] .aud.aud-ent {
+  background-color: #f26522 !important;
+  background-image: radial-gradient(rgba(255,255,255,.32) 1.05px, transparent 1.35px) !important;
+  background-size: 9px 9px !important;
+}
+.aud.aud-ent::before { display: none !important; }
+
+/* Developers and Creators: same layout, original colors, full dotted wash */
+.aud.aud-dev {
+  background-color: #000 !important;
+  background-image: radial-gradient(rgba(255,255,255,.16) 1.05px, transparent 1.35px) !important;
+  background-size: 9px 9px !important;
+}
+.aud.aud-cre,
+:root[data-theme="dark"] .aud.aud-cre {
+  background-color: #1d0a36 !important;
+  background-image:
+    radial-gradient(100% 80% at 100% 0%, #7c3aed 0%, transparent 52%),
+    radial-gradient(90% 80% at 0% 100%, #4c1d95 0%, transparent 58%),
+    radial-gradient(rgba(255,255,255,.16) 1.05px, transparent 1.35px) !important;
+  background-size: auto, auto, 9px 9px !important;
+}
+
+/* Desktop prompt card: full usable width and a taller field */
+@media (min-width: 900px) {
+  .hero-grid { max-width: 920px !important; }
+  .ask-wrap { max-width: 760px !important; width: 100% !important; }
+  .prompt {
+    max-width: none !important;
+    width: 100% !important;
+    min-height: 196px !important;
+    padding: 1.1em 1.1em 1em !important;
+  }
+  .prompt textarea {
+    min-height: 6.2em !important;
+    max-height: 220px !important;
+    font-size: 1.08rem;
+  }
+  .suggest { max-width: none !important; width: 100%; }
+}
