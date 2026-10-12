@@ -1566,24 +1566,7 @@
     var state = window.WEBEVER_FRAME_STATE ? '<scr'+'ipt>window.WEBEVER=' + JSON.stringify(window.WEBEVER_FRAME_STATE) + ';</scr'+'ipt>' : '';
     return '<!DOCTYPE html><html lang="en" data-theme="' + theme + '"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="designs.css"></head><body class="embed">' +
       sprite + state + inner +
-      '<scr'+'ipt>(function(){function send(d){try{parent.postMessage(Object.assign({source:"webever"},d),"*")}catch(e){}}function report(){var box=document.getElementById("page-fit")||document.body;var h=Math.ceil(box.getBoundingClientRect().height);send({type:"height",h:h})}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(href.charAt(0)==="#"){e.preventDefault();send({type:"navigate",hash:href})}});window.addEventListener("message",function(e){var d=e.data||{};if(d.source==="webever-parent"&&d.type==="theme")document.documentElement.setAttribute("data-theme",d.theme)});window.addEventListener("load",report);window.addEventListener("resize",report);setTimeout(report,60);setTimeout(report,300);send({type:"ready"})})();</scr'+'ipt>\n<script>
-document.addEventListener('DOMContentLoaded', function () {
-  var tabs = Array.prototype.slice.call(document.querySelectorAll('.apps-tab'));
-  var slides = Array.prototype.slice.call(document.querySelectorAll('.apps-slide'));
-  if (!tabs.length) return;
-  var i = 0;
-  function show(n) {
-    i = (n + tabs.length) % tabs.length;
-    var key = tabs[i].getAttribute('data-app');
-    tabs.forEach(function (t, idx) { t.classList.toggle('is-on', idx === i); });
-    slides.forEach(function (s) { s.classList.toggle('is-on', s.getAttribute('data-app') === key); });
-  }
-  tabs.forEach(function (tab, idx) {
-    tab.addEventListener('click', function () { show(idx); });
-  });
-  setInterval(function () { show(i + 1); }, 4200);
-});
-</script>
+      '<scr'+'ipt>(function(){function send(d){try{parent.postMessage(Object.assign({source:"webever"},d),"*")}catch(e){}}function report(){var box=document.getElementById("page-fit")||document.body;var h=Math.ceil(box.getBoundingClientRect().height);send({type:"height",h:h})}document.addEventListener("click",function(e){var a=e.target.closest&&e.target.closest("a");if(!a)return;var href=a.getAttribute("href")||"";if(href.charAt(0)==="#"){e.preventDefault();send({type:"navigate",hash:href})}});window.addEventListener("message",function(e){var d=e.data||{};if(d.source==="webever-parent"&&d.type==="theme")document.documentElement.setAttribute("data-theme",d.theme)});window.addEventListener("load",report);window.addEventListener("resize",report);setTimeout(report,60);setTimeout(report,300);send({type:"ready"})})();</scr'+'ipt>
 </body></html>';
   }
 
