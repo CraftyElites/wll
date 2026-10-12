@@ -2586,3 +2586,78 @@ h1.maintext span,
 .aud.aud-cre::after {
   background: linear-gradient(to top, rgba(255,210,255,.42) 0%, rgba(255,255,255,.1) 42%, transparent 100%) !important;
 }
+
+/* Applications card: match the reference frame */
+.apps-stage { position: relative; padding: 1.6em 0 1.2em; }
+.apps-glow {
+  position: absolute;
+  left: -18%;
+  top: -12%;
+  width: 78%;
+  height: 92%;
+  z-index: 0;
+  background: radial-gradient(circle at 40% 45%, rgba(140, 210, 255, .85) 0%, rgba(170, 220, 255, .35) 38%, transparent 70%);
+  filter: blur(6px);
+}
+.apps-glow::before {
+  content: "";
+  position: absolute;
+  inset: -8%;
+  background-image:
+    linear-gradient(rgba(26,98,212,.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,98,212,.28) 1px, transparent 1px);
+  background-size: 18px 18px;
+  -webkit-mask-image: radial-gradient(circle at 42% 46%, #000 0%, #000 28%, transparent 68%);
+  mask-image: radial-gradient(circle at 42% 46%, #000 0%, #000 28%, transparent 68%);
+  opacity: .9;
+}
+.apps-stack { position: relative; z-index: 1; }
+.apps-back {
+  position: absolute;
+  inset: 18px 10px -10px 18px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--bg) 92%, #dbe7f5);
+}
+.apps-frame {
+  position: relative;
+  border-radius: 12px !important;
+  border: 1px solid #e6e8ee;
+  background: #fff;
+  box-shadow: none;
+  -webkit-mask-image: linear-gradient(to right, #000 62%, transparent 100%), linear-gradient(to bottom, #000 68%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, #000 62%, transparent 100%), linear-gradient(to bottom, #000 68%, transparent 100%);
+  mask-composite: intersect;
+}
+:root[data-theme="dark"] .apps-frame { background: #111418; border-color: #2a3038; }
+.apps-bar { padding: .65em .8em; gap: .4em; }
+.apps-tab {
+  border-radius: 8px;
+  font-size: .86rem;
+  letter-spacing: 0;
+  font-weight: 700;
+  color: #111;
+  position: relative;
+}
+.apps-tab img { width: 18px; height: 18px; }
+.apps-tab.is-on { border-color: #eceef2; box-shadow: inset 0 -2px 0 #f26522; }
+.apps-body { min-height: 320px; padding: 1.2em 1.1em 1.4em 1.4em; }
+.apps-pause {
+  width: 36px; height: 36px; border-radius: 50%;
+  border: 1px solid #eceef2; background: #fff; color: #111;
+  font-weight: 800; letter-spacing: .08em; margin-bottom: .6em;
+}
+.apps-quote {
+  font-size: clamp(1.25rem, 3vw, 1.7rem);
+  line-height: 1.28;
+  letter-spacing: -.02em;
+  font-weight: 700;
+  max-width: 22ch;
+  margin: 0 0 .9em;
+}
+.apps-by { margin: 0; font-size: .95rem; color: #6b7280; }
+.apps-by b { color: #111; }
+.apps-mark { position: absolute; right: 8%; bottom: 6%; width: 92px; height: 92px; }
+.apps-person { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; position: absolute; left: 0; bottom: 0; }
+.apps-logo { width: 64px; height: 64px; position: absolute; right: 0; top: 0; }
