@@ -2661,3 +2661,170 @@ h1.maintext span,
 .apps-mark { position: absolute; right: 8%; bottom: 6%; width: 92px; height: 92px; }
 .apps-person { width: 72px; height: 72px; border-radius: 50%; object-fit: cover; border: 3px solid #fff; position: absolute; left: 0; bottom: 0; }
 .apps-logo { width: 64px; height: 64px; position: absolute; right: 0; top: 0; }
+
+/* Match the Built by WLL frame */
+.apps-head h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); letter-spacing: -.05em; }
+.apps-stage { position: relative; padding: 2.2em 0 1em; }
+.apps-glow {
+  position: absolute !important;
+  left: -22% !important;
+  top: -18% !important;
+  width: 90% !important;
+  height: 110% !important;
+  z-index: 0;
+  background: radial-gradient(circle at 38% 42%, rgba(150, 215, 255, .95) 0%, rgba(180, 225, 255, .45) 34%, transparent 68%) !important;
+  filter: none !important;
+}
+.apps-glow::before {
+  content: "" !important;
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,98,212,.45) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,98,212,.45) 1px, transparent 1px) !important;
+  background-size: 16px 16px !important;
+  -webkit-mask-image: radial-gradient(circle at 38% 42%, #000 0%, #000 32%, transparent 70%) !important;
+  mask-image: radial-gradient(circle at 38% 42%, #000 0%, #000 32%, transparent 70%) !important;
+  opacity: 1 !important;
+}
+.apps-stack { position: relative; z-index: 1; }
+.apps-back {
+  position: absolute;
+  left: 14px; right: 6px; top: 16px; bottom: -14px;
+  border: 1px solid #e7eaf0;
+  border-radius: 14px;
+  background: #f7f9fc;
+}
+.apps-frame {
+  border-radius: 14px !important;
+  border: 1px solid #eceff4 !important;
+  background: #fff !important;
+  -webkit-mask-image: linear-gradient(#000, #000), linear-gradient(to right, #000 58%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 100%) !important;
+  -webkit-mask-composite: source-in !important;
+  mask-image: linear-gradient(to right, #000 58%, transparent 100%), linear-gradient(to bottom, #000 64%, transparent 100%) !important;
+  mask-composite: intersect !important;
+}
+.apps-bar { padding: .7em .85em; border-bottom: 1px solid #eceff4; }
+.apps-brand { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.apps-mark-ic { width: 16px; height: 16px; border-radius: 50%; display: inline-block; }
+.apps-tab { font-size: .82rem; letter-spacing: .06em; font-weight: 800; color: #9aa1aa; border-radius: 8px; }
+.apps-tab.is-on { color: #111; border-color: #e6e8ee; box-shadow: inset 0 -2px 0 #f26522; }
+.apps-body { min-height: 300px; padding: 1.4em 1.2em 1.2em; }
+.apps-faint {
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: #c5cad1;
+  margin-bottom: .35em;
+}
+.apps-slide h3 {
+  font-size: clamp(1.7rem, 4.4vw, 2.6rem) !important;
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  max-width: 11ch;
+  margin: 0 0 1.6em;
+}
+.apps-foot { display: flex; align-items: flex-end; justify-content: space-between; }
+.apps-seal {
+  width: 84px; height: 84px; border-radius: 50%;
+  color: #fff; display: grid; place-items: center;
+  font-weight: 800; font-size: 1.4rem;
+}
+
+/* Applications: outer card + inner info panel, visible grid glow */
+.apps-head { text-align: left; margin-bottom: .6em; }
+.apps-head h2 { font-size: clamp(2.2rem, 6vw, 3.4rem); letter-spacing: -.05em; margin: 0; }
+.apps-head p { color: #8b919a; max-width: 28ch; margin: .35em 0 0; font-size: 1.05rem; }
+.apps-stage { position: relative; margin-top: 1.1em; padding: 1.4em 0 1em; }
+.apps-glow {
+  position: absolute;
+  left: -22%;
+  top: -8%;
+  width: 86%;
+  height: 100%;
+  z-index: 0;
+  background: radial-gradient(circle at 32% 42%, rgba(150, 220, 255, .95) 0%, rgba(180, 225, 255, .45) 36%, transparent 72%);
+}
+.apps-glow::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(26,98,212,.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,98,212,.35) 1px, transparent 1px);
+  background-size: 16px 16px;
+  -webkit-mask-image: radial-gradient(circle at 32% 42%, #000 0%, #000 34%, transparent 70%);
+  mask-image: radial-gradient(circle at 32% 42%, #000 0%, #000 34%, transparent 70%);
+  opacity: 1;
+}
+.apps-frame {
+  position: relative;
+  z-index: 1;
+  background: #fff;
+  border: 1px solid #eceff3;
+  border-radius: 18px 18px 0 0;
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, #000 70%, transparent 100%), linear-gradient(to bottom, #000 74%, transparent 100%);
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, #000 70%, transparent 100%), linear-gradient(to bottom, #000 74%, transparent 100%);
+  mask-composite: intersect;
+}
+:root[data-theme="dark"] .apps-frame { background: #111418; }
+.apps-bar {
+  display: flex;
+  align-items: center;
+  gap: .7em;
+  padding: .75em .9em;
+  border-bottom: 1px solid #eceff3;
+}
+.apps-brand { width: 28px; height: 28px; border-radius: 50%; object-fit: cover; }
+.apps-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: .45em;
+  border: 1px solid transparent;
+  background: none;
+  color: #9aa1a9;
+  font-weight: 800;
+  letter-spacing: .04em;
+  font-size: .78rem;
+  padding: .42em .7em;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.apps-tab img { width: 16px; height: 16px; }
+.apps-tab.is-on { border-color: #e6e8ee; color: #111; background: #fff; }
+.apps-inner {
+  margin: .7em .8em 1em;
+  border: 1px solid #eceff3;
+  border-radius: 12px;
+  min-height: 320px;
+  padding: 1.2em 1.1em 1.1em;
+  position: relative;
+  background: #fff;
+}
+.apps-slide { display: none; position: relative; min-height: 280px; }
+.apps-slide.is-on { display: block; }
+.apps-soft {
+  width: 100%;
+  height: 92px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: .8em;
+  -webkit-mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+  mask-image: linear-gradient(to bottom, #000 35%, transparent 100%);
+}
+.apps-slide h3 {
+  font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+  line-height: 1.02;
+  letter-spacing: -.04em;
+  max-width: 12ch;
+  margin: 0 0 2.4em;
+}
+.apps-foot { display: flex; align-items: flex-end; justify-content: space-between; }
+.apps-foot span { font-weight: 700; font-size: .9rem; }
+.apps-seal {
+  width: 86px; height: 86px; border-radius: 50%;
+  transform: translate(8px, 10px);
+}
