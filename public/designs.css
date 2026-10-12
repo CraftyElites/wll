@@ -2896,3 +2896,42 @@ h1.maintext span,
     linear-gradient(rgba(255,255,255,.3) 1px, transparent 1px),
     linear-gradient(90deg, rgba(255,255,255,.3) 1px, transparent 1px) !important;
 }
+
+/* Fade includes the card edge so the border dissolves into the page */
+.apps-frame {
+  border: 0 !important;
+  box-shadow: inset 0 0 0 1px var(--line);
+  -webkit-mask-image: linear-gradient(to right, #000 78%, transparent 100%), linear-gradient(to bottom, #000 84%, transparent 100%) !important;
+  -webkit-mask-composite: source-in;
+  mask-image: linear-gradient(to right, #000 78%, transparent 100%), linear-gradient(to bottom, #000 84%, transparent 100%) !important;
+  mask-composite: intersect;
+}
+.apps-frame::after { display: none !important; }
+.apps-tab {
+  width: 92px;
+  height: 36px;
+  padding: .3em .55em !important;
+  border-radius: 10px !important;
+  justify-content: center;
+}
+.apps-word { width: 72px !important; height: 18px !important; object-fit: contain; }
+.apps-seal {
+  width: 72px !important;
+  height: 72px !important;
+  border-radius: 0 !important;
+  background: none !important;
+  object-fit: contain;
+  transform: none !important;
+}
+.apps-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .3em;
+  color: var(--ink);
+  font-weight: 700;
+  text-decoration: none;
+  position: relative;
+  z-index: 5;
+}
+.apps-link .ic { width: 14px; height: 14px; }
+.apps-foot { z-index: 5; }
