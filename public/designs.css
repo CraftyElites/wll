@@ -2828,3 +2828,43 @@ h1.maintext span,
   width: 86px; height: 86px; border-radius: 50%;
   transform: translate(8px, 10px);
 }
+
+/* Theme-aware apps card, visible dark grid, foot above the fade */
+.apps-frame {
+  background: var(--bg) !important;
+  border-color: var(--line) !important;
+  -webkit-mask-image: none !important;
+  mask-image: none !important;
+  overflow: hidden;
+}
+.apps-frame::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 2;
+  background:
+    linear-gradient(to right, transparent 68%, var(--bg) 100%),
+    linear-gradient(to bottom, transparent 72%, var(--bg) 100%);
+}
+.apps-inner { background: var(--bg) !important; border-color: var(--line) !important; }
+.apps-tab { color: var(--muted) !important; }
+.apps-tab.is-on { color: var(--ink) !important; background: var(--bg) !important; border-color: var(--line) !important; }
+.apps-foot, .apps-seal {
+  position: relative;
+  z-index: 3;
+}
+.apps-glow::before {
+  background-image:
+    linear-gradient(rgba(26,98,212,.4) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(26,98,212,.4) 1px, transparent 1px) !important;
+}
+:root[data-theme="dark"] .apps-glow {
+  background: radial-gradient(circle at 32% 42%, rgba(80, 150, 230, .7) 0%, rgba(40, 90, 160, .28) 40%, transparent 72%) !important;
+}
+:root[data-theme="dark"] .apps-glow::before {
+  background-image:
+    linear-gradient(rgba(255,255,255,.28) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,.28) 1px, transparent 1px) !important;
+  opacity: 1 !important;
+}
