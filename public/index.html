@@ -168,11 +168,13 @@
     .hero .blob.b6 { --o: .7; }
     .hero .blob.b7 { --o: .45; }
 
-    /* Kill the dotted grey grid on the hero background */
+    /* Hero dotted grid: keep, very low opacity */
     .hero::before {
-      display: none !important;
-      background-image: none !important;
-      content: none !important;
+      display: block !important;
+      opacity: .18 !important;
+    }
+    :root[data-theme="dark"] .hero::before {
+      opacity: .12 !important;
     }
 
     /* Hero: UBS outline soft, matches bg (not harsh grey) */
@@ -366,21 +368,35 @@
       aspect-ratio: 1 / 1.05;
       max-width: 420px; width: 100%; margin: 0 auto;
       border-radius: 40px; overflow: hidden;
-      background: #12151c;
-      border: 1px solid rgba(255,255,255,.06);
+      background: #000;
+      border: 1px solid rgba(255,255,255,.08);
       text-decoration: none; color: #fff;
       isolation: isolate;
     }
-    /* Inner diffusion: dark grey middle, glowing edge blobs */
+    /* Light mode: not black — soft light card */
+    :root[data-theme="light"] .svc-card {
+      background: #f0f2f6;
+      border-color: rgba(0,0,0,.08);
+      color: #111;
+    }
+    /* Inner diffusion: black center (dark), edge glows; weak at bottom so image shows */
     .svc-card::before {
       content: "";
       position: absolute; inset: 0; z-index: 1; pointer-events: none;
       background:
-        radial-gradient(ellipse 80% 70% at 50% 45%, rgba(18, 21, 28, .92) 0%, rgba(18, 21, 28, .55) 42%, transparent 72%),
-        radial-gradient(circle at 12% 18%, rgba(61, 120, 232, .45) 0%, transparent 42%),
-        radial-gradient(circle at 88% 22%, rgba(139, 92, 246, .38) 0%, transparent 40%),
-        radial-gradient(circle at 18% 88%, rgba(0, 180, 204, .32) 0%, transparent 45%),
-        radial-gradient(circle at 85% 85%, rgba(245, 146, 58, .28) 0%, transparent 42%);
+        radial-gradient(ellipse 85% 65% at 50% 38%, rgba(0, 0, 0, .88) 0%, rgba(0, 0, 0, .45) 48%, transparent 70%),
+        radial-gradient(circle at 12% 14%, rgba(61, 120, 232, .42) 0%, transparent 40%),
+        radial-gradient(circle at 88% 16%, rgba(139, 92, 246, .35) 0%, transparent 38%),
+        radial-gradient(circle at 20% 92%, rgba(0, 180, 204, .12) 0%, transparent 38%),
+        radial-gradient(circle at 82% 92%, rgba(245, 146, 58, .1) 0%, transparent 38%);
+    }
+    :root[data-theme="light"] .svc-card::before {
+      background:
+        radial-gradient(ellipse 85% 65% at 50% 38%, rgba(240, 242, 246, .9) 0%, rgba(240, 242, 246, .4) 48%, transparent 70%),
+        radial-gradient(circle at 12% 14%, rgba(61, 120, 232, .28) 0%, transparent 40%),
+        radial-gradient(circle at 88% 16%, rgba(139, 92, 246, .22) 0%, transparent 38%),
+        radial-gradient(circle at 20% 92%, rgba(0, 180, 204, .08) 0%, transparent 38%),
+        radial-gradient(circle at 82% 92%, rgba(245, 146, 58, .07) 0%, transparent 38%);
     }
     .svc-bg {
       position: absolute; inset: 0; z-index: 0;
@@ -389,8 +405,9 @@
     }
     .svc-bg-fallback {
       position: absolute; inset: 0; z-index: 0;
-      background: #12151c;
+      background: #000;
     }
+    :root[data-theme="light"] .svc-bg-fallback { background: #f0f2f6; }
     .svc-top {
       position: relative; z-index: 3;
       display: flex; align-items: flex-start; justify-content: space-between;
@@ -400,6 +417,9 @@
       font-size: .95rem; font-weight: 600; letter-spacing: -.01em;
       color: rgba(255,255,255,.9);
     }
+    :root[data-theme="light"] .svc-top b { color: rgba(0,0,0,.88); }
+    :root[data-theme="light"] .svc-arrow { color: rgba(0,0,0,.55); }
+    :root[data-theme="light"] .svc-icon { color: #111; }
     .svc-arrow {
       width: 38px; height: 38px; border-radius: 50%;
       display: grid; place-items: center;
