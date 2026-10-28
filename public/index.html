@@ -158,15 +158,15 @@
         radial-gradient(circle at 58% 32%, rgba(180, 230, 255, .4) 0%, transparent 46%);
     }
 
-    /* Hero blobs: nearly faded out */
-    .hero .blobs { inset: -8% -8% -18% -8% !important; }
-    .hero .blob.b1 { --o: .1; top: 48% !important; left: 18% !important; width: 48% !important; }
-    .hero .blob.b2 { --o: .06; }
-    .hero .blob.b3 { --o: .05; }
-    .hero .blob.b4 { --o: .05; top: 55% !important; }
-    .hero .blob.b5 { --o: .04; }
-    .hero .blob.b6 { --o: .08; top: 58% !important; left: 28% !important; }
-    .hero .blob.b7 { --o: .04; }
+    /* Hero blobs: essentially invisible */
+    .hero .blobs { inset: -8% -8% -18% -8% !important; opacity: .15; }
+    .hero .blob.b1 { --o: .04; top: 48% !important; left: 18% !important; width: 48% !important; }
+    .hero .blob.b2 { --o: .03; }
+    .hero .blob.b3 { --o: .02; }
+    .hero .blob.b4 { --o: .02; top: 55% !important; }
+    .hero .blob.b5 { --o: .02; }
+    .hero .blob.b6 { --o: .03; top: 58% !important; left: 28% !important; }
+    .hero .blob.b7 { --o: .02; }
 
     /* Hero: UBS outline soft, matches bg (not harsh grey) */
     .hero .ubs { gap: 1.1rem; overflow: visible; }
@@ -190,7 +190,7 @@
       color: color-mix(in srgb, currentColor 58%, transparent);
     }
     :root[data-theme="dark"] .hero-copy .hero-content .lead {
-      color: rgba(140, 150, 165, .95);
+      color: #6b7280;
     }
     /* Mobile: ~4 lines of headline, not 5 */
     @media (max-width: 899px) {
@@ -330,6 +330,40 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .sw-pill i { animation: none; }
+    }
+
+    /* Company logos horizontal marquee (after software window) */
+    .logo-marquee {
+      position: relative;
+      overflow: hidden;
+      padding: 1.4em 0 1.8em;
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    .logo-track {
+      display: flex; width: max-content;
+      animation: logo-scroll 32s linear infinite;
+    }
+    .logo-set {
+      display: flex; align-items: center; gap: 2.4rem;
+      padding: 0 1.2rem;
+    }
+    .lm-item {
+      display: grid; place-items: center;
+      width: 44px; height: 44px; flex: none;
+      opacity: .55; filter: grayscale(.25);
+      transition: opacity .2s, filter .2s;
+    }
+    .lm-item:hover { opacity: .95; filter: none; }
+    .lm-item img { width: 28px; height: 28px; object-fit: contain; display: block; }
+    :root[data-theme="light"] .lm-item { opacity: .45; }
+    :root[data-theme="light"] .lm-item:hover { opacity: .9; }
+    @keyframes logo-scroll {
+      from { transform: translateX(0); }
+      to { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .logo-track { animation: none; }
     }
 
     /* Prompt card in the closing section */
@@ -593,6 +627,40 @@
               <div class="sw-row"><span class="dot o"></span><b>landing-v3 · building</b><small>now</small></div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Company logos marquee -->
+    <section class="logo-marquee" aria-label="Tools and platforms">
+      <div class="logo-track">
+        <div class="logo-set">
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="React" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="Next.js" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="TypeScript" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/vercel/ffffff" alt="Vercel" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/openai/10A37F" alt="OpenAI" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/github/ffffff" alt="GitHub" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="Figma" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="Node.js" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="Docker" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="Supabase" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/stripe/635BFF" alt="Stripe" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="Cloudflare" width="28" height="28" loading="lazy"></span>
+        </div>
+        <div class="logo-set" aria-hidden="true">
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/react/61DAFB" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/nextdotjs/ffffff" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/typescript/3178C6" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/vercel/ffffff" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/openai/10A37F" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/github/ffffff" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/nodedotjs/339933" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/docker/2496ED" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/stripe/635BFF" alt="" width="28" height="28" loading="lazy"></span>
+          <span class="lm-item"><img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="" width="28" height="28" loading="lazy"></span>
         </div>
       </div>
     </section>
