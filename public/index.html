@@ -117,6 +117,33 @@
     @media (prefers-reduced-motion: reduce) {
       .fl-pair.writing .fl-badge, .fl-pair.writing .fl-solid svg, .fl-pair.writing .fl-dot svg.dots circle { animation: none; }
     }
+
+    /* Hero v2: copy, CTAs, ring on the Build / Research cards */
+    .hero .ubs { gap: 1.1rem; overflow: visible; }
+    .hero .cardub { outline: 3px solid rgba(255,255,255,.2); outline-offset: 4px; }
+    :root[data-theme="light"] .hero .cardub { outline-color: rgba(20,20,20,.12); }
+    .hero .cardub:focus-visible { outline-color: #f5923a; }
+    .hero-copy .chip-cloud { display: inline-flex; align-items: center; gap: .9rem; text-decoration: none; color: inherit; }
+    .hero-copy .chip-cloud .chip-name { font-size: clamp(1.05rem, 4.4vw, 1.5rem); font-weight: 500; letter-spacing: -.01em; }
+    .hero-copy .chip-cloud .chip-name i { display: none; }
+    .hero-copy .chip-cloud .chip-cta { background: none !important; border: 0 !important; box-shadow: none !important; padding: 0 !important;
+      color: #f5923a; font-size: clamp(1.05rem, 4.4vw, 1.5rem); font-weight: 500; text-decoration: underline; text-underline-offset: .18em; }
+    .hero-copy h1.maintext { font-weight: 800; letter-spacing: -.045em; line-height: 1.02; font-size: clamp(2.6rem, 11.4vw, 5.4rem); }
+    .hero-copy h1.maintext span { display: inline; }
+    .hero-copy .hero-content .lead { font-size: clamp(1.15rem, 5vw, 1.7rem); line-height: 1.3; margin-top: 1rem;
+      color: color-mix(in srgb, currentColor 55%, transparent); }
+    .hero-ctas { display: flex; align-items: center; flex-wrap: wrap; gap: clamp(1.2rem, 6vw, 2.6rem); margin-top: 1.6rem; }
+    .hero-ctas .hc-primary { display: inline-flex; align-items: center; justify-content: center; padding: .8em 2.6em; border-radius: 12px;
+      font-weight: 600; font-size: clamp(1.05rem, 4.4vw, 1.35rem); text-decoration: none; background: #fff; color: #000; }
+    :root[data-theme="light"] .hero-ctas .hc-primary { background: #000; color: #fff; }
+    .hero-ctas .hc-link { font-weight: 500; font-size: clamp(1.05rem, 4.4vw, 1.35rem); color: inherit; text-decoration: none; }
+
+    /* Software window straight after the hero, cut away on the right */
+    #software { overflow-x: clip; padding-top: clamp(1.5rem, 5vw, 3.5rem); }
+    #software .apps-frame { width: calc(100% + (100vw - 100%) / 2 + clamp(64px, 14vw, 220px)); max-width: none; }
+
+    /* Prompt card in the closing section */
+    #start .ask-wrap { max-width: 720px; margin: 0 auto; }
   </style>
   <script>
   (function () {
@@ -221,7 +248,6 @@
         <div class="nav-drop">
           <button class="nav-drop-btn" type="button" aria-expanded="false">Platform <svg class="ic"><use href="#i-chevron-down"/></svg></button>
           <div class="nav-menu" role="menu">
-            <a href="#dolphins" role="menuitem"><svg class="ic"><use href="#i-cpu"/></svg>Dolphins</a>
             <a href="#cloud" role="menuitem"><svg class="ic"><use href="#i-cloud"/></svg>Auxa Cloud</a>
             <a href="#software" role="menuitem"><svg class="ic"><use href="#i-monitor"/></svg>Workspace</a>
           </div>
@@ -262,7 +288,6 @@
       <a href="#ask" data-set-mode="build"><span class="tile"><svg class="ic"><use href="#i-terminal"/></svg></span><span><b>Build</b><small>Describe it, ship it</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <a href="#ask" data-set-mode="research"><span class="tile"><svg class="ic"><use href="#i-infinity"/></svg></span><span><b>Research</b><small>Ask anything, get sources</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <p class="sheet-label">Platform</p>
-      <a href="#dolphins"><span class="tile"><svg class="ic"><use href="#i-cpu"/></svg></span><span><b>Dolphins</b><small>Generic tools suite</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <a href="#cloud"><span class="tile"><svg class="ic"><use href="#i-cloud"/></svg></span><span><b>Auxa Cloud</b><small>Get 1GB of compute free</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <a href="#software"><span class="tile"><svg class="ic"><use href="#i-monitor"/></svg></span><span><b>Workspace</b><small>Software that looks finished</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <p class="sheet-label">Ecosystem</p>
@@ -319,75 +344,27 @@
         <div class="hero-copy">
           <a class="chip-cloud" href="#cloud" style="background:none;border:0;box-shadow:none;padding:0;border-radius:0">
             <svg class="auxa-mark" width="34" height="22" viewBox="0 0 68 40" aria-hidden="true" style="width:34px;height:22px;display:block;background:none"><path fill="#f5720f" d="M16 32c-6 0-10-3.4-10-7.8 0-3.6 2.8-6.6 6.6-7.2C14.2 11 19 7 25.2 7c5.2 0 9.6 3 11.4 7.2 1-.2 2-.4 3.2-.4 6 0 10.2 4 10.2 8.6S45.6 32 39.6 32H16z"/><path fill="#fff" d="M24 18h4.2l2.2 6.2 2.2-6.2H37v10h-2.4v-6.2L32.2 28h-2.2l-2.4-6.2V28H24V18z"/><rect x="40" y="26" width="10" height="2.2" rx="1" fill="#fff"/></svg>
-            <span class="chip-name">Auxa Cloud <i></i> Compute</span>
+            <span class="chip-name">Auxa Cloud</span>
             <span class="chip-cta">Get 1GB free</span>
           </a>
           <div class="hero-content">
             <h1 class="maintext">
-              <span>Build hybrid software.</span>
-              <span class="hl">Keep 40% of your week. <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs><linearGradient id="petalWash" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#ffb26a" stop-opacity="0.92"/><stop offset="100%" stop-color="#f07a22" stop-opacity="0.78"/></linearGradient></defs></svg>
-<span class="fl-pair writing" id="flPair" data-step="0" aria-hidden="true">
-                <span class="fl-badge fl-dot">
-                  <svg class="s0" viewBox="0 0 24 24"><path d="M12 2c2 3 2.2 5.4 1.2 7.2C16.6 8 20 9.2 22 12c-3 .6-5.2 2-6.4 4 1.6 1.8 2.2 4 1.6 6-2.6-1-4.4-2.8-5.2-5.2C11 19.2 9 21 6.2 22c.2-2.6 1.4-4.6 3.4-6C7.2 15 4.6 14 2 12c2.6-.4 4.8-1.8 6.2-3.8C7.4 6.2 7.6 3.6 9 2c1.2 1.4 2.2 1.6 3 0z"/></svg>
-                  <svg class="s1" viewBox="0 0 24 24"><path d="M12 1.5c1.4 3.2.8 5.6-.4 7.2 2.6-.2 5.2.8 7.2 2.8-2.4 1.2-4 3-4.6 5.2 2 .8 3.6 2.4 4.2 4.8-2.8-.2-5-1.6-6.4-3.8-1.2 2.4-3.2 4-5.8 4.4.4-2.6 1.8-4.6 4-5.8C8 14.8 6 12.8 3.4 12c2.2-1.6 4.6-2.2 7-1.6C9.6 8.2 9.4 5.4 10.4 2.4 11 2 11.6 1.6 12 1.5z"/></svg>
-                  <svg class="s2" viewBox="0 0 24 24"><circle cx="12.0" cy="6.3" r="3.4"/><circle cx="16.94" cy="9.15" r="3.4"/><circle cx="16.94" cy="14.85" r="3.4"/><circle cx="12.0" cy="17.7" r="3.4"/><circle cx="7.06" cy="14.85" r="3.4"/><circle cx="7.06" cy="9.15" r="3.4"/><circle cx="12" cy="12" r="3.3"/></svg>
-                </span>
-                <span class="fl-badge fl-solid">
-                  <svg class="s0" viewBox="0 0 24 24"><circle cx="12" cy="6.8" r="3.6"/><circle cx="16.7" cy="10.4" r="3.6"/><circle cx="15" cy="16" r="3.6"/><circle cx="9" cy="16" r="3.6"/><circle cx="7.3" cy="10.4" r="3.6"/><circle cx="12" cy="12" r="3.2"/></svg>
-                  <svg class="s1" viewBox="0 0 24 24"><circle cx="12.0" cy="6.7" r="4.3"/><circle cx="17.3" cy="12.0" r="4.3"/><circle cx="12.0" cy="17.3" r="4.3"/><circle cx="6.7" cy="12.0" r="4.3"/><circle cx="12" cy="12" r="3.2"/></svg>
-                  <svg class="s2" viewBox="0 0 24 24"><circle cx="12.0" cy="6.3" r="3.4"/><circle cx="16.94" cy="9.15" r="3.4"/><circle cx="16.94" cy="14.85" r="3.4"/><circle cx="12.0" cy="17.7" r="3.4"/><circle cx="7.06" cy="14.85" r="3.4"/><circle cx="7.06" cy="9.15" r="3.4"/><circle cx="12" cy="12" r="3.3"/></svg>
-                </span>
-              </span></span>
+              <span>Connect to Business Research Tools.</span>
+              <span>Build 100% Digital Presence.</span>
             </h1>
-            <p class="lead">Business research tools and media content tools. <a class="lead-link" href="#wll360">WLL 360</a></p>
+            <p class="lead">Be miserable. Or motivate yourself. Whatever has to be done, it's always your choice.</p>
           </div>
-          <div class="ask-wrap flex-col g-6" id="ask">
-            <a class="start-link" href="#pricing"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg><span>Start Today</span></a>
-            <div class="prompt-stage">
-            <div class="prompt-blobs" aria-hidden="true">
-              <i class="pblob p1"></i>
-              <i class="pblob p2"></i>
-              <i class="pblob p3"></i>
-            </div>
-            <form class="flex-col jc-bt prompt p-13 g-3" id="askForm" autocomplete="off">
-              <div class="flex-row g-6 flex field">
-                <svg class="ic"><use href="#i-search"/></svg>
-                <textarea id="askInput" rows="2" placeholder="How does SEO help improve..." aria-label="Ask Webever"></textarea>
-              </div>
-              <div class="flex-row jc-bt al-c">
-                <label class="mode">
-                  <svg class="ic" id="modeIcon"><use href="#i-discover"/></svg>
-                  <select id="askMode" aria-label="Mode">
-                    <option value="discover">Discover</option>
-                    <option value="build">Build</option>
-                    <option value="research">Research</option>
-                  </select>
-                  <svg class="ic"><use href="#i-chevron-down"/></svg>
-                </label>
-                <div class="flex-row al-c g-3">
-                  <button class="tool" id="micBtn" type="button" aria-label="Speak your question"><svg class="ic mic-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2.5" width="8" height="12.5" rx="3.7" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 18v3.5M8.8 21.5h6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
-                  <button class="send flex-col al-c" type="submit" aria-label="Send"><svg class="ic"><use href="#i-arrow-right"/></svg></button>
-                </div>
-              </div>
-            </form>
-            </div>
-            <div class="suggest" id="suggest">
-              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How much could the real estate earn me</span></button>
-              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How to reduce web cost when building aviations site</span></button>
-              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>Which stack fits a hybrid mobile app</span></button>
-            </div>
+          <div class="hero-ctas">
+            <a class="hc-primary" href="#cloud">Join Auxa</a>
+            <a class="hc-link" href="#ask" data-set-mode="build">Publish your site</a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Dolphins: large left + squared side cards + CTA -->
+    <!-- Software window -->
     <section class="section" id="software">
       <div class="wrap">
-        <div class="apps-head">
-          <h2>100% Built by WLL</h2>
-          <p>Let's get on a tour on some of the services handled with Webever Labs</p>
-        </div>
         <div class="apps-stage">
           <div class="apps-glow" aria-hidden="true"></div>
           <div class="apps-frame">
@@ -430,57 +407,6 @@
               </article>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="dolphins">
-      <div class="wrap">
-        <div class="logo-sprinkle sec" aria-hidden="true">
-          <span class="logo-chip claude r2 pad" title="Claude"><img src="https://cdn.simpleicons.org/claude/FFFFFF" alt="" width="18" height="18" loading="lazy"></span>
-          <span class="logo-chip fig r5 pad" title="Figma"><img src="https://cdn.simpleicons.org/figma/F24E1E" alt="" width="18" height="18" loading="lazy"></span>
-          <span class="logo-chip openai r3 pad" title="OpenAI"><img src="https://cdn.simpleicons.org/openai/FFFFFF" alt="" width="18" height="18" loading="lazy"></span>
-        </div>
-        <div class="sec-head">
-          <h2>Dolphins: Webever generic tools</h2>
-          <p>A shared toolkit for enterprises, developers and creators. Three focused tools that cover the work you actually do.</p>
-        </div>
-        <div class="dolphins-stack">
-          <article class="dolphin-card big">
-            <div class="dolphin-media" data-canvas="pdf" data-img="assets/photos/dolphin-tools.jpg">
-              <canvas></canvas>
-              <img alt="" loading="lazy" onload="this.parentElement.classList.add('has-img')" onerror="this.style.display='none'">
-            </div>
-            <span class="dolphin-scrim"></span>
-            <div class="dolphin-body" hidden></div>
-          </article>
-          <div class="dolphins-side">
-            <article class="dolphin-card side">
-              <div class="dolphin-media" data-canvas="smoke">
-                <canvas></canvas>
-              </div>
-              <span class="dolphin-scrim"></span>
-              <div class="dolphin-body">
-                <span class="dolphin-side-ic"><svg class="ic"><use href="#i-package"/></svg></span>
-                <h3>HTML app bundler</h3>
-                <p>Apps from pages, any OS</p>
-              </div>
-            </article>
-            <article class="dolphin-card side">
-              <div class="dolphin-media" data-canvas="agent">
-                <canvas></canvas>
-              </div>
-              <span class="dolphin-scrim"></span>
-              <div class="dolphin-body">
-                <span class="dolphin-side-ic"><svg class="ic"><use href="#i-sparkles"/></svg></span>
-                <h3>Fine-tuning agent</h3>
-                <p>On-brand copy &amp; SEO</p>
-              </div>
-            </article>
-          </div>
-        </div>
-        <div class="dolphins-cta">
-          <a class="btn" href="#ask"><svg class="ic"><use href="#i-arrow-up-right"/></svg>Explore Dolphins tools</a>
         </div>
       </div>
     </section>
@@ -749,10 +675,42 @@
     </section>
     <section class="section" id="start">
       <div class="wrap">
-        <a class="start-card" href="#ask" data-set-mode="build">
-          <span>Ready when you are</span>
-          <strong>Start building</strong>
-        </a>
+          <div class="ask-wrap flex-col g-6" id="ask">
+            <a class="start-link" href="#pricing"><svg class="ic" aria-hidden="true"><use href="#i-arrow-right"/></svg><span>Start Today</span></a>
+            <div class="prompt-stage">
+            <div class="prompt-blobs" aria-hidden="true">
+              <i class="pblob p1"></i>
+              <i class="pblob p2"></i>
+              <i class="pblob p3"></i>
+            </div>
+            <form class="flex-col jc-bt prompt p-13 g-3" id="askForm" autocomplete="off">
+              <div class="flex-row g-6 flex field">
+                <svg class="ic"><use href="#i-search"/></svg>
+                <textarea id="askInput" rows="2" placeholder="How does SEO help improve..." aria-label="Ask Webever"></textarea>
+              </div>
+              <div class="flex-row jc-bt al-c">
+                <label class="mode">
+                  <svg class="ic" id="modeIcon"><use href="#i-discover"/></svg>
+                  <select id="askMode" aria-label="Mode">
+                    <option value="discover">Discover</option>
+                    <option value="build">Build</option>
+                    <option value="research">Research</option>
+                  </select>
+                  <svg class="ic"><use href="#i-chevron-down"/></svg>
+                </label>
+                <div class="flex-row al-c g-3">
+                  <button class="tool" id="micBtn" type="button" aria-label="Speak your question"><svg class="ic mic-ic" viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="2.5" width="8" height="12.5" rx="3.7" fill="currentColor" fill-opacity=".14" stroke="currentColor" stroke-width="1.8"/><path d="M5 11a7 7 0 0 0 14 0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><path d="M12 18v3.5M8.8 21.5h6.4" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+                  <button class="send flex-col al-c" type="submit" aria-label="Send"><svg class="ic"><use href="#i-arrow-right"/></svg></button>
+                </div>
+              </div>
+            </form>
+            </div>
+            <div class="suggest" id="suggest">
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How much could the real estate earn me</span></button>
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>How to reduce web cost when building aviations site</span></button>
+              <button type="button"><svg class="ic"><use href="#i-reply"/></svg><span>Which stack fits a hybrid mobile app</span></button>
+            </div>
+          </div>
       </div>
     </section>
   </div>
@@ -778,7 +736,6 @@
             <ul>
               <li><a href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-terminal"/></svg>Build</a></li>
               <li><a href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-infinity"/></svg>Research</a></li>
-              <li><a href="#dolphins"><svg class="ic"><use href="#i-cpu"/></svg>Dolphins</a></li>
               <li><a href="#wll360"><svg class="ic"><use href="#i-compass"/></svg>WLL 360</a></li>
               <li><a href="#cloud"><svg class="ic"><use href="#i-cloud"/></svg>Auxa Cloud</a></li>
             </ul>
@@ -962,10 +919,6 @@
     { title: 'Home: Build hybrid software', href: '#top', body: 'Build hybrid softwares technical relief Auxa Cloud prompt' },
     { title: 'Build mode', href: '#ask', body: 'Describe the app or site hybrid mobile Android iOS web build' },
     { title: 'Research mode', href: '#ask', body: 'Research sources competitors next steps ask question' },
-    { title: 'Dolphins: Generic tools', href: '#dolphins', body: 'Dolphins Webever generic tools enterprises developers creators' },
-    { title: 'Automated PDF designer', href: '#dolphins', body: 'PDF designer templates invoices reports proposals brand' },
-    { title: 'HTML app bundler', href: '#dolphins', body: 'HTML app bundler installable apps Android iOS desktop pages' },
-    { title: 'Fine-tuning agent', href: '#dolphins', body: 'Fine tuning agent voice product audience copy SEO support' },
     { title: 'Software UI workspace', href: '#software', body: 'Software rectangular UI workspace previews fade ship' },
     { title: 'Enterprises', href: '#audience', body: 'Enterprises teams companies internal tools portals SSO audit' },
     { title: 'Developers', href: '#audience', body: 'Developers stack builds previews GitHub Firebase APK AAB' },
@@ -1005,7 +958,7 @@
     });
     searchMeta.textContent = hits.length + ' result' + (hits.length === 1 ? '' : 's') + ' for “' + q + '”';
     if (!hits.length) {
-      searchHits.innerHTML = '<li class="search-empty">No matches. Try “dolphins”, “pricing”, or “build”.</li>';
+      searchHits.innerHTML = '<li class="search-empty">No matches. Try “pricing”, “workspace”, or “build”.</li>';
       return;
     }
     hits.forEach(function (item) {
