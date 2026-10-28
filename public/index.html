@@ -168,6 +168,13 @@
     .hero .blob.b6 { --o: .7; }
     .hero .blob.b7 { --o: .45; }
 
+    /* Kill the dotted grey grid on the hero background */
+    .hero::before {
+      display: none !important;
+      background-image: none !important;
+      content: none !important;
+    }
+
     /* Hero: UBS outline soft, matches bg (not harsh grey) */
     .hero .ubs { gap: 1.1rem; overflow: visible; }
     .hero .cardub {
@@ -358,11 +365,22 @@
       position: relative; display: block;
       aspect-ratio: 1 / 1.05;
       max-width: 420px; width: 100%; margin: 0 auto;
-      border-radius: 28px; overflow: hidden;
-      background: #0a0c10;
-      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 40px; overflow: hidden;
+      background: #12151c;
+      border: 1px solid rgba(255,255,255,.06);
       text-decoration: none; color: #fff;
       isolation: isolate;
+    }
+    /* Inner diffusion: dark grey middle, glowing edge blobs */
+    .svc-card::before {
+      content: "";
+      position: absolute; inset: 0; z-index: 1; pointer-events: none;
+      background:
+        radial-gradient(ellipse 80% 70% at 50% 45%, rgba(18, 21, 28, .92) 0%, rgba(18, 21, 28, .55) 42%, transparent 72%),
+        radial-gradient(circle at 12% 18%, rgba(61, 120, 232, .45) 0%, transparent 42%),
+        radial-gradient(circle at 88% 22%, rgba(139, 92, 246, .38) 0%, transparent 40%),
+        radial-gradient(circle at 18% 88%, rgba(0, 180, 204, .32) 0%, transparent 45%),
+        radial-gradient(circle at 85% 85%, rgba(245, 146, 58, .28) 0%, transparent 42%);
     }
     .svc-bg {
       position: absolute; inset: 0; z-index: 0;
@@ -371,35 +389,40 @@
     }
     .svc-bg-fallback {
       position: absolute; inset: 0; z-index: 0;
-      background: linear-gradient(180deg, #0c1018 0%, #080a0e 55%, #0a0e14 100%);
+      background: #12151c;
     }
     .svc-top {
-      position: relative; z-index: 2;
+      position: relative; z-index: 3;
       display: flex; align-items: flex-start; justify-content: space-between;
-      padding: 1.15rem 1.2rem 0;
+      padding: 1.25rem 1.3rem 0;
     }
     .svc-top b {
-      font-size: .92rem; font-weight: 600; letter-spacing: -.01em;
-      color: rgba(255,255,255,.88);
+      font-size: .95rem; font-weight: 600; letter-spacing: -.01em;
+      color: rgba(255,255,255,.9);
     }
     .svc-arrow {
-      width: 36px; height: 36px; border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       display: grid; place-items: center;
-      color: rgba(255,255,255,.75);
+      color: rgba(255,255,255,.8);
       transition: transform .2s var(--ease), color .2s;
     }
-    .svc-arrow .ic { width: 18px; height: 18px; stroke-width: 2.2; }
+    .svc-arrow .ic {
+      width: 20px; height: 20px;
+      stroke-width: 2.6; stroke: currentColor; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
     .svc-card:hover .svc-arrow { color: #fff; transform: translate(2px, -2px); }
     .svc-icon {
-      position: absolute; z-index: 2;
+      position: absolute; z-index: 3;
       left: 50%; top: 42%; transform: translate(-50%, -50%);
-      width: 72px; height: 72px;
+      width: 80px; height: 80px;
       display: grid; place-items: center;
       color: #fff;
     }
-    .svc-icon .ic {
-      width: 56px; height: 56px;
-      stroke-width: 1.5; stroke: currentColor; fill: none;
+    .svc-icon svg {
+      width: 58px; height: 58px;
+      stroke: currentColor; fill: none;
+      stroke-width: 2.75;
       stroke-linecap: round; stroke-linejoin: round;
     }
     @media (min-width: 700px) {
@@ -759,7 +782,7 @@
               <b>Web development</b>
               <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
             </div>
-            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-code"/></svg></span>
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></span>
           </a>
           <a class="svc-card" href="#ask" data-set-mode="build">
             <span class="svc-bg-fallback" aria-hidden="true"></span>
@@ -768,7 +791,7 @@
               <b>Mobile development</b>
               <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
             </div>
-            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-smartphone"/></svg></span>
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="7" y="2" width="10" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg></span>
           </a>
           <a class="svc-card" href="#cloud">
             <span class="svc-bg-fallback" aria-hidden="true"></span>
@@ -777,7 +800,7 @@
               <b>Drive storage</b>
               <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
             </div>
-            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-cloud"/></svg></span>
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></svg></span>
           </a>
           <a class="svc-card" href="#ask" data-set-mode="research">
             <span class="svc-bg-fallback" aria-hidden="true"></span>
@@ -786,7 +809,7 @@
               <b>Research agency</b>
               <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
             </div>
-            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-infinity"/></svg></span>
+            <span class="svc-icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></span>
           </a>
         </div>
       </div>
