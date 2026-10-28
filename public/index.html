@@ -158,15 +158,15 @@
         radial-gradient(circle at 58% 32%, rgba(180, 230, 255, .4) 0%, transparent 46%);
     }
 
-    /* Hero blobs: essentially invisible */
-    .hero .blobs { inset: -8% -8% -18% -8% !important; opacity: .15; }
-    .hero .blob.b1 { --o: .04; top: 48% !important; left: 18% !important; width: 48% !important; }
-    .hero .blob.b2 { --o: .03; }
-    .hero .blob.b3 { --o: .02; }
-    .hero .blob.b4 { --o: .02; top: 55% !important; }
-    .hero .blob.b5 { --o: .02; }
-    .hero .blob.b6 { --o: .03; top: 58% !important; left: 28% !important; }
-    .hero .blob.b7 { --o: .02; }
+    /* Hero blobs behind UBS: full strength (not faded) */
+    .hero .blobs { inset: -10% -6% !important; }
+    .hero .blob.b1 { --o: .95; }
+    .hero .blob.b2 { --o: .6; }
+    .hero .blob.b3 { --o: .5; }
+    .hero .blob.b4 { --o: .55; }
+    .hero .blob.b5 { --o: .5; }
+    .hero .blob.b6 { --o: .7; }
+    .hero .blob.b7 { --o: .45; }
 
     /* Hero: UBS outline soft, matches bg (not harsh grey) */
     .hero .ubs { gap: 1.1rem; overflow: visible; }
@@ -330,6 +330,87 @@
     }
     @media (prefers-reduced-motion: reduce) {
       .sw-pill i { animation: none; }
+    }
+
+    /* Our Services section */
+    .services {
+      padding: 2.8em 0 3.2em;
+      position: relative;
+    }
+    .services-inner { max-width: 720px; margin: 0 auto; padding: 0 1.25em; }
+    .services-label {
+      display: block; text-align: center;
+      font-size: .9rem; font-weight: 650; color: #3d78e8;
+      margin-bottom: .85em; letter-spacing: .01em;
+    }
+    .services-title {
+      text-align: center;
+      font-family: var(--display), 'Bricolage Grotesque', system-ui, sans-serif;
+      font-weight: 800; letter-spacing: -.04em; line-height: 1.05;
+      font-size: clamp(1.7rem, 6.5vw, 2.6rem);
+      margin: 0 0 1.6em; color: var(--ink);
+    }
+    :root[data-theme="dark"] .services-title { color: #fff; }
+    .svc-grid {
+      display: flex; flex-direction: column; gap: 1.1rem;
+    }
+    .svc-card {
+      position: relative; display: block;
+      aspect-ratio: 1 / 1.05;
+      max-width: 420px; width: 100%; margin: 0 auto;
+      border-radius: 28px; overflow: hidden;
+      background: #0a0c10;
+      border: 1px solid rgba(255,255,255,.08);
+      text-decoration: none; color: #fff;
+      isolation: isolate;
+    }
+    .svc-bg {
+      position: absolute; inset: 0; z-index: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      pointer-events: none;
+    }
+    .svc-bg-fallback {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(180deg, #0c1018 0%, #080a0e 55%, #0a0e14 100%);
+    }
+    .svc-top {
+      position: relative; z-index: 2;
+      display: flex; align-items: flex-start; justify-content: space-between;
+      padding: 1.15rem 1.2rem 0;
+    }
+    .svc-top b {
+      font-size: .92rem; font-weight: 600; letter-spacing: -.01em;
+      color: rgba(255,255,255,.88);
+    }
+    .svc-arrow {
+      width: 36px; height: 36px; border-radius: 50%;
+      display: grid; place-items: center;
+      color: rgba(255,255,255,.75);
+      transition: transform .2s var(--ease), color .2s;
+    }
+    .svc-arrow .ic { width: 18px; height: 18px; stroke-width: 2.2; }
+    .svc-card:hover .svc-arrow { color: #fff; transform: translate(2px, -2px); }
+    .svc-icon {
+      position: absolute; z-index: 2;
+      left: 50%; top: 42%; transform: translate(-50%, -50%);
+      width: 72px; height: 72px;
+      display: grid; place-items: center;
+      color: #fff;
+    }
+    .svc-icon .ic {
+      width: 56px; height: 56px;
+      stroke-width: 1.5; stroke: currentColor; fill: none;
+      stroke-linecap: round; stroke-linejoin: round;
+    }
+    @media (min-width: 700px) {
+      .svc-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.2rem;
+        max-width: 680px;
+        margin: 0 auto;
+      }
+      .svc-card { max-width: none; }
     }
 
     /* Company logos horizontal marquee (after software window) */
@@ -661,6 +742,52 @@
           <span class="lm-item"><img src="https://cdn.simpleicons.org/supabase/3FCF8E" alt="" width="28" height="28" loading="lazy"></span>
           <span class="lm-item"><img src="https://cdn.simpleicons.org/stripe/635BFF" alt="" width="28" height="28" loading="lazy"></span>
           <span class="lm-item"><img src="https://cdn.simpleicons.org/cloudflare/F38020" alt="" width="28" height="28" loading="lazy"></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Services -->
+    <section class="services" id="services" aria-label="Our services">
+      <div class="services-inner">
+        <span class="services-label">Our Services</span>
+        <h2 class="services-title">We create it.<br>We maintain it.</h2>
+        <div class="svc-grid">
+          <a class="svc-card" href="#ask" data-set-mode="build">
+            <span class="svc-bg-fallback" aria-hidden="true"></span>
+            <img class="svc-bg" src="assets/photos/svc-web.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div class="svc-top">
+              <b>Web development</b>
+              <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </div>
+            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-code"/></svg></span>
+          </a>
+          <a class="svc-card" href="#ask" data-set-mode="build">
+            <span class="svc-bg-fallback" aria-hidden="true"></span>
+            <img class="svc-bg" src="assets/photos/svc-mobile.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div class="svc-top">
+              <b>Mobile development</b>
+              <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </div>
+            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-smartphone"/></svg></span>
+          </a>
+          <a class="svc-card" href="#cloud">
+            <span class="svc-bg-fallback" aria-hidden="true"></span>
+            <img class="svc-bg" src="assets/photos/svc-storage.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div class="svc-top">
+              <b>Drive storage</b>
+              <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </div>
+            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-cloud"/></svg></span>
+          </a>
+          <a class="svc-card" href="#ask" data-set-mode="research">
+            <span class="svc-bg-fallback" aria-hidden="true"></span>
+            <img class="svc-bg" src="assets/photos/svc-research.jpg" alt="" loading="lazy" onerror="this.style.display='none'">
+            <div class="svc-top">
+              <b>Research agency</b>
+              <span class="svc-arrow" aria-hidden="true"><svg class="ic"><use href="#i-arrow-up-right"/></svg></span>
+            </div>
+            <span class="svc-icon" aria-hidden="true"><svg class="ic"><use href="#i-infinity"/></svg></span>
+          </a>
         </div>
       </div>
     </section>
