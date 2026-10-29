@@ -545,9 +545,9 @@
       .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     }
 
-    /* Our Agency carousel */
-    .agency { padding: 2.6em 0 3.2em; overflow-x: clip; }
-    .agency-inner { max-width: 720px; margin: 0 auto; padding: 0 1.25em; }
+    /* Our Agency: 3-card arc stack */
+    .agency { padding: 2.6em 0 3.2em; overflow: visible; }
+    .agency-inner { max-width: 720px; margin: 0 auto; padding: 0 1.25em; overflow: visible; }
     .agency-label {
       display: block; text-align: center;
       font-size: .9rem; font-weight: 650; color: #3d78e8; margin-bottom: .75em;
@@ -557,24 +557,57 @@
       font-family: var(--display), 'Bricolage Grotesque', system-ui, sans-serif;
       font-weight: 800; letter-spacing: -.04em; line-height: 1.12;
       font-size: clamp(1.45rem, 5.2vw, 2.15rem);
-      margin: 0 0 1.4em; color: var(--ink); max-width: 22ch; margin-left: auto; margin-right: auto;
+      margin: 0 0 1.5em; color: var(--ink); max-width: 22ch; margin-left: auto; margin-right: auto;
     }
     :root[data-theme="dark"] .agency-title { color: #fff; }
     .agency-stage {
-      position: relative; border-radius: 28px; overflow: hidden;
-      aspect-ratio: 4 / 5; max-width: 420px; margin: 0 auto 1.2em;
-      background: #0a0c10;
+      position: relative;
+      width: min(72vw, 320px);
+      aspect-ratio: 1 / 1;
+      margin: 0 auto 1.6em;
+      perspective: 900px;
+      touch-action: pan-y;
+      cursor: grab;
+      user-select: none;
+      overflow: visible;
     }
-    .agency-track {
-      display: flex; height: 100%;
-      transition: transform .55s cubic-bezier(.2,.8,.2,1);
-      will-change: transform;
-    }
+    .agency-stage.is-dragging { cursor: grabbing; }
     .agency-slide {
-      flex: 0 0 100%; height: 100%; position: relative;
+      position: absolute; inset: 0;
+      border-radius: 28px; overflow: hidden;
+      background: #0a0c10;
+      border: 1px solid rgba(255,255,255,.08);
+      box-shadow: 0 18px 50px rgba(0,0,0,.35);
+      transform-origin: center center;
+      transition: transform .7s cubic-bezier(.2,.85,.2,1), opacity .55s ease, filter .55s ease;
+      will-change: transform, opacity;
     }
     .agency-slide img {
-      width: 100%; height: 100%; object-fit: cover; display: block;
+      width: 100%; height: 100%; object-fit: cover; display: block; pointer-events: none;
+    }
+    /* Active center */
+    .agency-slide.is-center {
+      z-index: 3;
+      transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+      opacity: 1; filter: none;
+    }
+    /* Left peek — arcs out from edge */
+    .agency-slide.is-left {
+      z-index: 2;
+      transform: translateX(-58%) translateY(6%) rotate(-14deg) scale(.86);
+      opacity: .92; filter: brightness(.75);
+    }
+    /* Right peek */
+    .agency-slide.is-right {
+      z-index: 2;
+      transform: translateX(58%) translateY(6%) rotate(14deg) scale(.86);
+      opacity: .92; filter: brightness(.75);
+    }
+    /* Far / hidden */
+    .agency-slide.is-far {
+      z-index: 1;
+      transform: translateX(0) translateY(18%) rotate(0deg) scale(.7);
+      opacity: 0; pointer-events: none;
     }
     .agency-info {
       display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
@@ -590,16 +623,13 @@
       margin: 0; font-size: .9rem; line-height: 1.45; color: var(--muted); max-width: 28ch;
     }
     .agency-info-icon {
-      flex: none; width: 48px; height: 48px; color: var(--ink);
-      opacity: .85;
+      flex: none; width: 52px; height: 52px; color: var(--ink);
     }
     .agency-info-icon svg {
-      width: 48px; height: 48px;
+      width: 52px; height: 52px;
       stroke: currentColor; fill: none;
-      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+      stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round;
     }
-    .agency-stage { touch-action: pan-y; cursor: grab; }
-    .agency-stage.is-dragging { cursor: grabbing; }
     .agency-actions {
       display: flex; flex-direction: column; gap: .65rem;
       max-width: 420px; margin: 0 auto;
@@ -1160,16 +1190,14 @@
         <span class="agency-label">Our Agency</span>
         <h2 class="agency-title">Access a dedicated unit for your enterprise that provides conversion researchs</h2>
         <div class="agency-stage" id="agencyStage">
-          <div class="agency-track" id="agencyTrack">
-            <div class="agency-slide" data-title="Digital Marketing" data-body="Get action. Seize the moment. Man was never intended to become an oyster.">
-              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop" alt="" loading="lazy">
-            </div>
-            <div class="agency-slide" data-title="Conversion Research" data-body="Dedicated analysts map funnels, friction and the next win for your product.">
-              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=1000&fit=crop" alt="" loading="lazy">
-            </div>
-            <div class="agency-slide" data-title="Growth Ops" data-body="Ship experiments weekly. Keep the scoreboard honest and the stack simple.">
-              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=1000&fit=crop" alt="" loading="lazy">
-            </div>
+          <div class="agency-slide" data-title="Digital Marketing" data-body="Get action. Seize the moment. Man was never intended to become an oyster." data-icon="growth">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&h=900&fit=crop" alt="" loading="lazy">
+          </div>
+          <div class="agency-slide" data-title="Conversion Research" data-body="Dedicated analysts map funnels, friction and the next win for your product." data-icon="radar">
+            <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=900&h=900&fit=crop" alt="" loading="lazy">
+          </div>
+          <div class="agency-slide" data-title="Growth Ops" data-body="Ship experiments weekly. Keep the scoreboard honest and the stack simple." data-icon="pulse">
+            <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=900&h=900&fit=crop" alt="" loading="lazy">
           </div>
         </div>
         <div class="agency-info">
@@ -1177,9 +1205,7 @@
             <h3 id="agencyTitle">Digital Marketing</h3>
             <p id="agencyBody">Get action. Seize the moment. Man was never intended to become an oyster.</p>
           </div>
-          <span class="agency-info-icon" aria-hidden="true" id="agencyIcon">
-            <svg viewBox="0 0 48 48"><path d="M24 8c6 4 10 10 10 16s-4 12-10 16c-6-4-10-10-10-16s4-12 10-16z"/><path d="M24 14v20"/><path d="M18 20h12"/></svg>
-          </span>
+          <span class="agency-info-icon" aria-hidden="true" id="agencyIcon"></span>
         </div>
         <div class="agency-dots" id="agencyDots" role="tablist" aria-label="Agency slides"></div>
         <div class="agency-actions">
@@ -2038,17 +2064,23 @@
     });
   });
 
-  /* Agency carousel: auto + swipe + dots */
+  /* Agency 3-card arc stack */
   (function () {
-    var track = document.getElementById('agencyTrack');
     var stage = document.getElementById('agencyStage');
     var dots = document.getElementById('agencyDots');
     var titleEl = document.getElementById('agencyTitle');
     var bodyEl = document.getElementById('agencyBody');
-    if (!track || !stage) return;
-    var slides = Array.prototype.slice.call(track.querySelectorAll('.agency-slide'));
+    var iconEl = document.getElementById('agencyIcon');
+    if (!stage) return;
+    var slides = Array.prototype.slice.call(stage.querySelectorAll('.agency-slide'));
     if (!slides.length) return;
     var i = 0, timer = null, startX = 0, deltaX = 0, dragging = false;
+
+    var ICONS = {
+      growth: '<svg viewBox="0 0 48 48"><path d="M8 36V28"/><path d="M18 36V20"/><path d="M28 36V24"/><path d="M38 36V14"/><path d="M8 18c6-2 12-6 18-10"/><path d="M22 10h6v6"/></svg>',
+      radar: '<svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="4"/><circle cx="24" cy="24" r="11"/><circle cx="24" cy="24" r="18"/><path d="M24 24l14-8"/></svg>',
+      pulse: '<svg viewBox="0 0 48 48"><path d="M4 26h8l4-12 6 24 5-16 4 8h13"/><circle cx="40" cy="14" r="3.5"/></svg>'
+    };
 
     slides.forEach(function (_, n) {
       var b = document.createElement('button');
@@ -2061,10 +2093,22 @@
 
     function go(n) {
       i = (n + slides.length) % slides.length;
-      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      var len = slides.length;
+      slides.forEach(function (s, k) {
+        s.classList.remove('is-center', 'is-left', 'is-right', 'is-far');
+        var rel = (k - i + len) % len;
+        if (rel === 0) s.classList.add('is-center');
+        else if (rel === 1) s.classList.add('is-right');
+        else if (rel === len - 1) s.classList.add('is-left');
+        else s.classList.add('is-far');
+      });
       var s = slides[i];
       if (titleEl) titleEl.textContent = s.getAttribute('data-title') || '';
       if (bodyEl) bodyEl.textContent = s.getAttribute('data-body') || '';
+      if (iconEl) {
+        var key = s.getAttribute('data-icon') || 'growth';
+        iconEl.innerHTML = ICONS[key] || ICONS.growth;
+      }
       if (dots) {
         Array.prototype.forEach.call(dots.children, function (d, k) {
           d.classList.toggle('is-on', k === i);
@@ -2076,28 +2120,24 @@
     function restart() {
       if (timer) clearInterval(timer);
       if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      timer = setInterval(next, 4500);
+      timer = setInterval(next, 4200);
     }
 
     stage.addEventListener('pointerdown', function (e) {
       dragging = true; startX = e.clientX; deltaX = 0;
       stage.classList.add('is-dragging');
-      stage.setPointerCapture(e.pointerId);
+      try { stage.setPointerCapture(e.pointerId); } catch (err) {}
       if (timer) clearInterval(timer);
     });
     stage.addEventListener('pointermove', function (e) {
       if (!dragging) return;
       deltaX = e.clientX - startX;
-      track.style.transition = 'none';
-      track.style.transform = 'translateX(calc(' + (-i * 100) + '% + ' + deltaX + 'px))';
     });
     function endDrag() {
       if (!dragging) return;
       dragging = false;
       stage.classList.remove('is-dragging');
-      track.style.transition = '';
-      if (Math.abs(deltaX) > 48) go(i + (deltaX < 0 ? 1 : -1));
-      else go(i);
+      if (Math.abs(deltaX) > 40) go(i + (deltaX < 0 ? 1 : -1));
       restart();
     }
     stage.addEventListener('pointerup', endDrag);
