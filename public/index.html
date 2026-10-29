@@ -545,6 +545,198 @@
       .prod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     }
 
+    /* Our Agency carousel */
+    .agency { padding: 2.6em 0 3.2em; overflow-x: clip; }
+    .agency-inner { max-width: 720px; margin: 0 auto; padding: 0 1.25em; }
+    .agency-label {
+      display: block; text-align: center;
+      font-size: .9rem; font-weight: 650; color: #3d78e8; margin-bottom: .75em;
+    }
+    .agency-title {
+      text-align: center;
+      font-family: var(--display), 'Bricolage Grotesque', system-ui, sans-serif;
+      font-weight: 800; letter-spacing: -.04em; line-height: 1.12;
+      font-size: clamp(1.45rem, 5.2vw, 2.15rem);
+      margin: 0 0 1.4em; color: var(--ink); max-width: 22ch; margin-left: auto; margin-right: auto;
+    }
+    :root[data-theme="dark"] .agency-title { color: #fff; }
+    .agency-stage {
+      position: relative; border-radius: 28px; overflow: hidden;
+      aspect-ratio: 4 / 5; max-width: 420px; margin: 0 auto 1.2em;
+      background: #0a0c10;
+    }
+    .agency-track {
+      display: flex; height: 100%;
+      transition: transform .55s cubic-bezier(.2,.8,.2,1);
+      will-change: transform;
+    }
+    .agency-slide {
+      flex: 0 0 100%; height: 100%; position: relative;
+    }
+    .agency-slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .agency-info {
+      display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem;
+      text-align: left; max-width: 420px; margin: 0 auto 1.3em;
+      min-height: 5.5em;
+    }
+    .agency-info-text { flex: 1; min-width: 0; }
+    .agency-info h3 {
+      margin: 0 0 .35em; font-size: 1.15rem; font-weight: 750; letter-spacing: -.02em;
+      color: var(--ink);
+    }
+    .agency-info p {
+      margin: 0; font-size: .9rem; line-height: 1.45; color: var(--muted); max-width: 28ch;
+    }
+    .agency-info-icon {
+      flex: none; width: 48px; height: 48px; color: var(--ink);
+      opacity: .85;
+    }
+    .agency-info-icon svg {
+      width: 48px; height: 48px;
+      stroke: currentColor; fill: none;
+      stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round;
+    }
+    .agency-stage { touch-action: pan-y; cursor: grab; }
+    .agency-stage.is-dragging { cursor: grabbing; }
+    .agency-actions {
+      display: flex; flex-direction: column; gap: .65rem;
+      max-width: 420px; margin: 0 auto;
+    }
+    .agency-actions a {
+      display: flex; align-items: center; justify-content: center;
+      padding: .85em 1.2em; border-radius: 14px;
+      font-weight: 700; font-size: .95rem; text-decoration: none;
+    }
+    .agency-actions .ag-primary {
+      background: #fff; color: #000;
+    }
+    :root[data-theme="light"] .agency-actions .ag-primary {
+      background: #111; color: #fff;
+    }
+    .agency-actions .ag-secondary {
+      background: transparent; color: var(--ink);
+      border: 1.5px solid color-mix(in srgb, currentColor 22%, transparent);
+    }
+    .agency-dots {
+      display: flex; justify-content: center; gap: .4em; margin: 1em 0 0;
+    }
+    .agency-dots button {
+      width: 7px; height: 7px; border-radius: 50%; border: 0; padding: 0;
+      background: color-mix(in srgb, currentColor 28%, transparent);
+      cursor: pointer;
+    }
+    .agency-dots button.is-on { background: #3d78e8; width: 18px; border-radius: 99px; }
+
+    /* Footer redesign */
+    .site-footer { padding: 2.4em 0 1.6em; }
+    .site-footer .foot-grid {
+      display: flex; flex-direction: column; gap: 1.4em;
+    }
+    .site-footer .foot-brand p {
+      color: var(--muted); margin-top: .55em; max-width: 34ch; font-size: .82rem; line-height: 1.45;
+    }
+    .site-footer .foot-cols {
+      display: flex; flex-direction: column; gap: 0; width: 100%;
+    }
+    .site-footer .foot-col {
+      width: 100%; border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    }
+    .site-footer .foot-col h4 {
+      margin: 0; font-size: .88rem; font-weight: 700;
+    }
+    .site-footer .foot-col button.foot-acc {
+      width: 100%; display: flex; align-items: center; justify-content: space-between;
+      padding: .95em 0; background: none; border: 0; color: inherit;
+      font: inherit; font-weight: 700; font-size: .9rem; cursor: pointer; text-align: left;
+    }
+    .site-footer .foot-col button.foot-acc .chev {
+      width: 16px; height: 16px; transition: transform .2s;
+      stroke: currentColor; fill: none; stroke-width: 2.2;
+    }
+    .site-footer .foot-col.is-open button.foot-acc .chev { transform: rotate(180deg); }
+    .site-footer .foot-col ul {
+      list-style: none; margin: 0; padding: 0 0 .85em;
+      display: none; flex-direction: column; gap: .15em;
+    }
+    .site-footer .foot-col.is-open ul { display: flex; }
+    .site-footer .foot-col a,
+    .site-footer .foot-col button.plain {
+      display: block; padding: .4em 0; color: var(--muted);
+      text-decoration: none; font-size: .9rem; background: none; border: 0;
+      font: inherit; cursor: pointer; text-align: left;
+    }
+    .site-footer .foot-col a:hover { color: var(--ink); }
+    .site-footer .foot-col .ic { display: none !important; }
+    .site-footer .foot-bottom {
+      display: flex; flex-direction: column; gap: 1em;
+      margin-top: 1.4em; padding-top: 1.2em;
+      border-top: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+    }
+    .site-footer .socials {
+      display: flex; flex-wrap: wrap; gap: .5em;
+    }
+    .site-footer .socials a {
+      width: 42px; height: 42px; border-radius: 12px;
+      display: grid; place-items: center;
+      background: color-mix(in srgb, currentColor 8%, transparent);
+      border: 1px solid color-mix(in srgb, currentColor 10%, transparent);
+      color: var(--ink); text-decoration: none;
+      transition: background .15s, border-color .15s;
+    }
+    .site-footer .socials a:hover {
+      background: color-mix(in srgb, currentColor 12%, transparent);
+      border-color: color-mix(in srgb, currentColor 18%, transparent);
+    }
+    .site-footer .socials a svg {
+      width: 18px; height: 18px; fill: currentColor; stroke: none;
+    }
+    .site-footer .theme-toggle {
+      display: inline-flex; align-items: center;
+      padding: 4px; border-radius: 14px;
+      background: color-mix(in srgb, currentColor 8%, transparent);
+      border: 1px solid color-mix(in srgb, currentColor 12%, transparent);
+      gap: 2px; width: 100%; max-width: 320px;
+    }
+    .site-footer .theme-toggle button {
+      flex: 1; display: inline-flex; align-items: center; justify-content: center; gap: .35em;
+      padding: .55em .5em; border-radius: 11px; border: 0;
+      background: transparent; color: var(--muted);
+      font: inherit; font-size: .8rem; font-weight: 650; cursor: pointer; white-space: nowrap;
+      min-height: 40px;
+    }
+    .site-footer .theme-toggle button .ic {
+      width: 15px; height: 15px; flex: none;
+      stroke: currentColor; fill: none; stroke-width: 2;
+    }
+    .site-footer .theme-toggle button[aria-checked="true"] {
+      background: var(--bg, #fff); color: var(--ink);
+      box-shadow: 0 1px 4px rgba(0,0,0,.12);
+    }
+    :root[data-theme="dark"] .site-footer .theme-toggle button[aria-checked="true"] {
+      background: #1c212b;
+    }
+    .site-footer .copy {
+      margin: 0; font-size: .78rem; color: var(--muted);
+    }
+    @media (min-width: 720px) {
+      .site-footer .foot-cols {
+        display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5em;
+      }
+      .site-footer .foot-col { border-top: 0; }
+      .site-footer .foot-col button.foot-acc { display: none; }
+      .site-footer .foot-col h4 {
+        display: block; margin-bottom: .6em; font-size: .82rem;
+      }
+      .site-footer .foot-col ul { display: flex !important; padding: 0; }
+      .site-footer .foot-bottom {
+        flex-direction: row; align-items: center; justify-content: space-between; flex-wrap: wrap;
+      }
+    }
+    /* Hide Zero to CEO / WLL 360 block */
+    #wll360 { display: none !important; }
+
     /* Company logos horizontal marquee (after software window) */
     .logo-marquee {
       position: relative;
@@ -692,7 +884,6 @@
         <div class="nav-drop">
           <button class="nav-drop-btn" type="button" aria-expanded="false">Ecosystem <svg class="ic"><use href="#i-chevron-down"/></svg></button>
           <div class="nav-menu" role="menu">
-            <a href="#wll360" role="menuitem"><svg class="ic"><use href="#i-compass"/></svg>WLL 360</a>
             <a href="#industries" role="menuitem"><svg class="ic"><use href="#i-building"/></svg>Industries</a>
           </div>
         </div>
@@ -727,7 +918,6 @@
       <a href="#cloud"><span class="tile"><svg class="ic"><use href="#i-cloud"/></svg></span><span><b>Auxa Cloud</b><small>Get 1GB of compute free</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <a href="#software"><span class="tile"><svg class="ic"><use href="#i-monitor"/></svg></span><span><b>Workspace</b><small>Software that looks finished</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <p class="sheet-label">Ecosystem</p>
-      <a href="#wll360"><span class="tile"><svg class="ic"><use href="#i-compass"/></svg></span><span><b>WLL 360</b><small>Zero to CEO, with the app</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <a href="#industries"><span class="tile"><svg class="ic"><use href="#i-building"/></svg></span><span><b>Industries</b><small>Where Webever ships</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
       <p class="sheet-label">More</p>
       <a href="#pricing"><span class="tile"><svg class="ic"><use href="#i-package"/></svg></span><span><b>Pricing</b><small>Plans that scale</small></span><svg class="ic go"><use href="#i-chevron-right"/></svg></a>
@@ -964,34 +1154,41 @@
       </div>
     </section>
 
-    <section class="section" id="wll360">
-      <div class="wrap wll-plain">
-        <div class="wll-frame" style="overflow:hidden"><div class="wll-stage" id="wllStage" style="overflow:visible;border:0;position:relative">
-          <img class="wll-photo is-on" src="assets/photos/wll-app.jpg" alt="WLL 360 app">
-          <img class="wll-photo" src="assets/photos/app-bundler.jpg" alt="WLL 360 build view on a laptop" loading="lazy">
-          <img class="wll-photo" src="assets/photos/analytics-workspace.jpg" alt="WLL 360 analytics workspace" loading="lazy">
-          <img class="wll-photo" src="assets/photos/code-editor.jpg" alt="WLL 360 code editor" loading="lazy">
-          <article class="wll-float f1" style="width:150px;border-radius:16px;top:12%;left:0;right:auto;transform:translateX(-30%);z-index:3"><span>Lessons</span><b>Start the day</b><small>Open the app first</small></article>
-          <article class="wll-float f2" style="width:150px;border-radius:16px;top:34%;right:0;left:auto;transform:translateX(30%);z-index:3"><span>Tasks</span><b>Next task up</b><small>Clear the list</small></article>
-          <article class="wll-float f5" style="width:150px;border-radius:16px;top:48%;bottom:auto;left:0;transform:translateX(-28%);z-index:3"><span>Notes</span><b>Note shared</b><small>Pinned in the app</small></article>
-          <article class="wll-float f6" style="width:168px;border-radius:16px;bottom:8%;top:auto;right:0;transform:translateX(28%);z-index:3"><span>Streak</span><b>Day 18</b><small>Score updates in the app</small></article>
-        </div></div>
-        <div class="wll-kicker">
-          <span class="wll-badge">WLL 360</span>
-          <span class="wll-avatars" aria-hidden="true">
-            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd722bf5d?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
-            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
-            <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=80&h=80&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+    <!-- Our Agency -->
+    <section class="agency" id="agency" aria-label="Our agency">
+      <div class="agency-inner">
+        <span class="agency-label">Our Agency</span>
+        <h2 class="agency-title">Access a dedicated unit for your enterprise that provides conversion researchs</h2>
+        <div class="agency-stage" id="agencyStage">
+          <div class="agency-track" id="agencyTrack">
+            <div class="agency-slide" data-title="Digital Marketing" data-body="Get action. Seize the moment. Man was never intended to become an oyster.">
+              <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=800&h=1000&fit=crop" alt="" loading="lazy">
+            </div>
+            <div class="agency-slide" data-title="Conversion Research" data-body="Dedicated analysts map funnels, friction and the next win for your product.">
+              <img src="https://images.unsplash.com/photo-1551836022-d5d88e9218df?w=800&h=1000&fit=crop" alt="" loading="lazy">
+            </div>
+            <div class="agency-slide" data-title="Growth Ops" data-body="Ship experiments weekly. Keep the scoreboard honest and the stack simple.">
+              <img src="https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&h=1000&fit=crop" alt="" loading="lazy">
+            </div>
+          </div>
+        </div>
+        <div class="agency-info">
+          <div class="agency-info-text">
+            <h3 id="agencyTitle">Digital Marketing</h3>
+            <p id="agencyBody">Get action. Seize the moment. Man was never intended to become an oyster.</p>
+          </div>
+          <span class="agency-info-icon" aria-hidden="true" id="agencyIcon">
+            <svg viewBox="0 0 48 48"><path d="M24 8c6 4 10 10 10 16s-4 12-10 16c-6-4-10-10-10-16s4-12 10-16z"/><path d="M24 14v20"/><path d="M18 20h12"/></svg>
           </span>
         </div>
-        <h2>Zero to CEO.</h2>
-        <p>Young founders sit with people who already built. Enterprise tools and the 360 app do the rest.</p>
-        <div class="wll-ctas">
-          <a class="btn-build" href="#ask">Get started <svg class="ic" aria-hidden="true"><use href="#i-arrow-up-right"/></svg></a>
-          <a class="btn-app" href="#app">Get app <svg class="ic" aria-hidden="true"><use href="#i-android"/></svg></a>
+        <div class="agency-dots" id="agencyDots" role="tablist" aria-label="Agency slides"></div>
+        <div class="agency-actions">
+          <a class="ag-primary" href="#ask" data-set-mode="research">Employ</a>
+          <a class="ag-secondary" href="#ask" data-set-mode="research">Enroll now</a>
         </div>
       </div>
     </section>
+
 
     
         <section class="section" id="features">
@@ -1220,37 +1417,48 @@
             <span class="brand-mark">
               <img alt="" width="42" height="42" src="./assets/logo.png">
             </span>
-            <span class="brand-name"><svg class="wordmark" viewBox="0 0 1215 243" role="img" aria-label="Webever" fill="currentColor"><path fill-rule="evenodd" d="M957.0,54.0 L898.0,54.0 L844.0,168.0 L842.0,167.0 L840.0,140.0 L826.0,54.0 L774.0,55.0 L809.0,238.0 L853.0,238.0 Z M1214.0,53.0 L1183.0,53.0 L1155.0,58.0 L1129.0,70.0 L1117.0,81.0 L1105.0,101.0 L1099.0,118.0 L1067.0,238.0 L1117.0,237.0 L1141.0,146.0 L1149.0,127.0 L1156.0,117.0 L1172.0,104.0 L1182.0,100.0 L1200.0,98.0 L1202.0,96.0 Z M1061.0,60.0 L1044.0,53.0 L1032.0,51.0 L1021.0,51.0 L1000.0,55.0 L969.0,71.0 L957.0,81.0 L941.0,99.0 L924.0,129.0 L916.0,161.0 L916.0,180.0 L921.0,200.0 L929.0,214.0 L940.0,225.0 L956.0,234.0 L969.0,238.0 L997.0,239.0 L1024.0,233.0 L1059.0,215.0 L1068.0,172.0 L1030.0,189.0 L1009.0,195.0 L987.0,194.0 L975.0,187.0 L969.0,178.0 L971.0,176.0 L1082.0,140.0 L1084.0,138.0 L1088.0,117.0 L1086.0,94.0 L1083.0,85.0 L1075.0,72.0 Z M1041.0,107.0 L1041.0,110.0 L1037.0,115.0 L1026.0,121.0 L972.0,138.0 L970.0,137.0 L972.0,129.0 L982.0,113.0 L993.0,102.0 L1003.0,96.0 L1013.0,93.0 L1026.0,94.0 L1036.0,100.0 Z M419.0,59.0 L407.0,54.0 L392.0,51.0 L373.0,52.0 L355.0,57.0 L337.0,66.0 L319.0,80.0 L298.0,106.0 L290.0,121.0 L283.0,140.0 L279.0,161.0 L279.0,176.0 L281.0,189.0 L289.0,208.0 L297.0,219.0 L311.0,230.0 L333.0,238.0 L361.0,239.0 L378.0,236.0 L393.0,231.0 L422.0,215.0 L430.0,172.0 L388.0,191.0 L366.0,196.0 L347.0,193.0 L340.0,189.0 L331.0,179.0 L334.0,176.0 L444.0,140.0 L448.0,121.0 L448.0,103.0 L445.0,90.0 L434.0,71.0 Z M402.0,107.0 L400.0,114.0 L391.0,120.0 L334.0,138.0 L332.0,137.0 L333.0,131.0 L344.0,112.0 L354.0,102.0 L366.0,95.0 L373.0,93.0 L386.0,94.0 L393.0,97.0 Z M477.0,0.0 L452.0,139.0 L431.0,238.0 L477.0,238.0 L482.0,218.0 L495.0,232.0 L505.0,237.0 L515.0,239.0 L532.0,238.0 L555.0,229.0 L569.0,219.0 L590.0,196.0 L603.0,174.0 L614.0,144.0 L613.0,180.0 L618.0,200.0 L627.0,215.0 L636.0,224.0 L653.0,234.0 L673.0,239.0 L694.0,239.0 L707.0,237.0 L729.0,230.0 L761.0,213.0 L769.0,170.0 L726.0,189.0 L706.0,195.0 L684.0,194.0 L674.0,189.0 L665.0,179.0 L667.0,176.0 L778.0,139.0 L781.0,123.0 L781.0,102.0 L779.0,93.0 L771.0,76.0 L757.0,62.0 L740.0,54.0 L724.0,51.0 L704.0,52.0 L678.0,61.0 L657.0,75.0 L639.0,94.0 L629.0,109.0 L616.0,140.0 L617.0,99.0 L612.0,83.0 L606.0,73.0 L595.0,63.0 L585.0,58.0 L573.0,55.0 L554.0,55.0 L533.0,61.0 L512.0,74.0 L511.0,71.0 L525.0,0.0 Z M552.0,99.0 L562.0,107.0 L568.0,122.0 L567.0,141.0 L561.0,159.0 L550.0,176.0 L538.0,187.0 L523.0,193.0 L511.0,192.0 L499.0,183.0 L494.0,170.0 L494.0,155.0 L502.0,128.0 L512.0,113.0 L525.0,102.0 L540.0,97.0 Z M735.0,108.0 L734.0,112.0 L725.0,119.0 L671.0,137.0 L665.0,137.0 L667.0,129.0 L678.0,111.0 L687.0,102.0 L699.0,95.0 L706.0,93.0 L720.0,94.0 L726.0,97.0 Z M357.0,0.0 L329.0,0.0 L315.0,2.0 L298.0,8.0 L284.0,17.0 L266.0,38.0 L200.0,155.0 L198.0,154.0 L205.0,91.0 L206.0,64.0 L203.0,57.0 L198.0,52.0 L190.0,49.0 L168.0,49.0 L155.0,53.0 L138.0,63.0 L128.0,73.0 L69.0,155.0 L67.0,154.0 L90.0,54.0 L38.0,54.0 L0.0,241.0 L52.0,241.0 L59.0,238.0 L68.0,228.0 L157.0,104.0 L159.0,105.0 L159.0,112.0 L145.0,211.0 L146.0,229.0 L154.0,239.0 L164.0,242.0 L185.0,241.0 L205.0,232.0 L222.0,214.0 Z"/></svg><span>Labs</span></span>
+            <span class="brand-name"><svg class="wordmark-new" viewBox="0 0 1623 307" aria-hidden="true"><use href="#wm-new"/></svg> <span>Labs</span></span>
           </a>
           <p>Hybrid software, faster research, Auxa Drive and cloud compute.</p>
         </div>
         <div class="foot-cols">
-          <div class="foot-col">
+          <div class="foot-col is-open">
+            <button type="button" class="foot-acc" aria-expanded="true">Product <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             <h4>Product</h4>
             <ul>
-              <li><a href="#ask" data-set-mode="build"><svg class="ic"><use href="#i-terminal"/></svg>Build</a></li>
-              <li><a href="#ask" data-set-mode="research"><svg class="ic"><use href="#i-infinity"/></svg>Research</a></li>
-              <li><a href="#wll360"><svg class="ic"><use href="#i-compass"/></svg>WLL 360</a></li>
-              <li><a href="#cloud"><svg class="ic"><use href="#i-cloud"/></svg>Auxa Cloud</a></li>
+              <li><a href="#ask" data-set-mode="build">Build</a></li>
+              <li><a href="#ask" data-set-mode="research">Research</a></li>
+              <li><a href="#services">Services</a></li>
+              <li><a href="#products">Products</a></li>
+              <li><a href="#cloud">Auxa Cloud</a></li>
+              <li><a href="#agency">Agency</a></li>
             </ul>
           </div>
           <div class="foot-col">
+            <button type="button" class="foot-acc" aria-expanded="false">Company <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
             <h4>Company</h4>
             <ul>
-              <li><a href="#pricing"><svg class="ic"><use href="#i-package"/></svg>Pricing</a></li>
-              <li><a href="#"><svg class="ic"><use href="#i-mail"/></svg>Contact</a></li>
-              <li><button type="button" id="footerSearch" style="display:inline-flex;align-items:center;gap:.55em;padding:.35em 0;color:var(--muted);background:none;border:none;font:inherit;cursor:pointer;font-size:.95rem"><svg class="ic"><use href="#i-search"/></svg>Search</button></li>
+              <li><a href="#pricing">Pricing</a></li>
+              <li><a href="#">Contact</a></li>
+              <li><button type="button" class="plain" id="footerSearch">Search</button></li>
+            </ul>
+          </div>
+          <div class="foot-col">
+            <button type="button" class="foot-acc" aria-expanded="false">Legal <svg class="chev" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg></button>
+            <h4>Legal</h4>
+            <ul>
+              <li><a href="#">Privacy</a></li>
+              <li><a href="#">Terms</a></li>
             </ul>
           </div>
         </div>
       </div>
       <div class="foot-bottom">
         <div class="socials">
-          <a href="#" aria-label="GitHub"><svg class="ic fl" viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
-          <a href="#" aria-label="X"><svg class="ic fl" viewBox="0 0 24 24"><path d="M14.7 3h2.5l-5.5 6.3L18.5 21h-4.4l-3.4-4.5L6.7 21H4.2l5.9-6.7L3.8 3h4.5l3.1 4.1L14.7 3zm-.9 16.2h1.4L8.3 4.7H6.8l7 14.5z"/></svg></a>
-          <a href="#" aria-label="LinkedIn"><svg class="ic fl" viewBox="0 0 24 24"><path d="M4.7 3.3a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM3.2 8.7h3v12.1h-3V8.7zM10 8.7h2.9v1.7h.04c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v7.3h-3v-6.5c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4v6.6H10V8.7z"/></svg></a>
-          <a href="#" aria-label="YouTube"><svg class="ic fl" viewBox="0 0 24 24"><path d="M23 12.2s0-3.2-.4-4.6c-.2-.9-.9-1.6-1.8-1.8C19.2 5.4 12 5.4 12 5.4s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 9 1 12.2 1 12.2s0 3.2.4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.6.4-4.6zM9.8 15.5v-6.6l6.2 3.3-6.2 3.3z"/></svg></a>
-          <a href="#" aria-label="Email"><svg class="ic fl" viewBox="0 0 24 24"><path d="M2 6.5A2.5 2.5 0 0 1 4.5 4h15A2.5 2.5 0 0 1 22 6.5v11a2.5 2.5 0 0 1-2.5 2.5h-15A2.5 2.5 0 0 1 2 17.5v-11zm2.2.3 7.1 4.6c.4.3.9.3 1.4 0l7.1-4.6a.5.5 0 0 0-.3-.8h-15a.5.5 0 0 0-.3.8z"/></svg></a>
+          <a href="#" aria-label="GitHub"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.1-1.47-1.1-1.47-.9-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.52 2.34 1.08 2.91.83.09-.65.35-1.08.63-1.33-2.22-.25-4.55-1.11-4.55-4.95 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02A9.56 9.56 0 0 1 12 6.8c.85 0 1.7.11 2.5.34 1.9-1.29 2.74-1.02 2.74-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.85-2.34 4.7-4.57 4.95.36.31.68.92.68 1.86v2.76c0 .26.18.58.69.48A10 10 0 0 0 12 2z"/></svg></a>
+          <a href="#" aria-label="X"><svg viewBox="0 0 24 24"><path d="M14.7 3h2.5l-5.5 6.3L18.5 21h-4.4l-3.4-4.5L6.7 21H4.2l5.9-6.7L3.8 3h4.5l3.1 4.1L14.7 3zm-.9 16.2h1.4L8.3 4.7H6.8l7 14.5z"/></svg></a>
+          <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M4.7 3.3a1.9 1.9 0 1 0 0 3.8 1.9 1.9 0 0 0 0-3.8zM3.2 8.7h3v12.1h-3V8.7zM10 8.7h2.9v1.7h.04c.4-.8 1.4-1.6 2.9-1.6 3.1 0 3.7 2 3.7 4.7v7.3h-3v-6.5c0-1.5 0-3.5-2.1-3.5s-2.5 1.7-2.5 3.4v6.6H10V8.7z"/></svg></a>
+          <a href="#" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12.2s0-3.2-.4-4.6c-.2-.9-.9-1.6-1.8-1.8C19.2 5.4 12 5.4 12 5.4s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 9 1 12.2 1 12.2s0 3.2.4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.6.4-4.6zM9.8 15.5v-6.6l6.2 3.3-6.2 3.3z"/></svg></a>
         </div>
         <div class="theme-toggle" id="themeToggle" role="radiogroup" aria-label="Theme">
           <button type="button" role="radio" aria-checked="false" data-choice="light"><svg class="ic"><use href="#i-sun"/></svg>Light</button>
@@ -1819,6 +2027,84 @@
       paintTheme();
     });
   });
+
+  /* Footer accordion (mobile) */
+  document.querySelectorAll('.site-footer .foot-acc').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var col = btn.closest('.foot-col');
+      if (!col) return;
+      var open = col.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  });
+
+  /* Agency carousel: auto + swipe + dots */
+  (function () {
+    var track = document.getElementById('agencyTrack');
+    var stage = document.getElementById('agencyStage');
+    var dots = document.getElementById('agencyDots');
+    var titleEl = document.getElementById('agencyTitle');
+    var bodyEl = document.getElementById('agencyBody');
+    if (!track || !stage) return;
+    var slides = Array.prototype.slice.call(track.querySelectorAll('.agency-slide'));
+    if (!slides.length) return;
+    var i = 0, timer = null, startX = 0, deltaX = 0, dragging = false;
+
+    slides.forEach(function (_, n) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.setAttribute('aria-label', 'Slide ' + (n + 1));
+      if (n === 0) b.className = 'is-on';
+      b.addEventListener('click', function () { go(n); restart(); });
+      if (dots) dots.appendChild(b);
+    });
+
+    function go(n) {
+      i = (n + slides.length) % slides.length;
+      track.style.transform = 'translateX(' + (-i * 100) + '%)';
+      var s = slides[i];
+      if (titleEl) titleEl.textContent = s.getAttribute('data-title') || '';
+      if (bodyEl) bodyEl.textContent = s.getAttribute('data-body') || '';
+      if (dots) {
+        Array.prototype.forEach.call(dots.children, function (d, k) {
+          d.classList.toggle('is-on', k === i);
+        });
+      }
+    }
+
+    function next() { go(i + 1); }
+    function restart() {
+      if (timer) clearInterval(timer);
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      timer = setInterval(next, 4500);
+    }
+
+    stage.addEventListener('pointerdown', function (e) {
+      dragging = true; startX = e.clientX; deltaX = 0;
+      stage.classList.add('is-dragging');
+      stage.setPointerCapture(e.pointerId);
+      if (timer) clearInterval(timer);
+    });
+    stage.addEventListener('pointermove', function (e) {
+      if (!dragging) return;
+      deltaX = e.clientX - startX;
+      track.style.transition = 'none';
+      track.style.transform = 'translateX(calc(' + (-i * 100) + '% + ' + deltaX + 'px))';
+    });
+    function endDrag() {
+      if (!dragging) return;
+      dragging = false;
+      stage.classList.remove('is-dragging');
+      track.style.transition = '';
+      if (Math.abs(deltaX) > 48) go(i + (deltaX < 0 ? 1 : -1));
+      else go(i);
+      restart();
+    }
+    stage.addEventListener('pointerup', endDrag);
+    stage.addEventListener('pointercancel', endDrag);
+
+    go(0); restart();
+  })();
 
   /* hero flower typewriter loop */
   (function () {
